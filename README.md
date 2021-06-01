@@ -1,4 +1,4 @@
-# IPT Course Java Web Development #
+# Course Java Web Development #
 
 **Instructor: Trayan Iliev**<br>
 **E-mail: t_iliev@ iproduct.org**
