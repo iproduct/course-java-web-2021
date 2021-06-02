@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a72d48e-7a5b-432d-aa3f-534a81c327bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoicing-lab.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/AbstractEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Contragent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Identifiable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/Unit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/invoicing/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/KeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/SupplierRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/dao/impl/UserRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/exception/EntityAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/invoicing/exception/EntityNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invoicing/dao/Repository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -74,10 +66,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="invoicing.exception" />
+      <recent name="invoicing.dao" />
       <recent name="invoicing.model.Unit" />
       <recent name="invoicing.model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="invoicing.dao" />
       <recent name="invoicing.model" />
     </key>
   </component>
@@ -124,11 +119,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622620526228</updated>
-      <workItem from="1622620528284" duration="4839000" />
+      <workItem from="1622620528284" duration="10944000" />
     </task>
+    <task id="LOCAL-00001" summary="eInvoice entities added">
+      <created>1622625405011</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622625405011</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="eInvoice entities added" />
+    <option name="LAST_COMMIT_MESSAGE" value="eInvoice entities added" />
   </component>
 </project>
