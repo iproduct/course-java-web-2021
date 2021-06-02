@@ -3,6 +3,7 @@ package invoicing.model;
 import static invoicing.model.Unit.PCS;
 
 public class Product extends AbstractEntity<Long, Product> {
+    private String code; // string 5 characters - two letters and three digits
     private String name; // the name of the 'Product, string 2 to 50 characters long;
     private String description; // (optional) string up to 512 characters long;
     private double price; // real number with double precision;
@@ -17,19 +18,43 @@ public class Product extends AbstractEntity<Long, Product> {
         super(id);
     }
 
-    public Product(String name, double price) {
+    public Product(String code, String name, double price) {
+        this.code = code;
         this.name = name;
         this.price = price;
     }
 
-    public Product(String name, String description, double price, boolean isPromoted,
-                   double promotionPercentage, Unit unit) {
+    public Product(String code, String name, String description, double price) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
+    public Product(String code, String name, String description, double price, Unit unit) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.unit = unit;
+    }
+
+    public Product(String code, String name, String description, double price, boolean isPromoted, double promotionPercentage, Unit unit) {
+        this.code = code;
         this.name = name;
         this.description = description;
         this.price = price;
         this.isPromoted = isPromoted;
         this.promotionPercentage = promotionPercentage;
         this.unit = unit;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -86,6 +111,7 @@ public class Product extends AbstractEntity<Long, Product> {
         sb.append("id=").append(getId());
         sb.append(", created=").append(getCreated());
         sb.append(", modified=").append(getModified());
+        sb.append(", code='").append(code).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", price=").append(price);
@@ -96,5 +122,4 @@ public class Product extends AbstractEntity<Long, Product> {
         sb.append('}');
         return sb.toString();
     }
-
 }
