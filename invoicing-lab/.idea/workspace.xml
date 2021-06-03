@@ -53,7 +53,6 @@
       <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invoicing/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/invoicing/dao/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java-fundamentals/src/exceptions/TryWithResourcesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/src/exceptions/TryWithResourcesDemo.java" afterDir="false" />
     </list>
@@ -198,7 +197,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622620526228</updated>
-      <workItem from="1622620528284" duration="25330000" />
+      <workItem from="1622620528284" duration="27455000" />
     </task>
     <task id="LOCAL-00001" summary="eInvoice entities added">
       <created>1622625405011</created>
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622641565075</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="repository static factory method added to Repository interface">
+      <created>1622724400113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622724400113</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +245,7 @@
     <MESSAGE value="eInvoice entities added" />
     <MESSAGE value="eInvoice DAO layer added" />
     <MESSAGE value="eInvoice PrintUtil class added using Reflection API" />
-    <option name="LAST_COMMIT_MESSAGE" value="eInvoice PrintUtil class added using Reflection API" />
+    <MESSAGE value="repository static factory method added to Repository interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="repository static factory method added to Repository interface" />
   </component>
 </project>

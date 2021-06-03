@@ -1,0 +1,12 @@
+R E P O R T
+Date:,03.06.2021
+INVOICES ISSUER:
+ID Number:,1234567895
+Name:,ABC Ltd.
+
+No.,Date,Receiver ID,Receiver,Amount,VAT,Total
+1,03.06.2021,122222222,ABC Ltd.,    178,50,    35,70,    214,20
+
+Total amount:,    178,50
+Total VAT:,     35,70
+Total VAT included:,    214,20
