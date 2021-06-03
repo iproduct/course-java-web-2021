@@ -1,9 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../02-api-examples/src/streams/MethodReferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../03-diapi/src/test/java/org/iproduct/di/JupiterTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/KeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/SupplierRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/CustomerRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/ProductRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/SupplierRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/UserRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/exception/EntityAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/exception/EntityNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/AbstractEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Contragent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Identifiable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Supplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streams/MethodReferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streams/StreamDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streams/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/TryWithResourcesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/TryWithResourcesDemo.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KotlinMultiplatform">
+    <allAvailableExecutables />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1tQdKHxlV2bOaFUGuKzx5nxwEVU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -12,7 +101,55 @@
     <property name="project.structure.side.proportion" value="0.23772103" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="streams" />
+      <recent name="exceptions" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.StreamDemo">
+    <configuration name="MethodReferences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="streams.MethodReferences" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="streams.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StreamDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="streams.StreamDemo" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="streams.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TryWithResourcesDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exceptions.TryWithResourcesDemo" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exceptions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -46,5 +183,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StreamDemo" />
+        <item itemvalue="Application.MethodReferences" />
+        <item itemvalue="Application.TryWithResourcesDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="" />
+      <created>1622705183349</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622705183349</updated>
+      <workItem from="1622705185261" duration="2376000" />
+    </task>
+    <task id="LOCAL-00001" summary="project initial commit">
+      <created>1622705246001</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622705246001</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="project initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="project initial commit" />
   </component>
 </project>
