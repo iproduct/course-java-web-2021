@@ -41,14 +41,11 @@
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/streams/MethodReferences.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/streams/StreamDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/streams/Tuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wikipedia.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/TryWithResourcesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/TryWithResourcesDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/streams/StreamDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/streams/StreamDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +196,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="2376000" />
+      <workItem from="1622705185261" duration="5470000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
@@ -208,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622705246001</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sream demos added">
+      <created>1622710555501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622710555501</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +221,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="project initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="project initial commit" />
+    <MESSAGE value="sream demos added" />
+    <option name="LAST_COMMIT_MESSAGE" value="sream demos added" />
   </component>
 </project>

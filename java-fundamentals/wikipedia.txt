@@ -1,0 +1,12 @@
+In computer science, a stream is a sequence of data elements made available over time. A stream can be thought of as items on a conveyor belt being processed one at a time rather than in large batches.
+
+Streams are processed differently from batch data – normal functions cannot operate on streams as a whole, as they have potentially unlimited data, and formally, streams are codata (potentially unlimited), not data (which is finite). Functions that operate on a stream, producing another stream, are known as filters, and can be connected in pipelines, analogously to function composition. Filters may operate on one item of a stream at a time, or may base an item of output on multiple items of input, such as a moving average.
+The term "stream" is used in a number of similar ways:
+
+"Stream editing", as with sed, awk, and perl. Stream editing processes a file or files, in-place, without having to load the file(s) into a user interface. One example of such use is to do a search and replace on all the files in a directory, from the command line.
+On Unix and related systems based on the C language, a stream is a source or sink of data, usually individual bytes or characters. Streams are an abstraction used when reading or writing files, or communicating over network sockets. The standard streams are three streams made available to all programs.
+I/O devices can be interpreted as streams, as they produce or consume potentially unlimited data over time.
+In object-oriented programming, input streams are generally implemented as iterators.
+In the Scheme language and some others, a stream is a lazily evaluated or delayed sequence of data elements. A stream can be used similarly to a list, but later elements are only calculated when needed. Streams can therefore represent infinite sequences and series.[1]
+In the Smalltalk standard library and in other programming languages as well, a stream is an external iterator. As in Scheme, streams can represent finite or infinite sequences.
+Stream processing — in parallel processing, especially in graphic processing, the term stream is applied to hardware as well as software. There it defines the quasi-continuous flow of data that is processed in a dataflow programming language as soon as the program state meets the starting condition of the stream.
