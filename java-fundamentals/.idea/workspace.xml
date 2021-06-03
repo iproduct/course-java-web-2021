@@ -41,7 +41,6 @@
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wikipedia.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -196,7 +195,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="5470000" />
+      <workItem from="1622705185261" duration="7598000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
@@ -212,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622710555501</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sream demos added">
+      <created>1622713579929</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622713579929</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

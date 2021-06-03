@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -63,11 +65,12 @@ public class StreamDemo {
 //		System.out.println( streamOfString.collect(Collectors.joining()) );
 
         Path path = Paths.get("wikipedia.txt");
-        List<String> words = Files.lines(path)
-                .flatMap(line -> Pattern.compile("[\s,;!?-_/()'\".]+").splitAsStream(line))
+       List<String> words = Files.lines(path)
+                .flatMap(line -> Pattern.compile("[\s,:;!?-_/()'\".]+").splitAsStream(line))
                 .filter(w -> w.length() > 2)
-                .distinct()
+                .filter(w -> !stopWords.contains(w))
                 .collect(Collectors.toList());
+
 //				.map(l -> new Tuple<String, Integer>(l, 0))
 //				.reduce(new Tuple<>("", 1),
 //					(acc, line) -> // accumulator
@@ -76,7 +79,34 @@ public class StreamDemo {
 //						new Tuple<>(acc1.getProp1() + "\n" + acc2.getProp2(), 0)
 //				).getProp1();
 
-        System.out.println(words);
+        Map<String, Integer> wordCounts = new HashMap<>();
+        for(String w: words){
+            Integer oldCount = wordCounts.get(w);
+            if(oldCount == null) {
+                wordCounts.put(w, 1);
+            } else {
+                wordCounts.put(w, oldCount + 1);
+            }
+        }
+        System.out.println(wordCounts.entrySet().stream()
+                .sorted((e1, e2) -> -e1.getValue().compareTo(e2.getValue()))
+                .limit(10)
+                .collect(Collectors.toList())
+        );
+
+        Map<String, Integer> wordCounts2 = Files.lines(path)
+                .flatMap(line -> Pattern.compile("[\s,:;!?-_/()'\".]+").splitAsStream(line))
+                .filter(w -> w.length() > 2)
+                .filter(w -> !stopWords.contains(w))
+                .collect(HashMap::new,
+                        (map, word) -> map.compute(word,
+                                (String key, Integer val) -> val == null ? 1: val + 1),
+                        (map1, map2) -> map1.putAll(map2));
+        System.out.println(wordCounts2.entrySet().stream()
+                .sorted((e1, e2) -> -e1.getValue().compareTo(e2.getValue()))
+                .limit(10)
+                .collect(Collectors.toList()));
+
 
         StringBuilder resBuilder = Files.lines(path, Charset.forName("UTF-8"))
 //	   		.collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
