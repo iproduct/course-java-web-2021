@@ -13,16 +13,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface Repository<K, V extends Identifiable<K>> {
-    static final Map<String, String> ENTITY_TO_REPOSITORY_MAP =
-            Map.of(
-                    "invoicing.model.Product", "invoicing.dao.impl.ProductRepositoryMemoryImpl",
-                    "invoicing.model.Supplier", "invoicing.dao.impl.SupplierRepositoryMemoryImpl",
-                    "invoicing.model.Customer", "invoicing.dao.impl.CustomerRepositoryMemoryImpl"
-            );
-    static final Map<String, String> KEY_TO_GENERATOR_MAP =
-            Map.of(
-                    "java.lang.Long", "invoicing.dao.impl.LongKeyGenerator"
-            );
 
     List<V> findAll();
 
@@ -50,13 +40,22 @@ public interface Repository<K, V extends Identifiable<K>> {
             String genClassName = KEY_TO_GENERATOR_MAP.get(keyClass.getName());
             Class<KeyGenerator<K>> genClass = (Class<KeyGenerator<K>>) Class.forName(genClassName);
             Constructor<KeyGenerator<K>> genConstructor = genClass.getConstructor();
-            System.out.println(genConstructor);
             return (Repository<K, V>) constructor.newInstance(genConstructor.newInstance());
         } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
                 InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
             return null;
         }
-
     }
+    static final Map<String, String> ENTITY_TO_REPOSITORY_MAP =
+            Map.of(
+                    "invoicing.model.Product", "invoicing.dao.impl.ProductRepositoryMemoryImpl",
+                    "invoicing.model.Supplier", "invoicing.dao.impl.SupplierRepositoryMemoryImpl",
+                    "invoicing.model.Customer", "invoicing.dao.impl.CustomerRepositoryMemoryImpl"
+            );
+    static final Map<String, String> KEY_TO_GENERATOR_MAP =
+            Map.of(
+                    "java.lang.Long", "invoicing.dao.impl.LongKeyGenerator"
+            );
+
 }
