@@ -19,13 +19,7 @@ public interface Repository<K, V extends Identifiable<K>> {
                     "invoicing.model.Supplier", "invoicing.dao.impl.SupplierRepositoryMemoryImpl",
                     "invoicing.model.Customer", "invoicing.dao.impl.CustomerRepositoryMemoryImpl"
             );
-//    static final Map<String, String> ENTITY_TO_REPOSITORY_INTERFACE_MAP =
-//            Map.of(
-//                    "invoicing.model.Product", "invoicing.dao.ProductRepository",
-//                    "invoicing.model.Supplier", "invoicing.dao.SupplierRepository",
-//                    "invoicing.model.Customer", "invoicing.dao.CustomerRepository"
-//            );
-    static final Map<String, String> KEY_TO_GENRERATOR_MAP =
+    static final Map<String, String> KEY_TO_GENERATOR_MAP =
             Map.of(
                     "java.lang.Long", "invoicing.dao.impl.LongKeyGenerator"
             );
@@ -36,7 +30,7 @@ public interface Repository<K, V extends Identifiable<K>> {
     V deleteById(K id) throws EntityNotFoundException;
     long count();
 
-    static <K, V extends Identifiable<K>> Repository<K, V > createRepository(Class keyClass, Class entityClass) {
+    static <K, V extends Identifiable<K>> Repository<K, V > createRepository(Class<K> keyClass, Class<V> entityClass) {
        String implClassName =  ENTITY_TO_REPOSITORY_MAP.get(entityClass.getName());
        try {
             Class<V> implClass = (Class<V>) Class.forName(implClassName);
@@ -47,12 +41,13 @@ public interface Repository<K, V extends Identifiable<K>> {
                 e.printStackTrace();
                 constructor = implClass.getDeclaredConstructor();
             }
-            String genClassName = KEY_TO_GENRERATOR_MAP.get(keyClass.getName());
-            Class<KeyGenerator<K>> genClass = (Class<KeyGenerator<K>>) Class.forName(implClassName);
+            String genClassName = KEY_TO_GENERATOR_MAP.get(keyClass.getName());
+            Class<KeyGenerator<K>> genClass = (Class<KeyGenerator<K>>) Class.forName(genClassName);
             Constructor<KeyGenerator<K>> genConstructor = genClass.getConstructor();
 //            String interfaceClasName = ENTITY_TO_REPOSITORY_INTERFACE_MAP.get(entityClass.getName());
 //            Class interfaceClass = Class.forName(interfaceClasName);
-            return (Repository<K, V>) constructor.newInstance(new LongKeyGenerator());
+           System.out.println(genConstructor);
+            return (Repository<K, V>) constructor.newInstance(genConstructor.newInstance());
         } catch (ClassNotFoundException | NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

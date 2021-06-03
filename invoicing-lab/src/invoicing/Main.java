@@ -63,7 +63,8 @@ public class Main {
         // Product repo demo
 //        ProductRepository productRepository = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
         ProductRepository productRepo =
-                (ProductRepository) Repository.<Long, Product>createRepository(Long.class, Product.class);
+                (ProductRepository) Repository.createRepository(Long.class, Product.class);
+
         Arrays.asList(products).stream().forEach(product -> {
             try {
                 productRepo.create(product);
