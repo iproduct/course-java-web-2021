@@ -1,6 +1,7 @@
 package invoicing;
 
 import invoicing.dao.ProductRepository;
+import invoicing.dao.Repository;
 import invoicing.dao.impl.LongKeyGenerator;
 import invoicing.dao.impl.ProductRepositoryMemoryImpl;
 import invoicing.dao.impl.RepositoryMemoryImpl;
@@ -14,6 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static invoicing.util.Alignment.*;
@@ -52,7 +54,6 @@ public class Main {
         descrField.setAccessible(true);
         descrField.set(p1, "Good intro to Java!!!");
         System.out.printf("Product 1: %s%n", p1);
-        ProductRepository productRepository = new ProductRepositoryMemoryImpl();
 
         // Common entity metadata column descriptors
         List<PrintUtil.ColumnDescriptor> metadataColumns = List.of(
@@ -60,7 +61,8 @@ public class Main {
                 new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
         );
         // Product repo demo
-        ProductRepository productRepo = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
+//        ProductRepository productRepository = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
+        ProductRepository productRepo = (ProductRepository) Repository.<Long, Product>createRepository(Long.class, Product.class);
         Arrays.asList(products).stream().forEach(product -> {
             try {
                 productRepo.create(product);
@@ -81,5 +83,10 @@ public class Main {
         productColumns.addAll(metadataColumns);
         String productReport = PrintUtil.formatTable(productColumns, productRepo.findAll(), "Products List:");
         System.out.println(productReport);
+
+        List<Product> toBeSorted =  productRepo.findAll();
+        toBeSorted.sort(Comparator.comparing(Product::getPrice));
+        String productReport2 = PrintUtil.formatTable(productColumns, toBeSorted, "Products List - Sorted:");
+        System.out.println(productReport2);
     }
 }
