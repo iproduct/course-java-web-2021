@@ -23,16 +23,22 @@ public interface Repository<K, V extends Identifiable<K>> {
             Map.of(
                     "java.lang.Long", "invoicing.dao.impl.LongKeyGenerator"
             );
+
     List<V> findAll();
+
     Optional<V> findById(K id);
+
     V create(V entity) throws EntityAlreadyExistsException;
+
     V update(V entity) throws EntityNotFoundException;
+
     V deleteById(K id) throws EntityNotFoundException;
+
     long count();
 
-    static <K, V extends Identifiable<K>> Repository<K, V > createRepository(Class<K> keyClass, Class<V> entityClass) {
-       String implClassName =  ENTITY_TO_REPOSITORY_MAP.get(entityClass.getName());
-       try {
+    static <K, V extends Identifiable<K>> Repository<K, V> createRepository(Class<K> keyClass, Class<V> entityClass) {
+        String implClassName = ENTITY_TO_REPOSITORY_MAP.get(entityClass.getName());
+        try {
             Class<V> implClass = (Class<V>) Class.forName(implClassName);
             Constructor constructor;
             try {
@@ -44,19 +50,13 @@ public interface Repository<K, V extends Identifiable<K>> {
             String genClassName = KEY_TO_GENERATOR_MAP.get(keyClass.getName());
             Class<KeyGenerator<K>> genClass = (Class<KeyGenerator<K>>) Class.forName(genClassName);
             Constructor<KeyGenerator<K>> genConstructor = genClass.getConstructor();
-//            String interfaceClasName = ENTITY_TO_REPOSITORY_INTERFACE_MAP.get(entityClass.getName());
-//            Class interfaceClass = Class.forName(interfaceClasName);
-           System.out.println(genConstructor);
+            System.out.println(genConstructor);
             return (Repository<K, V>) constructor.newInstance(genConstructor.newInstance());
-        } catch (ClassNotFoundException | NoSuchMethodException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
+                InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 }

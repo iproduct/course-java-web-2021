@@ -45,6 +45,7 @@
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/impl/LongKeyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
