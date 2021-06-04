@@ -2,51 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="stream demos modified">
-      <change afterPath="$PROJECT_DIR$/../02-api-examples/src/streams/MethodReferences.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../03-diapi/src/test/java/org/iproduct/di/JupiterTest2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/KeyGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/SupplierRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/CustomerRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/ProductRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/SupplierRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/impl/UserRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/exception/EntityAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/exception/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/AbstractEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Contragent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Identifiable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/Unit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/resources/users-data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/junit5/AssertionDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/KeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/SupplierRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/CustomerRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/ProductRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/SupplierRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/dao/impl/UserRepositoryMemoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/exception/EntityAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/exception/EntityNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/AbstractEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Contragent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Identifiable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Supplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/impl/LongKeyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
