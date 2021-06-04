@@ -33,36 +33,36 @@ public class InputUtil {
             try {
                 switch (fc.type) {
                     case INTEGER:
-                        Long longResult = inputLong(fc);
+                        Long longResult = inputLong(sc, fc);
                         result = (longResult != null) ? longResult.intValue() : null;
                         method = instance.getClass().getMethod(setterName.toString(), Integer.class);
                         method.invoke(instance, result);
                         break;
                     case LONG:
-                        longResult = inputLong(fc);
+                        longResult = inputLong(sc, fc);
                         result = (longResult != null) ? longResult: null;
                         method = instance.getClass().getMethod(setterName.toString(), Long.class);
                         method.invoke(instance, result);
                         break;
                     case DECIMAL:
-                        Double doubleResult = inputDouble(fc);
+                        Double doubleResult = inputDouble(sc, fc);
                         result = (doubleResult != null) ? doubleResult.doubleValue() : null;
                         method = instance.getClass().getMethod(setterName.toString(), Double.class);
                         method.invoke(instance, result);
                         break;
                     case STRING:
-                        result = inputString(fc);
+                        result = inputString(sc, fc);
                         method = instance.getClass().getMethod(setterName.toString(), String.class);
                         method.invoke(instance, result);
                         break;
                     case UNIT:
-                        Unit unitResult = inputUnit(fc);
+                        Unit unitResult = inputUnit(sc, fc);
                         result = (unitResult != null) ? unitResult : null;
                         method = instance.getClass().getMethod(setterName.toString(), Unit.class);
                         method.invoke(instance, result);
                         break;
                     case DATE:
-                        LocalDate dateResult = inputDate(fc);
+                        LocalDate dateResult = inputDate(sc, fc);
                         result = (dateResult != null) ? dateResult : null;
                         method = instance.getClass().getMethod(setterName.toString(), LocalDate.class);
                         method.invoke(instance, result);
@@ -78,13 +78,13 @@ public class InputUtil {
 
 
     // Implementation helper methods
-    public static Long inputLong(FieldConfig fc) {
+    public static Long inputLong(Scanner sc, FieldConfig fc) {
         String answer = null;
         boolean error;
         do {
             error = false;
             try {
-                answer = inputStringOrThrow(fc);
+                answer = inputStringOrThrow(sc, fc);
             } catch (InvalidEntityDataException e) {
                 System.out.println(e.getMessage());
                 error = true;
@@ -101,13 +101,13 @@ public class InputUtil {
         return null;
     }
 
-    public static Double inputDouble(FieldConfig fc) {
+    public static Double inputDouble(Scanner sc, FieldConfig fc) {
         String answer = null;
         boolean error;
         do {
             error = false;
             try {
-                answer = inputStringOrThrow(fc);
+                answer = inputStringOrThrow(sc, fc);
             } catch (InvalidEntityDataException e) {
                 System.out.println(e.getMessage());
                 error = true;
@@ -129,13 +129,13 @@ public class InputUtil {
         return null;
     }
 
-    public static String inputString(FieldConfig fc) {
+    public static String inputString(Scanner sc, FieldConfig fc) {
         String answer = null;
         boolean error;
         do {
             error = false;
             try {
-                answer = inputStringOrThrow(fc);
+                answer = inputStringOrThrow(sc, fc);
             } catch (InvalidEntityDataException e) {
                 System.out.println(e.getMessage());
                 error = true;
@@ -144,7 +144,7 @@ public class InputUtil {
         return answer;
     }
 
-    public static Unit inputUnit(FieldConfig fc) {
+    public static Unit inputUnit(Scanner sc, FieldConfig fc) {
         String answer = null;
         boolean error;
         StringBuilder enumValues = new StringBuilder();
@@ -188,7 +188,7 @@ public class InputUtil {
         return null;
     }
 
-    public static LocalDate inputDate(FieldConfig fc) {
+    public static LocalDate inputDate(Scanner sc, FieldConfig fc) {
         DateTimeFormatter dtf;
         if(fc.dateFormat != null) {
             dtf = DateTimeFormatter.ofPattern(fc.dateFormat);
@@ -200,7 +200,7 @@ public class InputUtil {
         do {
             error = false;
             try {
-                answer = inputStringOrThrow(fc);
+                answer = inputStringOrThrow(sc, fc);
             } catch (InvalidEntityDataException e) {
                 System.out.println(e.getMessage());
                 error = true;
@@ -217,7 +217,7 @@ public class InputUtil {
         return null;
     }
 
-    public static String inputStringOrThrow(FieldConfig fc) throws InvalidEntityDataException {
+    public static String inputStringOrThrow(Scanner sc, FieldConfig fc) throws InvalidEntityDataException {
         String answer;
         System.out.printf("Input %s" +
                         (fc.optional || fc.defaultValue != null ? "[<Enter> for %s]" : "") + ":",
@@ -246,7 +246,7 @@ public class InputUtil {
     }
 
 
-    public static boolean inputProduct(Product p) {
+    public static boolean inputProduct(Scanner sc, Product p) {
         do {
             System.out.print("Product code:");
             String ans = sc.nextLine();

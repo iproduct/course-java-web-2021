@@ -6,6 +6,7 @@ import invoicing.view.MenuItem;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 import static invoicing.model.Role.ADMIN;
@@ -18,7 +19,7 @@ public class MenuUtil {
         FieldConfig intFieldConfig = new FieldConfig(null, "Choose an option", INTEGER, 2);
         do {
             System.out.println(formatMenu(menuItems, ADMIN));
-            choice = InputUtil.inputLong(intFieldConfig).intValue();
+            choice = InputUtil.inputLong(new Scanner(System.in), intFieldConfig).intValue();
             MenuItem chosenItem = menuItems.get(choice);
             if(chosenItem != null) {
                 Command chosenCommand = commands.get(chosenItem);

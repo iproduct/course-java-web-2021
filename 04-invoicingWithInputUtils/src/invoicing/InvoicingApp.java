@@ -100,12 +100,12 @@ public class InvoicingApp {
 //        }
 
         // init menu commands
-        commands.put(ADD_PRODUCT, new InputProductCommand(productService));
+        commands.put(ADD_PRODUCT, new InputProductCommand(System.in, productService));
         commands.put(PRINT_PRODUCTS, () ->
                 formatTable(PRODUCT_COLUMNS, productService.findProducts(), "Products List") +
                         "\nTotal product count: " + productService.getProductsCount());
         commands.put(DELETE_PRODUCT, () -> {
-            Long id = InputUtil.inputLong(ID_FIELD_CONFIG);
+            Long id = InputUtil.inputLong(new Scanner(System.in), ID_FIELD_CONFIG);
             try {
                 Product deleted = productService.deleteProductById(id);
                 return String.format("Product %s: '%s' deleted successfully.", id, deleted.getName());

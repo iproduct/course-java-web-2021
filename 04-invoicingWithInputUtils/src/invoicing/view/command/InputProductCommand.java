@@ -15,9 +15,11 @@ import static invoicing.util.FieldType.UNIT;
 
 public class InputProductCommand implements Command {
     private ProductService productService;
+    private InputStream in;
 
-    public InputProductCommand(ProductService productService, InputStream in) {
+    public InputProductCommand(InputStream in, ProductService productService) {
         this.productService = productService;
+        this.in = in;
     }
 
     public String execute() {
