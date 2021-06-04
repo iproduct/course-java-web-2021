@@ -5,38 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/junit5/AssertionDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/KeyGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/SupplierRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/CustomerRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/LongKeyGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/ProductRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/SupplierRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/UserRepositoryMemoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/exception/EntityAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/exception/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/AbstractEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Contragent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Identifiable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Supplier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Unit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +149,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622796170564</updated>
-      <workItem from="1622796173504" duration="2025000" />
+      <workItem from="1622796173504" duration="2659000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -196,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622796959184</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pom config extended">
+      <created>1622798230071</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622798230071</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
