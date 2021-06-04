@@ -1,6 +1,7 @@
 package invoicing.dao.impl;
 
 import invoicing.dao.ProductRepository;
+import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.model.Product;
 import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,9 @@ class ProductRepositoryMemoryImplTest {
     @BeforeEach
     void setUp() {
         log.info("Before test case");
+        repo = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
     }
+
 
     @AfterEach
     void tearDown() {
@@ -47,6 +50,10 @@ class ProductRepositoryMemoryImplTest {
     @Test
     @DisplayName("Find all products")
     void findAll() {
+        fillInProducts(); // setup
+        List<Product> result = repo.findAll(); // test
+        assertNotNull(result, "Products result is null"); // assert
+        assertEquals(SAMPLE_PRODUCTS.size(), result.size(), "Products result size");
     }
 
     @Test
@@ -71,5 +78,15 @@ class ProductRepositoryMemoryImplTest {
 
     @Test
     void createRepository() {
+    }
+
+    private void fillInProducts(){
+        SAMPLE_PRODUCTS.forEach(p -> {
+            try {
+                repo.create(p);
+            } catch (EntityAlreadyExistsException e) {
+                log.error("Error adding products to repository", e);
+            }
+        });
     }
 }
