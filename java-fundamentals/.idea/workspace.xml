@@ -13,7 +13,6 @@
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/jarRepositories.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/CustomerRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/dao/KeyGenerator.java" afterDir="false" />
@@ -40,8 +39,10 @@
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/model/User.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/Alignment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/util/PrintUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/resources/users-data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2020_01.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/src/invoicing/dao/Repository.java" afterDir="false" />
