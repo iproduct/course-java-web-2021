@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/invoicing/dao/impl/Junit5NewFeaturesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/invoicing/dao/impl/ProductRepositoryMemoryImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
@@ -25,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,7 +75,7 @@
       <recent name="invoicing.dao.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProductRepositoryMemoryImplTest">
+  <component name="RunManager" selected="JUnit.Junit5NewFeaturesTest.shouldThrowException">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="invoicing.Main" />
       <module name="invoicing-lab-maven2" />
@@ -105,6 +107,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Junit5NewFeaturesTest.shouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-lab-maven2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="invoicing.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="invoicing.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="invoicing.dao.impl.Junit5NewFeaturesTest" />
+      <option name="METHOD_NAME" value="shouldThrowException" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductRepositoryMemoryImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-lab-maven2" />
       <extension name="coverage">
@@ -116,6 +135,23 @@
       <option name="PACKAGE_NAME" value="invoicing.dao.impl" />
       <option name="MAIN_CLASS_NAME" value="invoicing.dao.impl.ProductRepositoryMemoryImplTest" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRepositoryMemoryImplTest.createEmptyRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-lab-maven2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="invoicing.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="invoicing.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="invoicing.dao.impl.ProductRepositoryMemoryImplTest" />
+      <option name="METHOD_NAME" value="createEmptyRepo" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,6 +192,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Junit5NewFeaturesTest.shouldThrowException" />
+        <item itemvalue="JUnit.ProductRepositoryMemoryImplTest.createEmptyRepo" />
         <item itemvalue="JUnit.ProductRepositoryMemoryImplTest" />
         <item itemvalue="JUnit.ProductRepositoryMemoryImplTest.findAll" />
         <item itemvalue="Application.Main" />
@@ -170,7 +208,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622796170564</updated>
-      <workItem from="1622796173504" duration="4302000" />
+      <workItem from="1622796173504" duration="6818000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -200,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622801022022</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="test methods added">
+      <created>1622802659813</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622802659813</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +254,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project initial commit" />
     <MESSAGE value="pom config extended" />
-    <option name="LAST_COMMIT_MESSAGE" value="pom config extended" />
+    <MESSAGE value="test methods added" />
+    <option name="LAST_COMMIT_MESSAGE" value="test methods added" />
   </component>
 </project>
