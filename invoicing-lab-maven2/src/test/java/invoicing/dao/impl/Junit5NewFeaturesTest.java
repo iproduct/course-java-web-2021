@@ -2,12 +2,11 @@ package invoicing.dao.impl;
 
 import invoicing.dao.KeyGenerator;
 import invoicing.dao.ProductRepository;
+import invoicing.exception.EntityNotFoundException;
 import invoicing.model.Product;
 import invoicing.model.Unit;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -19,9 +18,11 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 class Junit5NewFeaturesTest {
     private static final List<Product> SAMPLE_PRODUCTS = List.of(
             new Product("BK001", "Thinking in Java", "Good introduction to Java ...", 35.99),
@@ -32,16 +33,39 @@ class Junit5NewFeaturesTest {
     );
     private static final Product NEW_PRODUCT =
             new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP", 0.72, Unit.M);
+
     private static final long FIRST_PRODUCT_ID = 1;
 
+    private KeyGenerator<Long> keyGenerator;
     private ProductRepository repo;
 
+    @BeforeEach
+    void setUp() {
+        log.info("Before test case");
+        keyGenerator = new LongKeyGenerator();
+        repo = new ProductRepositoryMemoryImpl(keyGenerator);
+    }
+
+//    @BeforeEach
+//    void beforeEach(TestInfo testInfo, RepetitionInfo repetitionInfo) {
+//        int currentRepetition = repetitionInfo.getCurrentRepetition();
+//        int totalRepetitions = repetitionInfo.getTotalRepetitions();
+//        String methodName = testInfo.getTestMethod().get().getName();
+//
+//        System.out.println(String.format("About to execute repetition %d of %d for %s", //
+//                currentRepetition, totalRepetitions, methodName));
+//    }
+
+
     @Test
+    @DisplayName("Should throw EntityNotFoundException when updating product in empty repository")
     void shouldThrowException() {
-        Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
-            throw new UnsupportedOperationException("Not supported");
-        });
-        assertEquals(exception.getMessage(), "Not supported");
+        Product productToUpdate = new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP", 0.72, Unit.M);
+        productToUpdate.setId(1L);
+        Throwable exception = assertThrows(EntityNotFoundException.class, () -> {
+            repo.update(productToUpdate);
+        }, "Should throw EntityNotFoundException");
+        assertThat(exception.getMessage()).contains("Entity with ID=");
     }
 
     @ParameterizedTest(name = "#{index} - Test with Argument={0}")
@@ -51,14 +75,14 @@ class Junit5NewFeaturesTest {
         assertTrue(arg % 2 == 0);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "#{index} - Test with Arguments={0}, {1}, {2}")
     @CsvSource({
             "Peter, admin, 1",
             "John, author, 2",
             "Martin, subscriber, 3"
     })
     void testWith_CsvSource(String name, String role, long id) {
-        System.out.println("testWith_CsvSource: name => " + name + "; role => " + role + "; id => " + id);
+        log.info("testWith_CsvSource: name => " + name + "; role => " + role + "; id => " + id);
         assertTrue(name.length() >= 0);
         assertTrue(id >= 1 && id <= 3);
         assertTrue(!role.isEmpty());
@@ -115,12 +139,12 @@ class Junit5NewFeaturesTest {
                 ));
 
         List<Product> inputList2 = Arrays.asList(
-                new Product("AC001", "Mouse", 12.5),
+                new Product("AC001", "", 12.5),
                 new Product("AC002", "Headphones", 25.7),
                 new Product("AC003", "keyboard", "high quality wireless keyboard", 29.45));
-        inputList.get(2).setId(1000L);
+        inputList2.get(2).setId(1000L);
 
-        try (Stream<DynamicTest> saveProductWithFirstNameStream = inputList2.stream()
+        try (Stream<DynamicTest> saveProductWithIdStream = inputList2.stream()
                 .filter(product -> product.getId() != null)
                 .map(product -> DynamicTest.dynamicTest(
                         "createProductWithId" + product.toString(),
@@ -133,7 +157,7 @@ class Junit5NewFeaturesTest {
                         }))) {
 
             return Stream.concat(saveProductStream,
-                    saveProductWithFirstNameStream);
+                    saveProductWithIdStream);
         }
     }
 }

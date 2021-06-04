@@ -1,12 +1,15 @@
 package invoicing;
 
-import invoicing.dao.ProductRepository;
-import invoicing.dao.Repository;
+import invoicing.commands.LoadEntitiesCommand;
+import invoicing.commands.SaveEntitiesCommand;
+import invoicing.dao.*;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.model.Product;
-import invoicing.model.Unit;
+import invoicing.model.*;
 import invoicing.util.PrintUtil;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -60,6 +63,12 @@ public class Main {
 //        ProductRepository productRepository = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
         ProductRepository productRepo =
                 (ProductRepository) Repository.createRepository(Long.class, Product.class);
+        UserRepository userRepo =
+                (UserRepository) Repository.createRepository(Long.class, User.class);
+        CustomerRepository customerRepo =
+                (CustomerRepository) Repository.createRepository(Long.class, Customer.class);
+        SupplierRepository supplierRepo =
+                (SupplierRepository) Repository.createRepository(Long.class, Supplier.class);
 
         Arrays.asList(products).stream().forEach(product -> {
             try {
@@ -92,5 +101,24 @@ public class Main {
         });
         String productReport2 = PrintUtil.formatTable(productColumns, toBeSorted, "Products List - Sorted:");
         System.out.println(productReport2);
+
+        // Testing serialization/deserialization to /from file
+        try {
+            SaveEntitiesCommand saveCommand = new SaveEntitiesCommand(new FileOutputStream("invoicing.db"),
+                    productRepo, userRepo, customerRepo, supplierRepo);
+            System.out.println(saveCommand.execute());
+            productRepo.drop();
+            userRepo.drop();
+            customerRepo.drop();
+            supplierRepo.drop();
+            LoadEntitiesCommand loadCommand = new LoadEntitiesCommand(new FileInputStream("invoicing.db"),
+                    productRepo, userRepo, customerRepo, supplierRepo);
+            System.out.println(loadCommand.execute());
+
+            productReport = PrintUtil.formatTable(productColumns, productRepo.findAll(), "Products List:");
+            System.out.println(productReport);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

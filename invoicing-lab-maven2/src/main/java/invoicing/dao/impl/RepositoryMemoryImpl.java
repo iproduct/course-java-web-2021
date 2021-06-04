@@ -6,10 +6,7 @@ import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.model.Identifiable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repository<K, V> {
@@ -35,13 +32,13 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
 
     @Override
     public V create(V entity) throws EntityAlreadyExistsException {
-        if(keyGenerator != null) {
-            if(entity.getId() == null) {
+        if (keyGenerator != null) {
+            if (entity.getId() == null) {
                 entity.setId(keyGenerator.getNextId());
             } else {
-                if(entities.get(entity.getId()) != null){
+                if (entities.get(entity.getId()) != null) {
                     throw new EntityAlreadyExistsException(
-                        String.format("Entity with ID='%s' already exists.", entity.getId()));
+                            String.format("Entity with ID='%s' already exists.", entity.getId()));
                 }
             }
         }
@@ -50,11 +47,25 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
     }
 
     @Override
+    public int createBatch(Collection<V> entityCollection) throws EntityAlreadyExistsException {
+        int n = 0;
+        for(V entity: entityCollection) {
+            if (entities.putIfAbsent(entity.getId(), entity) != null) {
+                throw new EntityAlreadyExistsException(
+                        String.format("Entity with ID='%s' already exists.", entity.getId()));
+            } else {
+                n++;
+            }
+        }
+        return n;
+    }
+
+    @Override
     public V update(V entity) throws EntityNotFoundException {
         Optional<V> old = findById(entity.getId());
-        if(old.isEmpty()) {
+        if (old.isEmpty()) {
             throw new EntityNotFoundException(
-                String.format("Entity with ID='%s' does not exist.", entity.getId()));
+                    String.format("Entity with ID='%s' does not exist.", entity.getId()));
         }
         entities.put(entity.getId(), entity);
         return entity;
@@ -68,7 +79,7 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
 //                    String.format("Entity with ID='%s' does not exist.", id));
 //        }
         V old = entities.remove(id);
-        if(old == null) {
+        if (old == null) {
             throw new EntityNotFoundException(
                     String.format("Entity with ID='%s' does not exist.", id));
         }
@@ -78,5 +89,10 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
     @Override
     public long count() {
         return entities.size();
+    }
+
+    @Override
+    public void drop() {
+        entities.clear();
     }
 }
