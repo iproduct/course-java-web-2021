@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="stream demos modified">
+      <change afterPath="$PROJECT_DIR$/src/io/ListDirectory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -66,7 +67,21 @@
       <recent name="exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Worm">
+  <component name="RunManager" selected="Application.ListDirectory">
+    <configuration name="ListDirectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.ListDirectory" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MethodReferences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="streams.MethodReferences" />
       <module name="java-fundamentals" />
@@ -158,6 +173,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ListDirectory" />
         <item itemvalue="Application.Worm" />
         <item itemvalue="Application.StreamDemo" />
         <item itemvalue="Application.MethodReferences" />
@@ -173,7 +189,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="15099000" />
+      <workItem from="1622705185261" duration="17253000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
