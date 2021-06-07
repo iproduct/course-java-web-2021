@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="stream demos modified">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoicedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/CharacterInputDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/DataStreams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/InputStreamReaderDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/RandomAccessFileDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/Nio2FileDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +189,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="20758000" />
+      <workItem from="1622705185261" duration="22573000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
@@ -247,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623055439108</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="RandomAccessFileDemo">
+      <created>1623059188840</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623059188840</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +260,7 @@
     <MESSAGE value="stream demos modified" />
     <MESSAGE value="examples added" />
     <MESSAGE value="File demo added" />
-    <option name="LAST_COMMIT_MESSAGE" value="File demo added" />
+    <MESSAGE value="RandomAccessFileDemo" />
+    <option name="LAST_COMMIT_MESSAGE" value="RandomAccessFileDemo" />
   </component>
 </project>
