@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="stream demos modified">
-      <change afterPath="$PROJECT_DIR$/src/io/ListDirectory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/invoicedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/CharacterInputDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/DataStreams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/InputStreamReaderDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/RandomAccessFileDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -63,11 +69,54 @@
       <recent name="D:\Course_Java_Web_Development\git\course-java-web-2021\java-fundamentals\src\io" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="io" />
       <recent name="streams" />
       <recent name="exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ListDirectory">
+  <component name="RunManager" selected="Application.RandomAccessFileDemo">
+    <configuration name="CharacterInputDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.CharacterInputDemo" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataStreams" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.DataStreams" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InputStreamReaderDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.InputStreamReaderDemo" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ListDirectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.ListDirectory" />
       <module name="java-fundamentals" />
@@ -82,50 +131,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MethodReferences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="streams.MethodReferences" />
-      <module name="java-fundamentals" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="streams.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StreamDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="streams.StreamDemo" />
-      <module name="java-fundamentals" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="streams.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TryWithResourcesDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exceptions.TryWithResourcesDemo" />
-      <module name="java-fundamentals" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="exceptions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Worm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.Worm" />
+    <configuration name="RandomAccessFileDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.RandomAccessFileDemo" />
       <module name="java-fundamentals" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -173,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RandomAccessFileDemo" />
+        <item itemvalue="Application.DataStreams" />
+        <item itemvalue="Application.CharacterInputDemo" />
+        <item itemvalue="Application.InputStreamReaderDemo" />
         <item itemvalue="Application.ListDirectory" />
-        <item itemvalue="Application.Worm" />
-        <item itemvalue="Application.StreamDemo" />
-        <item itemvalue="Application.MethodReferences" />
-        <item itemvalue="Application.TryWithResourcesDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +196,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="17253000" />
+      <workItem from="1622705185261" duration="20758000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
@@ -233,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622811842388</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="File demo added">
+      <created>1623055439108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623055439108</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +259,7 @@
     <MESSAGE value="sream demos added" />
     <MESSAGE value="stream demos modified" />
     <MESSAGE value="examples added" />
-    <option name="LAST_COMMIT_MESSAGE" value="examples added" />
+    <MESSAGE value="File demo added" />
+    <option name="LAST_COMMIT_MESSAGE" value="File demo added" />
   </component>
 </project>
