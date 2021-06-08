@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../java-fundamentals/worm.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/PrimeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/SimpleDeadlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-dining-pholosophers.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-left-right.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -64,7 +69,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.13314968" />
     <property name="project.structure.side.proportion" value="0.13192612" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -102,15 +107,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,6 +222,7 @@
       <updated>1622796170564</updated>
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
+      <workItem from="1623152079521" duration="1699000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
