@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="stream demos modified">
-      <change afterPath="$PROJECT_DIR$/src/io/Nio2FileDemo.java" afterDir="false" />
+    <list default="true" id="f1f4992b-ee6d-4765-9c25-66da167a383e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../02-api-examples/src/concurrency/CallableDemoCompletionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/concurrency/CallableDemoCompletionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/Nio2FileDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/Nio2FileDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/Worm.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +71,21 @@
       <recent name="exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RandomAccessFileDemo">
+  <component name="RunManager" selected="Application.CallableDemoCompletionService">
+    <configuration name="CallableDemoCompletionService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="concurrency.CallableDemoCompletionService" />
+      <module name="java-fundamentals" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="concurrency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CharacterInputDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.CharacterInputDemo" />
       <module name="java-fundamentals" />
@@ -96,22 +114,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InputStreamReaderDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.InputStreamReaderDemo" />
-      <module name="java-fundamentals" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ListDirectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.ListDirectory" />
+    <configuration name="Nio2FileDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.Nio2FileDemo" />
       <module name="java-fundamentals" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -173,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CallableDemoCompletionService" />
+        <item itemvalue="Application.Nio2FileDemo" />
         <item itemvalue="Application.RandomAccessFileDemo" />
         <item itemvalue="Application.DataStreams" />
         <item itemvalue="Application.CharacterInputDemo" />
-        <item itemvalue="Application.InputStreamReaderDemo" />
-        <item itemvalue="Application.ListDirectory" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +193,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622705183349</updated>
-      <workItem from="1622705185261" duration="22573000" />
+      <workItem from="1622705185261" duration="26747000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622705246001</created>
@@ -247,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623059188840</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="NIO2 file demo added">
+      <created>1623065364470</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623065364470</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +272,7 @@
     <MESSAGE value="examples added" />
     <MESSAGE value="File demo added" />
     <MESSAGE value="RandomAccessFileDemo" />
-    <option name="LAST_COMMIT_MESSAGE" value="RandomAccessFileDemo" />
+    <MESSAGE value="NIO2 file demo added" />
+    <option name="LAST_COMMIT_MESSAGE" value="NIO2 file demo added" />
   </component>
 </project>

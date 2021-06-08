@@ -10,9 +10,13 @@ import java.util.stream.Collectors;
 public class Nio2FileDemo {
     static int i = 0;
     public static void main(String[] args) {
-        Path p1 = Paths.get("./src/io/Nio2FileDemo.java");
+        Path p1 = Path.of("./src/io/Nio2FileDemo.java");
         Path p2 = p1.toAbsolutePath();
+        Path p3 = p2.resolve("../../sample.txt");
+        Path p4 = p2.relativize(p3);
         System.out.println(p2.normalize().toString());
+        System.out.println(p3.normalize().toString());
+        System.out.println(p4.normalize().toString());
         System.out.println(p2.isAbsolute());
         System.out.println(Files.exists(p2));
 
