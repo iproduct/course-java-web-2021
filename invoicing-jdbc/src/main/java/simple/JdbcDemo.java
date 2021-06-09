@@ -3,10 +3,7 @@ package simple;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class JdbcDemo {
@@ -28,9 +25,14 @@ public class JdbcDemo {
 
         // 3. Connect to DB
         try(Connection connection = DriverManager.getConnection(props.getProperty("url"), props)){
-            System.out.printf("Successfully connected to: %s", props.getProperty("url"));
+            System.out.printf("Successfully connected to: %s%n", props.getProperty("url"));
             // 4. Create and execute PreparedStatement
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM employees");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user");
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                System.out.println(rs.getInt("id") + ", " + rs.getString("name"));
+            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
