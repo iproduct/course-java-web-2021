@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/course/javaweb/hello/HelloSpringMvcGradleApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/course/javaweb/hello/web/HelloRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/test/java/course/javaweb/hello/HelloSpringMvcGradleApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/PrimeGenerator.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/SimpleDeadlock.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-dining-pholosophers.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-left-right.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invoicing.db" beforeDir="false" afterPath="$PROJECT_DIR$/invoicing.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" afterDir="false" />
@@ -222,7 +234,7 @@
       <updated>1622796170564</updated>
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
-      <workItem from="1623152079521" duration="1699000" />
+      <workItem from="1623152079521" duration="4981000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -273,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622816650990</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="config updated">
+      <created>1623153896847</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623153896847</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +304,7 @@
     <MESSAGE value="pom config extended" />
     <MESSAGE value="test methods added" />
     <MESSAGE value="light-weight persistence using Java serialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="light-weight persistence using Java serialization" />
+    <MESSAGE value="config updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="config updated" />
   </component>
 </project>
