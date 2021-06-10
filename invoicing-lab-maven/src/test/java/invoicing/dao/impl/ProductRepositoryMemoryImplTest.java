@@ -1,22 +1,15 @@
 package invoicing.dao.impl;
 
+import invoicing.dao.KeyGenerator;
 import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.model.Product;
 import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
@@ -32,71 +25,77 @@ class ProductRepositoryMemoryImplTest {
     );
     private static final Product NEW_PRODUCT =
             new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP", 0.72, Unit.M);
+    private static final long FIRST_PRODUCT_ID = 1;
 
+    private KeyGenerator<Long> keyGenerator;
     private ProductRepository repo;
+
+    private Product product;
 
     @BeforeAll
     static void setup() {
-        log.info("@BeforeAll - executes once before all test methods in this class");
+        log.info("Before all test cases.");
     }
 
     @AfterAll
     static void cleanup() {
-        log.info("@AfterAll - executes once before all test methods in this class");
+        log.info("After all test cases.");
     }
 
     @BeforeEach
-    void init() {
-        log.info("@BeforeEach - executes before each test method in this class");
-        repo = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
-        SAMPLE_PRODUCTS.forEach(p -> {
-            try {
-                repo.create(p);
-            } catch (EntityAlreadyExistsException e) {
-                e.printStackTrace();
-            }
-        });
+    void setUp() {
+        log.info("Before test case");
+        keyGenerator = new LongKeyGenerator();
+        repo = new ProductRepositoryMemoryImpl(keyGenerator);
     }
 
-//    @BeforeEach
-//    void beforeEach(TestInfo testInfo, RepetitionInfo repetitionInfo) {
-//        int currentRepetition = repetitionInfo.getCurrentRepetition();
-//        int totalRepetitions = repetitionInfo.getTotalRepetitions();
-//        String methodName = testInfo.getTestMethod().get().getName();
-//
-//        System.out.println(String.format("About to execute repetition %d of %d for %s", //
-//                currentRepetition, totalRepetitions, methodName));
-//    }
 
     @AfterEach
     void tearDown() {
-        log.info("@AfterEach - executes before each test method in this class");
-    }
-
-    @Test
-    @DisplayName("Find product by ID")
-    void findById() throws EntityAlreadyExistsException {
-        Product result = repo.create(NEW_PRODUCT);
-        assertNotNull(result);
-        assertNotNull(result.getId());
-        assertEquals(result.getCode(), "CB001");
-
+        log.info("After test case");
     }
 
     @Test
     @DisplayName("Find all products")
     void findAll() {
-        List<Product> result = repo.findAll();
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(softly.assertThat(result)).isNotNull();
-        softly.assertThat(result).hasSize(5);
-        softly.assertThat(result.get(0).getCode()).isEqualTo("BK001");
-        softly.assertAll();
+        fillInProducts(); // setup
+        List<Product> result = repo.findAll(); // execute
+        assertNotNull(result, "Products result is null"); // test
+        assertEquals(SAMPLE_PRODUCTS.size(), result.size(), "Products result size");
     }
 
     @Test
-    @Disabled("Not yet implemented")
-    void create() {
+    @DisplayName("Find first product by ID")
+    void findById() {
+        fillInProducts(); // setup
+        Optional<Product> result = repo.findById(FIRST_PRODUCT_ID); // excecute
+        assertTrue(result.isPresent(), "Product result should no be null"); // test
+        assertEquals(result.get().getId(), FIRST_PRODUCT_ID,"Products ID is not correct");
+        assertEquals(result.get().getCode(), SAMPLE_PRODUCTS.get(0).getCode(),"Products code is not correct");
+        assertEquals(result.get().getName(), SAMPLE_PRODUCTS.get(0).getName(),"Products name is not correct");
+        assertEquals(result.get().getDescription(), SAMPLE_PRODUCTS.get(0).getDescription(),"Products description is not correct");
+        assertEquals(result.get().getPrice(), SAMPLE_PRODUCTS.get(0).getPrice(),"Products price is not correct");
+    }
+
+    @Test
+    @DisplayName("Create product in empty repository")
+    void createEmptyRepo() {
+        assertDoesNotThrow(() -> { product = repo.create(NEW_PRODUCT);}, "create method throws exception");
+        assertNotNull(product);
+        assertNotNull(product.getId());
+        assertEquals(product.getCode(), NEW_PRODUCT.getCode());
+        assumingThat(
+                keyGenerator.getClass().getSimpleName().equals("LongKeyGenerator"),
+                () -> assertEquals(FIRST_PRODUCT_ID, product.getId(), "Repo with LongKey Generator should return first ID = 1")
+        );
+
+    }
+
+    @Test
+    @DisplayName("Create product in non-empty repository")
+    void createNonemptyRepo() {
+        fillInProducts(); //setup
+
     }
 
     @Test
@@ -112,112 +111,16 @@ class ProductRepositoryMemoryImplTest {
     }
 
     @Test
-    void assumptionThat() {
-        String someString = "Some string";
-        assumingThat(
-                someString.equals("Some string"),
-                () -> assertEquals(11, someString.length())
-        );
+    void createRepository() {
     }
 
-    @Test
-    void shouldThrowException() {
-        Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
-            throw new UnsupportedOperationException("Not supported");
+    private void fillInProducts(){
+        SAMPLE_PRODUCTS.forEach(p -> {
+            try {
+                repo.create(p);
+            } catch (EntityAlreadyExistsException e) {
+                log.error("Error adding products to repository", e);
+            }
         });
-        assertEquals(exception.getMessage(), "Not supported");
-    }
-
-    @ParameterizedTest(name="#{index} - Test with Argument={0}")
-    @ValueSource(ints = {8,4,2,6,10})
-    void test_int_arrays(int arg) {
-        System.out.println("arg => "+arg);
-        assertTrue(arg % 2 == 0);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "Peter, admin, 1",
-            "John, author, 2",
-            "Martin, subscriber, 3"
-    })
-    void testWith_CsvSource(String name, String role, long id) {
-        System.out.println("testWith_CsvSource: name => "+name+"; role => "+role+"; id => "+id);
-        assertTrue(name.length() >= 0);
-        assertTrue(id >=1 && id <=3);
-        assertTrue(!role.isEmpty());
-    }
-
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/users-data.csv", numLinesToSkip = 1)
-    void testWith_MethodSource(String name, String role, long id) {
-        System.out.println("name => "+name+"; role => "+role+"; id => "+id);
-        assertTrue(name.length() >= 0);
-        assertTrue(id >=1 && id <=3);
-        assertTrue(!role.isEmpty());
-    }
-
-    @RepeatedTest(3)
-    void test_Devide() {
-        System.out.println("test_Devide()");
-        assertEquals(5, 25 /5);
-    }
-
-    @TestFactory
-    Collection<DynamicTest> dynamicTestsCollection() {
-        return Arrays.asList(
-                DynamicTest.dynamicTest("Add test",
-                        () -> assertEquals(5, Math.addExact(2, 3))),
-                DynamicTest.dynamicTest("Multiply Test",
-                        () -> assertEquals(15, Math.multiplyExact(5, 3))));
-    }
-
-    @TestFactory
-    Stream<DynamicTest> dynamicTestsStream() {
-        return IntStream.iterate(0, n -> n + 5).limit(10)
-                .mapToObj(n -> DynamicTest.dynamicTest("testMultipleOfFive_" + n,
-                        () -> assertTrue(n % 5 == 0)));
-    }
-
-    @TestFactory
-    Stream<DynamicTest> dynamicTestsForProductWorkflows() {
-        List<Product> inputList = Arrays.asList(
-                new Product("AC001", "Mouse", 12.5),
-                new Product("AC002", "Headphones", 25.7),
-                new Product("AC003", "keyboard", "high quality wireless keyboard", 29.45));
-
-        Stream<DynamicTest> saveProductStream = inputList.stream()
-                .map(product -> DynamicTest.dynamicTest(
-                        "createProduct: " + product.toString(),
-                        () -> {
-                            Product returned = repo.create(product);
-                            assertEquals(returned.getCode(), product.getCode());
-                            assertEquals(returned.getName(), product.getName());
-                            assertEquals(returned.getPrice(), product.getPrice());
-                        }
-                ));
-
-        List<Product> inputList2 = Arrays.asList(
-                new Product("AC001", "Mouse", 12.5),
-                new Product("AC002", "Headphones", 25.7),
-                new Product("AC003", "keyboard", "high quality wireless keyboard", 29.45));
-        inputList.get(2).setId(1000L);
-
-        try (Stream<DynamicTest> saveProductWithFirstNameStream = inputList2.stream()
-                .filter(product -> product.getId() != null)
-                .map(product -> DynamicTest.dynamicTest(
-                        "createProductWithId" + product.toString(),
-                        () -> {
-                            Product returned = repo.create(product);
-                            assertEquals(returned.getId(), product.getId());
-                            assertEquals(returned.getCode(), product.getCode());
-                            assertEquals(returned.getName(), product.getName());
-                            assertEquals(returned.getPrice(), product.getPrice());
-                        }))) {
-
-            return Stream.concat(saveProductStream,
-                    saveProductWithFirstNameStream);
-        }
     }
 }
