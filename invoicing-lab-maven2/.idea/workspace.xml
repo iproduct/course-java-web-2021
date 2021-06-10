@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="" />
+    <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/sql/alter_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/alter_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/create_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/crud_statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/crud_statements.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,7 +220,7 @@
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
       <workItem from="1623152079521" duration="4981000" />
-      <workItem from="1623317926666" duration="664000" />
+      <workItem from="1623317926666" duration="1430000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -281,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623317968050</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Invoice and Line entities added">
+      <created>1623326488347</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1623326488347</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +306,7 @@
     <MESSAGE value="light-weight persistence using Java serialization" />
     <MESSAGE value="config updated" />
     <MESSAGE value="sql scripts added" />
-    <option name="LAST_COMMIT_MESSAGE" value="sql scripts added" />
+    <MESSAGE value="Invoice and Line entities added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invoice and Line entities added" />
   </component>
 </project>

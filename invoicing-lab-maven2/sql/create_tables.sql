@@ -43,7 +43,7 @@ CREATE TABLE `products` (
 );
 
 CREATE TABLE `invoices` (
-	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`id` INT UNSIGNED NOT NULL PRIMARY KEY,
     `suplier_id` INT UNSIGNED NOT NULL,
     `customer_id` INT UNSIGNED NOT NULL,
     `date` DATE,
