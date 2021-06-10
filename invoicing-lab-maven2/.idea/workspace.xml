@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../docs/Java_2021_06.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/Java_2021_06.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-jdbc/src/main/java/simple/JdbcDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-jdbc/src/main/java/simple/JdbcDemo.java" afterDir="false" />
-    </list>
+    <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,7 +216,7 @@
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
       <workItem from="1623152079521" duration="4981000" />
-      <workItem from="1623317926666" duration="650000" />
+      <workItem from="1623317926666" duration="664000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>

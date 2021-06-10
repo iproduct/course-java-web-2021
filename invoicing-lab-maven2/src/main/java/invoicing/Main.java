@@ -1,6 +1,7 @@
 package invoicing;
 
 import invoicing.commands.LoadEntitiesCommand;
+import invoicing.commands.PrintAllProductsCommand;
 import invoicing.commands.SaveEntitiesCommand;
 import invoicing.dao.*;
 import invoicing.exception.EntityAlreadyExistsException;
@@ -21,6 +22,17 @@ import java.util.List;
 import static invoicing.util.Alignment.*;
 
 public class Main {
+    public static final   List<PrintUtil.ColumnDescriptor> PRODUCT_COLUMNS = List.of(
+            new PrintUtil.ColumnDescriptor("id", "ID", 5, RIGHT),
+            new PrintUtil.ColumnDescriptor("code", "Code", 5, LEFT),
+            new PrintUtil.ColumnDescriptor("name", "Name", 12, LEFT),
+            new PrintUtil.ColumnDescriptor("description", "Description", 12, LEFT),
+            new PrintUtil.ColumnDescriptor("price", "Price", 8, RIGHT, 2),
+            new PrintUtil.ColumnDescriptor("unit", "Unit", 5, CENTER),
+            new PrintUtil.ColumnDescriptor("created", "Ctreated", 19, CENTER),
+            new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
+    );
+
     public static void main(String[] args)
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         Product p1 = new Product("BK001", "Thinking in Java",
@@ -28,7 +40,11 @@ public class Main {
         Product p2 = new Product("BK002", "UML Distilled",
                 "UML described briefly ...", 25.50);
         Product[] products = {p1, p2,
-                new Product("AC001", "Whiteboard Markers", "5 colors set", 7.8),
+
+                new Product("AC019", "Monitor", "AlphaView", 750.99),
+
+                new Product("AC017", "Tablet", "5 colors set", 43.6),
+
                 new Product("SV001", "Mobile Internet", "On-demand mobile internet package",
                         10.99, Unit.GB),
                 new Product("DV001", "2 Band Router", "Supports 2.4 GHz and 5.7 GHz bands",
@@ -51,14 +67,10 @@ public class Main {
 //        }
         Field descrField = productClass.getDeclaredField("description");
         descrField.setAccessible(true);
-        descrField.set(p1, "Good intro to Java!!!");
+        descrField.set(p1, "This book is a good introduction to Java");
         System.out.printf("Product 1: %s%n", p1);
 
-        // Common entity metadata column descriptors
-        List<PrintUtil.ColumnDescriptor> metadataColumns = List.of(
-                new PrintUtil.ColumnDescriptor("created", "Ctreated", 19, CENTER),
-                new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
-        );
+
         // Product repo demo
 //        ProductRepository productRepository = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
         ProductRepository productRepo =
@@ -78,18 +90,7 @@ public class Main {
             }
         });
 
-        // Print formatted report as table
-        List<PrintUtil.ColumnDescriptor> productColumns = new ArrayList<>(List.of(
-                new PrintUtil.ColumnDescriptor("id", "ID", 5, RIGHT),
-                new PrintUtil.ColumnDescriptor("code", "Code", 5, LEFT),
-                new PrintUtil.ColumnDescriptor("name", "Name", 12, LEFT),
-                new PrintUtil.ColumnDescriptor("description", "Description", 12, LEFT),
-                new PrintUtil.ColumnDescriptor("price", "Price", 8, RIGHT, 2),
-                new PrintUtil.ColumnDescriptor("unit", "Unit", 5, CENTER)
-        ));
-        productColumns.addAll(metadataColumns);
-        String productReport = PrintUtil.formatTable(productColumns, productRepo.findAll(), "Products List:");
-        System.out.println(productReport);
+        System.out.println(new PrintAllProductsCommand(productRepo).execute());
 
         List<Product> toBeSorted =  productRepo.findAll();
 //        toBeSorted.sort(Comparator.comparing(Product::getPrice));
@@ -99,7 +100,7 @@ public class Main {
                 return Double.compare(p1.getPrice(), p2.getPrice());
             }
         });
-        String productReport2 = PrintUtil.formatTable(productColumns, toBeSorted, "Products List - Sorted:");
+        String productReport2 = PrintUtil.formatTable(PRODUCT_COLUMNS, toBeSorted, "Products List - Sorted:");
         System.out.println(productReport2);
 
         // Testing serialization/deserialization to /from file
@@ -115,7 +116,7 @@ public class Main {
                     productRepo, userRepo, customerRepo, supplierRepo);
             System.out.println(loadCommand.execute());
 
-            productReport = PrintUtil.formatTable(productColumns, productRepo.findAll(), "Products List:");
+            String productReport = PrintUtil.formatTable(PRODUCT_COLUMNS, productRepo.findAll(), "Products List:");
             System.out.println(productReport);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
