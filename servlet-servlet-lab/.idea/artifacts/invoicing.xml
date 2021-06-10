@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" name="invoicing">
-    <output-path>$PROJECT_DIR$/out/artifacts/invoicing</output-path>
-    <root id="root">
-      <element id="library" level="project" name="lib" />
-    </root>
-  </artifact>
-</component>
