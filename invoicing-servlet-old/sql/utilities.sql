@@ -1,6 +1,0 @@
-SHOW CREATE TABLE `lines`;
-SHOW ENGINES;
-SHOW TABLE STATUS LIKE 'lines';
-
-DESCRIBE `lines`;
-
