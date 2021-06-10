@@ -27,7 +27,7 @@ public class JdbcDemo {
         try(Connection connection = DriverManager.getConnection(props.getProperty("url"), props)){
             System.out.printf("Successfully connected to: %s%n", props.getProperty("url"));
             // 4. Create and execute PreparedStatement
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users");
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
