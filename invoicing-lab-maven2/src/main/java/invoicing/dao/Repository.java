@@ -52,7 +52,7 @@ public interface Repository<K, V extends Identifiable<K>> {
     }
     static final Map<String, String> ENTITY_TO_REPOSITORY_MAP =
             Map.of(
-                    "invoicing.model.Product", "invoicing.dao.impl.ProductRepositoryMemoryImpl",
+                    "invoicing.model.Product", "invoicing.dao.impl.ProductRepositoryJdbcImpl",
                     "invoicing.model.User", "invoicing.dao.impl.UserRepositoryMemoryImpl",
                     "invoicing.model.Supplier", "invoicing.dao.impl.SupplierRepositoryMemoryImpl",
                     "invoicing.model.Customer", "invoicing.dao.impl.CustomerRepositoryMemoryImpl"

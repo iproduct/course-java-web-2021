@@ -1,26 +1,30 @@
 package invoicing;
 
+import demos.JdbcDemo;
 import invoicing.commands.LoadEntitiesCommand;
 import invoicing.commands.PrintAllProductsCommand;
 import invoicing.commands.SaveEntitiesCommand;
 import invoicing.dao.*;
+import invoicing.dao.impl.ProductRepositoryJdbcImpl;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.model.*;
 import invoicing.util.PrintUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.*;
+import java.util.logging.Level;
 
 import static invoicing.util.Alignment.*;
 
+@Slf4j
 public class Main {
     public static final   List<PrintUtil.ColumnDescriptor> PRODUCT_COLUMNS = List.of(
             new PrintUtil.ColumnDescriptor("id", "ID", 5, RIGHT),
@@ -33,8 +37,7 @@ public class Main {
             new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
     );
 
-    public static void main(String[] args)
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+    public void demo() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException{
         Product p1 = new Product("BK001", "Thinking in Java",
                 "Good introduction to Java ...", 35.99);
         Product p2 = new Product("BK002", "UML Distilled",
@@ -73,8 +76,8 @@ public class Main {
 
         // Product repo demo
 //        ProductRepository productRepository = new ProductRepositoryMemoryImpl(new LongKeyGenerator());
-        ProductRepository productRepo =
-                (ProductRepository) Repository.createRepository(Long.class, Product.class);
+//        ProductRepository productRepo =
+//                (ProductRepository) Repository.createRepository(Long.class, Product.class);
         UserRepository userRepo =
                 (UserRepository) Repository.createRepository(Long.class, User.class);
         CustomerRepository customerRepo =
@@ -82,13 +85,33 @@ public class Main {
         SupplierRepository supplierRepo =
                 (SupplierRepository) Repository.createRepository(Long.class, Supplier.class);
 
-        Arrays.asList(products).stream().forEach(product -> {
-            try {
-                productRepo.create(product);
-            } catch (EntityAlreadyExistsException e) {
-                e.printStackTrace();
-            }
-        });
+        Properties props = new Properties();
+        ProductRepository productRepo = new ProductRepositoryJdbcImpl();
+        try {
+            // load db props from file
+            String propsParh = Main.class.getClassLoader().getResource("db.properties").getPath();
+            props.load(new FileInputStream(propsParh));
+            // initialize product repository
+            ((ProductRepositoryJdbcImpl)productRepo).init(props);
+        } catch (ClassNotFoundException e) {
+            log.error("Can not load DB driver class.", e);
+        } catch (SQLException e) {
+            log.error("Can not open DB connection for URL: " + props.getProperty("url"), e);
+        } catch (FileNotFoundException e) {
+            log.error("Can not load DB properties file.", e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(productRepo.count() == 0) {
+            Arrays.asList(products).stream().forEach(product -> {
+                try {
+                    productRepo.create(product);
+                } catch (EntityAlreadyExistsException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
         System.out.println(new PrintAllProductsCommand(productRepo).execute());
 
@@ -104,22 +127,27 @@ public class Main {
         System.out.println(productReport2);
 
         // Testing serialization/deserialization to /from file
-        try {
-            SaveEntitiesCommand saveCommand = new SaveEntitiesCommand(new FileOutputStream("invoicing.db"),
-                    productRepo, userRepo, customerRepo, supplierRepo);
-            System.out.println(saveCommand.execute());
-            productRepo.drop();
-            userRepo.drop();
-            customerRepo.drop();
-            supplierRepo.drop();
-            LoadEntitiesCommand loadCommand = new LoadEntitiesCommand(new FileInputStream("invoicing.db"),
-                    productRepo, userRepo, customerRepo, supplierRepo);
-            System.out.println(loadCommand.execute());
+//        try {
+//            SaveEntitiesCommand saveCommand = new SaveEntitiesCommand(new FileOutputStream("invoicing.db"),
+//                    productRepo, userRepo, customerRepo, supplierRepo);
+//            System.out.println(saveCommand.execute());
+//            productRepo.drop();
+//            userRepo.drop();
+//            customerRepo.drop();
+//            supplierRepo.drop();
+//            LoadEntitiesCommand loadCommand = new LoadEntitiesCommand(new FileInputStream("invoicing.db"),
+//                    productRepo, userRepo, customerRepo, supplierRepo);
+//            System.out.println(loadCommand.execute());
+//
+//            String productReport = PrintUtil.formatTable(PRODUCT_COLUMNS, productRepo.findAll(), "Products List:");
+//            System.out.println(productReport);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+    }
 
-            String productReport = PrintUtil.formatTable(PRODUCT_COLUMNS, productRepo.findAll(), "Products List:");
-            System.out.println(productReport);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args)
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        new Main().demo();
     }
 }

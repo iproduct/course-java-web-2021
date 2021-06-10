@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sql/joins.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/transactions.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/utilities.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/utilities.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/42c6df06-cf0b-4c4d-a5d0-9761043655b1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/42c6df06-cf0b-4c4d-a5d0-9761043655b1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/42c6df06-cf0b-4c4d-a5d0-9761043655b1/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/42c6df06-cf0b-4c4d-a5d0-9761043655b1/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/42c6df06-cf0b-4c4d-a5d0-9761043655b1/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/demos/JdbcDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/ProductRepositoryJdbcImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/exception/PersistenceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invoicing.db" beforeDir="false" afterPath="$PROJECT_DIR$/invoicing.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/joins.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/joins.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +64,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -79,6 +94,8 @@
       <recent name="invoicing.dao.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="simple" />
+      <recent name="invoicing.dao.impl" />
       <recent name="invoicing.commands" />
     </key>
   </component>
@@ -221,7 +238,7 @@
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
       <workItem from="1623152079521" duration="4981000" />
-      <workItem from="1623317926666" duration="2057000" />
+      <workItem from="1623317926666" duration="5803000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -300,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623327523015</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="sql examples added">
+      <created>1623331838861</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1623331838861</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +340,7 @@
     <MESSAGE value="sql scripts added" />
     <MESSAGE value="Invoice and Line entities added" />
     <MESSAGE value="sql alter table statements added" />
-    <option name="LAST_COMMIT_MESSAGE" value="sql alter table statements added" />
+    <MESSAGE value="sql examples added" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql examples added" />
   </component>
 </project>
