@@ -47,7 +47,7 @@ CREATE TABLE `invoices` (
     `suplier_id` INT UNSIGNED NOT NULL,
     `customer_id` INT UNSIGNED NOT NULL,
     `date` DATE,
-    `vat` DECIMAL(4, 3) DEFAULT 0.2,
+    `vat` DECIMAL(4, 3) NOT NULL DEFAULT 0.2,
     `description` VARCHAR(255),
     INDEX `fk_invoices_supliers_idx` (`suplier_id`),
     INDEX `fk_invoices_customers_idx` (`customer_id`),

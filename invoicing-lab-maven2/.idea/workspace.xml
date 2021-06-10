@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab298671-5817-48a9-92c0-571cbfb983f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/sql/alter_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/alter_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/joins.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/transactions.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/crud_statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/crud_statements.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/utilities.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/utilities.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +221,7 @@
       <workItem from="1622796173504" duration="8163000" />
       <workItem from="1622806542184" duration="7701000" />
       <workItem from="1623152079521" duration="4981000" />
-      <workItem from="1623317926666" duration="1430000" />
+      <workItem from="1623317926666" duration="2057000" />
     </task>
     <task id="LOCAL-00001" summary="project initial commit">
       <created>1622796605728</created>
@@ -292,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623326488347</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="sql alter table statements added">
+      <created>1623327523015</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1623327523015</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +315,7 @@
     <MESSAGE value="config updated" />
     <MESSAGE value="sql scripts added" />
     <MESSAGE value="Invoice and Line entities added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invoice and Line entities added" />
+    <MESSAGE value="sql alter table statements added" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql alter table statements added" />
   </component>
 </project>
