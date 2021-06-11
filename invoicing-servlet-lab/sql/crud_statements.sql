@@ -12,3 +12,5 @@ INSERT INTO `contragents` (`name`, address, id_number, country_code, phone, corp
 ('ABC Ltd.', 'Sofia, 1000', '123456789', 'BG', '+359 324234343', 1, 'office@abc.com', 'PRCR23423423423423423', 'PRCR'),
 ('Ivan Petrov', 'Sofia, Graf Igantiev 55, vh. A ap.16', '8212234536', null, '+359 2345453', 0, null, null, null),
 ('Software AD', 'Sofia, 1000', '987654321', 'BG', '+359 245634567', 1, 'office@softwaread.com', null, null);
+
+TRUNCATE TABLE `products`;

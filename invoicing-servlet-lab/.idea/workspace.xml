@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85e38ccb-a473-4c4d-b80f-b2a06682a552" name="Default Changelist" comment="" />
+    <list default="true" id="85e38ccb-a473-4c4d-b80f-b2a06682a552" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/crud_statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/crud_statements.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,15 +136,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,6 +234,7 @@
       <updated>1623346296959</updated>
       <workItem from="1623346300559" duration="12281000" />
       <workItem from="1623360226449" duration="3717000" />
+      <workItem from="1623409051322" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="projects restructuring">
       <created>1623364291741</created>
