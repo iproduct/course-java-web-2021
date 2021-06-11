@@ -25,17 +25,29 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
         Class.forName(properties.getProperty("driver"));
         System.out.println("PostgreSQL DB driver loaded successfully.");
         connection = DriverManager.getConnection(properties.getProperty("url"), properties);
-        PreparedStatement ps = connection.prepareStatement(
-                "CREATE TABLE IF NOT EXISTS products (" +
-                " id SERIAL PRIMARY KEY," +
-                " code varchar(10) NOT NULL," +
-                " name varchar(45) NOT NULL," +
-                " description varchar(450) NOT NULL," +
-                " price real," +
-                " unit integer NOT NULL DEFAULT '0'" +
-//                " PRIMARY KEY (username)\n" +
-                ")");
-        int numExecutedStatements = ps.executeUpdate();
+        Statement statement = connection.createStatement();
+        int numExecutedStatements = statement.executeUpdate(
+                "CREATE TABLE `products` ( " +
+	            "`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                "`code` CHAR(5) NOT NULL UNIQUE, " +
+                "`name` VARCHAR(50) NOT NULL, " +
+                "`description` VARCHAR(512), " +
+                "`price` DECIMAL(8,2) NOT NULL, " +
+                "`is_promoted` TINYINT(1) DEFAULT 0, " +
+                "`promotion_percentage` DECIMAL(5,2), " +
+                "`unit` TINYINT DEFAULT 0 );"
+        );
+                // PostgreSQL
+//                "CREATE TABLE IF NOT EXISTS products (" +
+//                " id SERIAL PRIMARY KEY," +
+//                " code varchar(10) NOT NULL," +
+//                " name varchar(45) NOT NULL," +
+//                " description varchar(450) NOT NULL," +
+//                " price real," +
+//                " unit integer NOT NULL DEFAULT '0'" +
+////                " PRIMARY KEY (username)\n" +
+//                ")");
+        System.out.printf("Rows count: %d%n", numExecutedStatements);
         if(numExecutedStatements > 0) {
             LOG.warning("Table 'products' was successfully created.");
         }
