@@ -15,8 +15,13 @@
         <junit.jupiter.version>5.7.2</junit.jupiter.version>
     </properties>
 
-    <!-- junit 5 -->
     <dependencies>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
