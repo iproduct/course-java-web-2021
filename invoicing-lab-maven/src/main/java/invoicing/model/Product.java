@@ -1,14 +1,28 @@
 package invoicing.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import static invoicing.model.Unit.PCS;
 
+@Entity
 public class Product extends AbstractEntity<Long, Product> {
+    @NotNull @Size(min=5, max=5)
+    @Basic(optional = false)
+    @Column(nullable = false, unique = true, length = 5)
     private String code; // string 5 characters - two letters and three digits
+    @NotNull @Size(min=2, max=50)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 50)
     private String name; // the name of the 'Product, string 2 to 50 characters long;
+    @Column(length = 512)
     private String description; // (optional) string up to 512 characters long;
+    @Column(scale=8, precision = 2)
     private double price; // real number with double precision;
     private boolean isPromoted = false; // boolean, true if product is currently in promotion campaign, false by default;
     private double promotionPercentage; // (optional) - real number with double precision, the percentage of promotion price discount;
+    @Enumerated(EnumType.ORDINAL)
     private Unit unit = PCS; // enumeration of PCS (pieces), KG (kilograms), M (meters), L (liters), MB (megabytes), GB (gigabytes), PCS by default;
 
     public Product() {

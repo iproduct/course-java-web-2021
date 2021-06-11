@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb0cb0cc-b7cd-4cb6-8587-814278255a0e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_web_api_8_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/ProductRepositoryJpaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/model/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/model/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +69,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Course_Java_Web_Development\git\course-java-web-2021\invoicing-lab-maven\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="invoicing.dao.impl" />
     </key>
   </component>
   <component name="RunManager">
@@ -129,7 +138,7 @@
       <updated>1623345962998</updated>
       <workItem from="1623345968771" duration="183000" />
       <workItem from="1623346163943" duration="3353000" />
-      <workItem from="1623392509195" duration="13245000" />
+      <workItem from="1623392509195" duration="15536000" />
     </task>
     <task id="LOCAL-00001" summary="DDL updated for MySQL">
       <created>1623395509192</created>
@@ -187,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623410160452</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="maven config updated">
+      <created>1623410354147</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623410354147</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +218,7 @@
     <MESSAGE value="persistence.xml added" />
     <MESSAGE value="maven dependencies added" />
     <MESSAGE value="hibernate props added to persistence.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="hibernate props added to persistence.xml" />
+    <MESSAGE value="maven config updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="maven config updated" />
   </component>
 </project>

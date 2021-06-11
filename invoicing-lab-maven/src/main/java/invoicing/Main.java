@@ -6,6 +6,7 @@ import invoicing.commands.PrintAllProductsCommand;
 import invoicing.commands.SaveEntitiesCommand;
 import invoicing.dao.*;
 import invoicing.dao.impl.ProductRepositoryJdbcImpl;
+import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.model.*;
@@ -27,7 +28,7 @@ import static invoicing.util.Alignment.*;
 
 @Slf4j
 public class Main {
-    public static final   List<PrintUtil.ColumnDescriptor> PRODUCT_COLUMNS = List.of(
+    public static final List<PrintUtil.ColumnDescriptor> PRODUCT_COLUMNS = List.of(
             new PrintUtil.ColumnDescriptor("id", "ID", 5, RIGHT),
             new PrintUtil.ColumnDescriptor("code", "Code", 5, LEFT),
             new PrintUtil.ColumnDescriptor("name", "Name", 12, LEFT),
@@ -86,45 +87,49 @@ public class Main {
         SupplierRepository supplierRepo =
                 (SupplierRepository) Repository.createRepository(Long.class, Supplier.class);
 
-        Properties props = new Properties();
-        ProductRepository productRepo = new ProductRepositoryJdbcImpl();
-        try {
-            // load db props from file
-            String propsParh = Main.class.getClassLoader().getResource("db.properties").getPath();
-            props.load(new FileInputStream(propsParh));
-            // initialize product repository
-            ((ProductRepositoryJdbcImpl)productRepo).init(props);
-        } catch (ClassNotFoundException e) {
-            log.error("Can not load DB driver class.", e);
-        } catch (SQLException e) {
-            log.error("Can not open DB connection for URL: " + props.getProperty("url"), e);
-        } catch (FileNotFoundException e) {
-            log.error("Can not load DB properties file.", e);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Properties props = new Properties();
+//        ProductRepository productRepo = new ProductRepositoryJdbcImpl();
+//        try {
+//            // load db props from file
+//            String propsParh = Main.class.getClassLoader().getResource("db.properties").getPath();
+//            props.load(new FileInputStream(propsParh));
+//            // initialize product repository
+//            ((ProductRepositoryJdbcImpl)productRepo).init(props);
+//        } catch (ClassNotFoundException e) {
+//            log.error("Can not load DB driver class.", e);
+//        } catch (SQLException e) {
+//            log.error("Can not open DB connection for URL: " + props.getProperty("url"), e);
+//        } catch (FileNotFoundException e) {
+//            log.error("Can not load DB properties file.", e);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        if(productRepo.count() == 0) {
-            List<Product> created = new ArrayList<>();
-            try {
-                created = productRepo.createBatch(Arrays.asList(products));
-            } catch (EntityAlreadyExistsException e) {
-                e.printStackTrace();
-            }
-            String productReport2 = PrintUtil.formatTable(PRODUCT_COLUMNS, created, "Created Products List:");
-            System.out.println(productReport2);
-//            Arrays.asList(products).stream().forEach(product -> {
-//                try {
-//                    productRepo.create(product);
-//                } catch (EntityAlreadyExistsException e) {
-//                    log.error("Can not create product: " + product, e);
-//                }
-//            });
+        ProductRepository productRepo = new ProductRepositoryJpaImpl();
+        ((ProductRepositoryJpaImpl) productRepo).init();
+
+
+        if (productRepo.count() == 0) {
+//            List<Product> created = new ArrayList<>();
+//            try {
+//                created = productRepo.createBatch(Arrays.asList(products));
+//            } catch (EntityAlreadyExistsException e) {
+//                e.printStackTrace();
+//            }
+//            String productReport2 = PrintUtil.formatTable(PRODUCT_COLUMNS, created, "Created Products List:");
+//            System.out.println(productReport2);
+            Arrays.asList(products).stream().forEach(product -> {
+                try {
+                    productRepo.create(product);
+                } catch (EntityAlreadyExistsException e) {
+                    log.error("Can not create product: " + product, e);
+                }
+            });
         }
 
         Optional<Product> opt4 = productRepo.findById(4L);
-        if(opt4.isPresent()) {
-            Product p4 =  opt4.get();
+        if (opt4.isPresent()) {
+            Product p4 = opt4.get();
             p4.setName("Graphical Tablet");
             p4.setPrice(35.99);
             productRepo.update(p4);
@@ -134,11 +139,11 @@ public class Main {
         }
 
         // drop all products
-        productRepo.drop();
+//        productRepo.drop();
 
         System.out.println(new PrintAllProductsCommand(productRepo).execute());
 
-        List<Product> toBeSorted =  productRepo.findAll();
+        List<Product> toBeSorted = productRepo.findAll();
 //        toBeSorted.sort(Comparator.comparing(Product::getPrice));
         toBeSorted.sort(new Comparator<Product>() {
             @Override

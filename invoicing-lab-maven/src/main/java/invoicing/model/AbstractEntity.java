@@ -1,12 +1,19 @@
 package invoicing.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-public abstract class AbstractEntity<K extends Comparable<K>, V extends Identifiable<K>>
+
+@MappedSuperclass
+public abstract class AbstractEntity<K extends Comparable<K> & Serializable, V extends Identifiable<K>>
         implements Identifiable<K>, Comparable<V>, Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private K id;
+    @Temporal(TemporalType.TIME)
     private Date created = new Date();
+    @Temporal(TemporalType.TIME)
     private Date modified = new Date();
 
     public AbstractEntity() {
