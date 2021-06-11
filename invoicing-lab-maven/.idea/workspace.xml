@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb0cb0cc-b7cd-4cb6-8587-814278255a0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +129,7 @@
       <updated>1623345962998</updated>
       <workItem from="1623345968771" duration="183000" />
       <workItem from="1623346163943" duration="3353000" />
-      <workItem from="1623392509195" duration="12914000" />
+      <workItem from="1623392509195" duration="13245000" />
     </task>
     <task id="LOCAL-00001" summary="DDL updated for MySQL">
       <created>1623395509192</created>
@@ -173,7 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623409667840</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="maven dependencies added">
+      <created>1623409915456</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623409915456</updated>
+    </task>
+    <task id="LOCAL-00008" summary="hibernate props added to persistence.xml">
+      <created>1623410160452</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1623410160452</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +200,8 @@
     <MESSAGE value="batch update skeleton added" />
     <MESSAGE value="programmatic ResultSet updates demo" />
     <MESSAGE value="persistence.xml added" />
-    <option name="LAST_COMMIT_MESSAGE" value="persistence.xml added" />
+    <MESSAGE value="maven dependencies added" />
+    <MESSAGE value="hibernate props added to persistence.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="hibernate props added to persistence.xml" />
   </component>
 </project>
