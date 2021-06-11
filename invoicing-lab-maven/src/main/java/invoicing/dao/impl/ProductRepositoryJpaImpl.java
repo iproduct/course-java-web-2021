@@ -2,21 +2,13 @@ package invoicing.dao.impl;
 
 import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
+import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.exception.PersistenceException;
 import invoicing.model.Product;
-import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
-import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.sql.*;
+import javax.persistence.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Slf4j
 public class ProductRepositoryJpaImpl implements ProductRepository {
@@ -31,6 +23,10 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         em  = emf.createEntityManager();
     }
 
+    public void clean() {
+        em.close();
+    }
+
     @Override
     public List<Product> findAll() {
         return em.createQuery("SELECT p FROM Product AS p")
@@ -39,7 +35,7 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public Optional<Product> findById(Long id) {
-        return Optional.empty();
+        return Optional.ofNullable(em.find(Product.class, id));
     }
 
     @Override
@@ -52,13 +48,21 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         return p;
     }
 
-    protected Product createInternal(Product p) throws SQLException {
-        return null;
-    }
-
     @Override
     public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
         List<Product> results = new ArrayList<>();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        try {
+            for (Product p : entities) {
+                em.persist(p);
+                results.add(p);
+            }
+            transaction.commit();
+        } catch (PersistenceException e) {
+            transaction.rollback();
+            throw new EntityCreationException("Error creating products batch ", e);
+        }
         return results;
     }
 
@@ -89,7 +93,7 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public long count() {
-        return -1;
+        return (Long) em.createQuery("SELECT COUNT(p) FROM Product p").getSingleResult();
     }
 
     @Override

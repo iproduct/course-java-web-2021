@@ -3,7 +3,7 @@ package invoicing.dao.impl;
 import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.exception.PersistenceException;
+import invoicing.exception.EntityCreationException;
 import invoicing.model.Product;
 import invoicing.model.Unit;
 
@@ -201,7 +201,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
             }
         } catch (SQLException e) {
             LOG.log(Level.SEVERE, "deleteById: can not execute prepared statement.", e);
-            throw new PersistenceException(String.format("Error deleting entity with ID='%s': ", id, e.getMessage()));
+            throw new EntityCreationException(String.format("Error deleting entity with ID='%s': ", id, e.getMessage()));
         }
         return p.get();
     }

@@ -8,6 +8,7 @@ import invoicing.dao.*;
 import invoicing.dao.impl.ProductRepositoryJdbcImpl;
 import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.exception.EntityAlreadyExistsException;
+import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.model.*;
 import invoicing.util.PrintUtil;
@@ -108,23 +109,24 @@ public class Main {
         ProductRepository productRepo = new ProductRepositoryJpaImpl();
         ((ProductRepositoryJpaImpl) productRepo).init();
 
-//        if (productRepo.count() == 0) {
-//            List<Product> created = new ArrayList<>();
-//            try {
-//                created = productRepo.createBatch(Arrays.asList(products));
-//            } catch (EntityAlreadyExistsException e) {
-//                e.printStackTrace();
-//            }
-//            String productReport2 = PrintUtil.formatTable(PRODUCT_COLUMNS, created, "Created Products List:");
-//            System.out.println(productReport2);
-            Arrays.asList(products).stream().forEach(product -> {
-                try {
-                    productRepo.create(product);
-                } catch (EntityAlreadyExistsException e) {
-                    log.error("Can not create product: " + product, e);
-                }
-            });
-//        }
+        System.out.printf("Products count: %d%n", productRepo.count());
+        if (productRepo.count() == 0) {
+            List<Product> created = new ArrayList<>();
+            try {
+                created = productRepo.createBatch(Arrays.asList(products));
+            } catch (EntityCreationException | EntityAlreadyExistsException e) {
+                e.printStackTrace();
+            }
+            String productReport1 = PrintUtil.formatTable(PRODUCT_COLUMNS, created, "Created Products List:");
+            System.out.println(productReport1);
+//            Arrays.asList(products).stream().forEach(product -> {
+//                try {
+//                    productRepo.create(product);
+//                } catch (EntityAlreadyExistsException e) {
+//                    log.error("Can not create product: " + product, e);
+//                }
+//            });
+        }
 
         Optional<Product> opt4 = productRepo.findById(4L);
         if (opt4.isPresent()) {

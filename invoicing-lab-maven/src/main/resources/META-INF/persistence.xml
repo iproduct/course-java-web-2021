@@ -11,7 +11,7 @@
                       value="jdbc:mysql://localhost:3306/einvoice"/>
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
