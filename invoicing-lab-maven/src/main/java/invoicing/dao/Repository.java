@@ -19,7 +19,7 @@ public interface Repository<K, V extends Identifiable<K>> {
 
     V create(V entity) throws EntityAlreadyExistsException;
 
-    int createBatch(Collection<V> entities) throws EntityAlreadyExistsException;
+    List<V> createBatch(Collection<V> entities) throws EntityAlreadyExistsException;
 
     V update(V entity) throws EntityNotFoundException;
 

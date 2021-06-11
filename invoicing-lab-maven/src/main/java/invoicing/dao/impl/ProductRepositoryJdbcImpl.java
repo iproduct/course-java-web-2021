@@ -1,7 +1,6 @@
 package invoicing.dao.impl;
 
 import invoicing.dao.ProductRepository;
-import invoicing.dao.Repository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.exception.PersistenceException;
@@ -18,26 +17,27 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
     private static final Logger LOG = Logger.getLogger("i.d.i.RepositoryJdbcImpl");
     private Connection connection;
 
-    public ProductRepositoryJdbcImpl(){
+    public ProductRepositoryJdbcImpl() {
     }
 
     public void init(Properties properties) throws ClassNotFoundException, SQLException {
         Class.forName(properties.getProperty("driver"));
         System.out.println("PostgreSQL DB driver loaded successfully.");
         connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
         Statement statement = connection.createStatement();
         int numExecutedStatements = statement.executeUpdate(
-                "CREATE TABLE `products` ( " +
-	            "`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
-                "`code` CHAR(5) NOT NULL UNIQUE, " +
-                "`name` VARCHAR(50) NOT NULL, " +
-                "`description` VARCHAR(512), " +
-                "`price` DECIMAL(8,2) NOT NULL, " +
-                "`is_promoted` TINYINT(1) DEFAULT 0, " +
-                "`promotion_percentage` DECIMAL(5,2), " +
-                "`unit` TINYINT DEFAULT 0 );"
+                "CREATE TABLE IF NOT EXISTS `products` ( " +
+                        "`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                        "`code` CHAR(5) NOT NULL UNIQUE, " +
+                        "`name` VARCHAR(50) NOT NULL, " +
+                        "`description` VARCHAR(512), " +
+                        "`price` DECIMAL(8,2) NOT NULL, " +
+                        "`is_promoted` TINYINT(1) DEFAULT 0, " +
+                        "`promotion_percentage` DECIMAL(5,2), " +
+                        "`unit` TINYINT DEFAULT 0 );"
         );
-                // PostgreSQL
+        // PostgreSQL
 //                "CREATE TABLE IF NOT EXISTS products (" +
 //                " id SERIAL PRIMARY KEY," +
 //                " code varchar(10) NOT NULL," +
@@ -47,10 +47,6 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
 //                " unit integer NOT NULL DEFAULT '0'" +
 ////                " PRIMARY KEY (username)\n" +
 //                ")");
-        System.out.printf("Rows count: %d%n", numExecutedStatements);
-        if(numExecutedStatements > 0) {
-            LOG.warning("Table 'products' was successfully created.");
-        }
     }
 
     @Override
@@ -59,7 +55,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM " + TABLE_NAME);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 products.add(parseProduct(rs));
             }
         } catch (SQLException e) {
@@ -75,7 +71,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM " + TABLE_NAME + " WHERE id = ? ;");
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 p = parseProduct(rs);
             }
         } catch (SQLException e) {
@@ -87,58 +83,83 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
     @Override
     public Product create(Product p) {
         try {
-            PreparedStatement ps = connection.prepareStatement(
-                    "INSERT INTO " + TABLE_NAME +
-                    " (code, name, description, price, unit)" +
-                    " VALUES (?, ?, ?, ?, ?); ", Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, p.getCode());
-            ps.setString(2, p.getName());
-            ps.setString(3, p.getDescription());
-            ps.setDouble(4, p.getPrice());
-            ps.setInt(5, p.getUnit().ordinal());
-            int numExecutedStatements = ps.executeUpdate();
-            if(numExecutedStatements > 0) {
-                ResultSet keys = ps.getGeneratedKeys();
-                try {
-                    keys.next();
-                    p.setId(keys.getLong(1));
-                } catch(Exception e) {
-                    LOG.log(Level.WARNING,
-                        "Error extracting auto-generated key when creating product '" + p.getName() + "'", e);
-                }
-                LOG.info(String.format(
-                        "New product %d: %s added successfully.", p.getId(), p.getName()));
-            }
-            return p;
+            return createInternal(p);
         } catch (SQLException e) {
             LOG.log(Level.SEVERE, "Error creating product: " + p.toString(), e);
             return null;
         }
     }
 
+    protected Product createInternal(Product p) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement(
+                "INSERT INTO " + TABLE_NAME +
+                        " (code, name, description, price, unit)" +
+                        " VALUES (?, ?, ?, ?, ?); ", Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, p.getCode());
+        ps.setString(2, p.getName());
+        ps.setString(3, p.getDescription());
+        ps.setDouble(4, p.getPrice());
+        ps.setInt(5, p.getUnit().ordinal());
+        int numInserted = ps.executeUpdate();
+        if (numInserted > 0) {
+            ResultSet keys = ps.getGeneratedKeys();
+            try {
+                keys.next();
+                p.setId(keys.getLong(1));
+            } catch (Exception e) {
+                LOG.log(Level.WARNING,
+                        "Error extracting auto-generated key when creating product '" + p.getName() + "'", e);
+            }
+            LOG.info(String.format(
+                    "New product %d: %s added successfully.", p.getId(), p.getName()));
+        }
+        return p;
+    }
+
     @Override
-    public int createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
-        return 0;
+    public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
+        List<Product> results = new ArrayList<>();
+        try {
+            connection.setAutoCommit(false);
+            for (Product p : entities) {
+                results.add(createInternal(p));
+            }
+            connection.commit();
+            return results;
+        } catch (SQLException e) {
+            LOG.log(Level.SEVERE, "Error batch creating entities in a transaction: ", e);
+            try {
+                connection.rollback();
+            } catch (SQLException e2) {
+                LOG.log(Level.SEVERE, "Error during transaction rollback: ", e2);
+            }
+            return Collections.emptyList();
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException e) {
+                LOG.log(Level.SEVERE, "Error batch creating entities in a transaction: ", e);
+            }
+        }
     }
 
     @Override
     public Product update(Product p) {
-        if(p.getId() == null) { // product Id should be present
+        if (p.getId() == null) { // product Id should be present
             return null;
         }
         try {
             PreparedStatement ps = connection.prepareStatement(
-                "UPDATE " + TABLE_NAME + " SET code = ?, name = ?, description = ?, price = ?, unit = ? " +
-                        " WHERE id = ?;",
-                Statement.RETURN_GENERATED_KEYS);
+                    "UPDATE " + TABLE_NAME + " SET code = ?, name = ?, description = ?, price = ?, unit = ? " +
+                            " WHERE id = ?;");
             ps.setString(1, p.getCode());
             ps.setString(2, p.getName());
             ps.setString(3, p.getDescription());
             ps.setDouble(4, p.getPrice());
             ps.setInt(5, p.getUnit().ordinal());
             ps.setLong(6, p.getId());
-            int numExecutedStatements = ps.executeUpdate();
-            if(numExecutedStatements > 0) {
+            int numUpdated = ps.executeUpdate();
+            if (numUpdated > 0) {
                 LOG.info(String.format(
                         "Product %d: %s updated successfully.", p.getId(), p.getName()));
                 return p;
@@ -153,14 +174,14 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
     @Override
     public Product deleteById(Long id) throws EntityNotFoundException {
         Optional<Product> p = findById(id);
-        if(p.isEmpty()){
+        if (p.isEmpty()) {
             throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", id));
         }
         try {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM " + TABLE_NAME + " WHERE id = ? ;");
             ps.setLong(1, id);
             int numExecutedStatements = ps.executeUpdate();
-            if(numExecutedStatements == 0){
+            if (numExecutedStatements == 0) {
                 throw new EntityNotFoundException(String.format("Error deleting entity with ID='%s'.", id));
             }
         } catch (SQLException e) {
@@ -176,7 +197,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) FROM " + TABLE_NAME + ";");
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 return rs.getLong(1);
             }
         } catch (SQLException e) {

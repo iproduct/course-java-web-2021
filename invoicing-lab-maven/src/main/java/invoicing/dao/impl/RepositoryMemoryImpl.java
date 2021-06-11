@@ -47,17 +47,17 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
     }
 
     @Override
-    public int createBatch(Collection<V> entityCollection) throws EntityAlreadyExistsException {
-        int n = 0;
+    public List<V> createBatch(Collection<V> entityCollection) throws EntityAlreadyExistsException {
+        List<V> results = new ArrayList<>();
         for(V entity: entityCollection) {
             if (entities.putIfAbsent(entity.getId(), entity) != null) {
                 throw new EntityAlreadyExistsException(
                         String.format("Entity with ID='%s' already exists.", entity.getId()));
             } else {
-                n++;
+                results.add(entity);
             }
         }
-        return n;
+        return results;
     }
 
     @Override

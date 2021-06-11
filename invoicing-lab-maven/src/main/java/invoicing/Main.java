@@ -7,6 +7,7 @@ import invoicing.commands.SaveEntitiesCommand;
 import invoicing.dao.*;
 import invoicing.dao.impl.ProductRepositoryJdbcImpl;
 import invoicing.exception.EntityAlreadyExistsException;
+import invoicing.exception.EntityNotFoundException;
 import invoicing.model.*;
 import invoicing.util.PrintUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -37,16 +38,16 @@ public class Main {
             new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
     );
 
-    public void demo() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException{
+    public void demo() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException, EntityNotFoundException {
         Product p1 = new Product("BK001", "Thinking in Java",
                 "Good introduction to Java ...", 35.99);
         Product p2 = new Product("BK002", "UML Distilled",
                 "UML described briefly ...", 25.50);
         Product[] products = {p1, p2,
 
-                new Product("AC019", "Monitor", "AlphaView", 750.99),
+                new Product("AC017", "Monitor", "AlphaView", 750.99),
 
-                new Product("AC017", "Tablet", "5 colors set", 43.6),
+                new Product("AC019", "Tablet", "5 colors set", 43.6),
 
                 new Product("SV001", "Mobile Internet", "On-demand mobile internet package",
                         10.99, Unit.GB),
@@ -104,14 +105,34 @@ public class Main {
         }
 
         if(productRepo.count() == 0) {
-            Arrays.asList(products).stream().forEach(product -> {
-                try {
-                    productRepo.create(product);
-                } catch (EntityAlreadyExistsException e) {
-                    e.printStackTrace();
-                }
-            });
+            List<Product> created = new ArrayList<>();
+            try {
+                created = productRepo.createBatch(Arrays.asList(products));
+            } catch (EntityAlreadyExistsException e) {
+                e.printStackTrace();
+            }
+            String productReport2 = PrintUtil.formatTable(PRODUCT_COLUMNS, created, "Created Products List:");
+            System.out.println(productReport2);
+//            Arrays.asList(products).stream().forEach(product -> {
+//                try {
+//                    productRepo.create(product);
+//                } catch (EntityAlreadyExistsException e) {
+//                    log.error("Can not create product: " + product, e);
+//                }
+//            });
         }
+
+        Optional<Product> opt4 = productRepo.findById(4L);
+        if(opt4.isPresent()) {
+            Product p4 =  opt4.get();
+            p4.setName("Graphical Tablet");
+            p4.setPrice(35.99);
+            productRepo.update(p4);
+            System.out.println(productRepo.findById(4L));
+        } else {
+            System.out.printf("No product found with ID=%d.%n", 4L);
+        }
+
 
         System.out.println(new PrintAllProductsCommand(productRepo).execute());
 
@@ -147,7 +168,7 @@ public class Main {
     }
 
     public static void main(String[] args)
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException, EntityNotFoundException {
         new Main().demo();
     }
 }
