@@ -108,8 +108,7 @@ public class Main {
         ProductRepository productRepo = new ProductRepositoryJpaImpl();
         ((ProductRepositoryJpaImpl) productRepo).init();
 
-
-        if (productRepo.count() == 0) {
+//        if (productRepo.count() == 0) {
 //            List<Product> created = new ArrayList<>();
 //            try {
 //                created = productRepo.createBatch(Arrays.asList(products));
@@ -125,7 +124,7 @@ public class Main {
                     log.error("Can not create product: " + product, e);
                 }
             });
-        }
+//        }
 
         Optional<Product> opt4 = productRepo.findById(4L);
         if (opt4.isPresent()) {

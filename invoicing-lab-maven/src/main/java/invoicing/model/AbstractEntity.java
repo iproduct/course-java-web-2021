@@ -11,9 +11,9 @@ public abstract class AbstractEntity<K extends Comparable<K> & Serializable, V e
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private K id;
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date created = new Date();
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modified = new Date();
 
     public AbstractEntity() {

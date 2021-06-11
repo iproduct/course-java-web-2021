@@ -44,11 +44,11 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public Product create(Product p) {
-//        EntityTransaction transaction = em.getTransaction();
-//        transaction.begin();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         em.persist(p);
-        em.flush();
-//        transaction.commit();
+//        em.flush();
+        transaction.commit();
         return p;
     }
 
