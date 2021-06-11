@@ -143,6 +143,21 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
         }
     }
 
+//    @Override
+//    public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
+//        List<Product> results = new ArrayList<>();
+//        try {
+//            Statement stmt = connection.createStatement();
+//            stmt.addBatch("INSERT ...");
+//            stmt.addBatch("INSERT ...");
+//            stmt.addBatch("INSERT ...");
+//            stmt.executeBatch();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        return results;
+//    }
+
     @Override
     public Product update(Product p) {
         if (p.getId() == null) { // product Id should be present

@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb0cb0cc-b7cd-4cb6-8587-814278255a0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/ProductRepositoryJdbcImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/ProductRepositoryJdbcImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/invoicing/dao/impl/RepositoryMemoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-servlet-lab/sql/crud_statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-servlet-lab/sql/crud_statements.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +124,7 @@
       <updated>1623345962998</updated>
       <workItem from="1623345968771" duration="183000" />
       <workItem from="1623346163943" duration="3353000" />
-      <workItem from="1623392509195" duration="8919000" />
+      <workItem from="1623392509195" duration="9706000" />
     </task>
     <task id="LOCAL-00001" summary="DDL updated for MySQL">
       <created>1623395509192</created>
@@ -137,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623395509192</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="programmatic transaction demonstrated">
+      <created>1623402132002</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623402132002</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +149,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="DDL updated for MySQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="DDL updated for MySQL" />
+    <MESSAGE value="programmatic transaction demonstrated" />
+    <option name="LAST_COMMIT_MESSAGE" value="programmatic transaction demonstrated" />
   </component>
 </project>
