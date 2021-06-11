@@ -223,6 +223,20 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
 
     @Override
     public void drop() {
+        try {
+            Statement stmt = connection.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,  ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `products`;");
+            rs.last();
+            System.out.printf("Last record ID: %d%n", rs.getInt("id"));
+            rs.beforeFirst();
+            while(rs.next()) {
+                System.out.printf("%d: %s%n", rs.getLong(1), rs.getString(2));
+                rs.deleteRow();
+            }
+        } catch (SQLException e) {
+            LOG.log(Level.SEVERE, "Error deleting all product records", e);
+        }
 
     }
 

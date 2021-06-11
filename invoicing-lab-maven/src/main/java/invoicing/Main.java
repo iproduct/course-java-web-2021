@@ -133,6 +133,8 @@ public class Main {
             System.out.printf("No product found with ID=%d.%n", 4L);
         }
 
+        // drop all products
+        productRepo.drop();
 
         System.out.println(new PrintAllProductsCommand(productRepo).execute());
 
