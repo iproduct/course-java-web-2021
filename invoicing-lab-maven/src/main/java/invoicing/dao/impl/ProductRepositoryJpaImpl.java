@@ -4,6 +4,7 @@ import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
+import invoicing.exception.EntityUpdateException;
 import invoicing.model.Product;
 import lombok.extern.slf4j.Slf4j;
 
@@ -82,8 +83,22 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 //    }
 
     @Override
-    public Product update(Product p) {
-        return null;
+    public Product update(Product p) throws EntityNotFoundException {
+        Optional<Product> old = findById(p.getId());
+        if(old.isEmpty()){
+            throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", p.getId()));
+        }
+
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        try {
+            Product result = em.merge(p);
+            transaction.commit();
+            return result;
+        } catch (IllegalArgumentException | PersistenceException e) {
+            transaction.rollback();
+            throw new EntityUpdateException("Error updating entity:" + p, e);
+        }
     }
 
     @Override

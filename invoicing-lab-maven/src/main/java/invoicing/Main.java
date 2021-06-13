@@ -24,6 +24,7 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
+import java.util.stream.IntStream;
 
 import static invoicing.util.Alignment.*;
 
@@ -40,7 +41,7 @@ public class Main {
             new PrintUtil.ColumnDescriptor("updated", "Updated", 19, CENTER)
     );
 
-    public void demo() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException, EntityNotFoundException {
+    public void demo() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         Product p1 = new Product("BK001", "Thinking in Java",
                 "Good introduction to Java ...", 35.99);
         Product p2 = new Product("BK002", "UML Distilled",
@@ -131,9 +132,16 @@ public class Main {
         Optional<Product> opt4 = productRepo.findById(4L);
         if (opt4.isPresent()) {
             Product p4 = opt4.get();
-            p4.setName("Graphical Tablet");
-            p4.setPrice(35.99);
-            productRepo.update(p4);
+            Product updatedProduct = new Product(p4.getCode(), p4.getName(), p4.getDescription(), p4.getPrice());
+            updatedProduct.setId(4L);
+            updatedProduct.setCode("AC021");
+            updatedProduct.setName("Graphical Tablet 123");
+            updatedProduct.setPrice(67.99);
+            try {
+                productRepo.update(updatedProduct);
+            } catch (EntityNotFoundException e) {
+                log.error(String.format("Error updating product: %s%n", updatedProduct), e);
+            }
             System.out.println(productRepo.findById(4L));
         } else {
             System.out.printf("No product found with ID=%d.%n", 4L);
