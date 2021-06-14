@@ -23,7 +23,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BookDBController {
@@ -32,10 +35,12 @@ public class BookDBController {
 	public static final String DB_USER = "root";
 	public static final String DB_PASSWORD = "root";
 
-	private List<Book> availableBooks = new CopyOnWriteArrayList<>();
+	private Map<Long, Book> availableBooks = new ConcurrentHashMap<>();
 
 	public void init() throws ClassNotFoundException {
 		Class.forName(DB_DRIVER); // load db driver
+	}
+	public void destroy() {
 	}
 
 	public void reload() {
@@ -43,7 +48,8 @@ public class BookDBController {
 				Statement statement = connection.createStatement()) {
 			ResultSet rs = statement.executeQuery("SELECT * FROM mybooks ORDER BY id");
 			while (rs.next()) {
-				availableBooks.add(new Book(rs.getLong(1), rs.getString(2), rs.getString(3), 
+				availableBooks.put(rs.getLong(1),
+						new Book(rs.getLong(1), rs.getString(2), rs.getString(3),
 						rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7), 
 						rs.getDouble(8)));
 			}
@@ -51,29 +57,14 @@ public class BookDBController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-	}
-	
-	public void destroy() {
 	}
 
-	public List<Book> getAllBooks() {
-		return availableBooks;
+	public Collection<Book> getAllBooks() {
+		return availableBooks.values();
 	}
 
-	public Book getBookById(long id) throws NonexistingEntityException {
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-				Statement statement = connection.createStatement()) {
-			ResultSet rs = statement.executeQuery("SELECT * FROM mybooks WHERE id=" + id);
-			if (rs.next()) {
-				return new Book(rs.getLong(1), rs.getString(2), rs.getString(3), 
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7), 
-						rs.getDouble(8));
-			}
-		} catch (SQLException ex) {
-			throw new NonexistingEntityException("Book with ID=" + id +" not found.", ex);
-		}
-		return null;
+	public Book getBookById(Long id) throws NonexistingEntityException {
+		return availableBooks.get(id);
 	}
 
 	public static void main(String[] args) throws Exception {

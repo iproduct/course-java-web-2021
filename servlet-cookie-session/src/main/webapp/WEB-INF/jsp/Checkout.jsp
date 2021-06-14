@@ -1,13 +1,13 @@
-<%@ page session="true" import="java.util.*, bookstore.model.*" %>
+<%@ page session="true" import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <html>
 <head>
   <title>Music Without Borders Checkout</title>
 </head>
 <body bgcolor="#33CCFF">
-  <font face="Times New Roman,Times" size="+3">
+  <h2>
    	IPT  Bookstore Checkout
-  </font>
+  </h2>
   <hr><p>
   <table border="0" cellpadding="0" width="100%" bgcolor="#FFFFFF">
   <tr>
@@ -18,7 +18,7 @@
     <td><b>QUANTITY</b></td>
     <td></td>
   </tr>
-  <c:forEach var="cb" items="${sessionScope.shoppingcart}">
+  <c:forEach var="cb" items="${sessionScope.shoppingcart.values()}">
 	  <tr>
 	      <td><b><c:out value="${cb.book.title}" /></b></td>
 	      <td><b><c:out value="${cb.book.authors}" /></b></td>

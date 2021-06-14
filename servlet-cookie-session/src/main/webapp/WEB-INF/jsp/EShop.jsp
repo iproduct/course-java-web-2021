@@ -1,20 +1,20 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
   <title>Best Books Forever</title>
 </head>
 <body bgcolor="#33CCFF">
-  <font face="Times New Roman,Times" size="+3">
+  <h2>
     Best Books Forever
-  </font>
+  </h2>
   <hr><p>
-  
-  <form name="shoppingForm" 
-    action="ShoppingServlet" 
+
+  <form name="shoppingForm"
+    action="ShoppingServlet"
     method="POST">
-  <b>Choose a Book:</b> 
+  <b>Choose a Book:</b>
     <select name="bookId">
   	<c:set var="books" value="${applicationScope.bookController.allBooks}" />
   	<c:forEach var="book" items="${books}">
@@ -29,8 +29,13 @@
   <input type="submit" name="Submit" value="Add to Cart">
   </form>
   <p>
-  <c:if test="${fn:length(shoppingcart) > 0}">
+  <c:if test="${shoppingcart.size() > 0}">
   	<jsp:include page="Cart.jsp" flush="true" />
+  </c:if>
+  <c:if test="${fn:length(requestScope.error) > 0}">
+    <div style="color:red; background: #ffbbbb; border: 1px solid red; padding: 10px;">
+      <c:out value="${requestScope.error}" escapeXml="true"></c:out>
+    </div>
   </c:if>
 </body>
 </html>
