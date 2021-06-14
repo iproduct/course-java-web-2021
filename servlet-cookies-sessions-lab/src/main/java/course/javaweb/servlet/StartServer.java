@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 public class StartServer {
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
-        TomcatWAR war = new TomcatWAR("./target/invoicing-servlet-lab-1.0-SNAPSHOT");
-        war.setContext("invoicing");
+        TomcatWAR war = new TomcatWAR("./target/servlet-cookies-sessions-lab-1.0-SNAPSHOT");
+        war.setContext("bookstore");
 //        Deployable war = new WAR("./target/invoicing-servlet-lab-1.0-SNAPSHOT.war");
 
         LocalConfiguration configuration =

@@ -12,23 +12,22 @@
         <param-name>bgColor</param-name>
         <param-value>#f0f0f0</param-value>
     </context-param>
-    <servlet>
-        <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>course.javaweb.servlet.hello.HelloServlet</servlet-class>
-         <init-param>
-            <param-name>color</param-name>
-            <param-value>orange</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>HelloServlet</servlet-name>-->
+<!--        <servlet-class>course.javaweb.servlet.hello.HelloServlet</servlet-class>-->
+<!--         <init-param>-->
+<!--            <param-name>color</param-name>-->
+<!--            <param-value>orange</param-value>-->
+<!--        </init-param>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>HelloServlet</servlet-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </servlet-mapping>-->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>hello</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
