@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BookDBController {
 	public static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -31,7 +32,7 @@ public class BookDBController {
 	public static final String DB_USER = "root";
 	public static final String DB_PASSWORD = "root";
 
-	private List<Book> availableBooks = new ArrayList<Book>();
+	private List<Book> availableBooks = new CopyOnWriteArrayList<>();
 
 	public void init() throws ClassNotFoundException {
 		Class.forName(DB_DRIVER); // load db driver
@@ -54,7 +55,6 @@ public class BookDBController {
 	}
 	
 	public void destroy() {
-		// close connection here
 	}
 
 	public List<Book> getAllBooks() {

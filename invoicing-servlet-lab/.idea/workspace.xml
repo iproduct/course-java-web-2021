@@ -10,11 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85e38ccb-a473-4c4d-b80f-b2a06682a552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/forms/FormServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/DemoApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/DemoApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/dao/BookDBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/dao/BookDBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/BookstoreContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/BookstoreContextListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/CookiesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/CookiesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/ShoppingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/ShoppingServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +243,7 @@
       <workItem from="1623346300559" duration="12281000" />
       <workItem from="1623360226449" duration="3717000" />
       <workItem from="1623409051322" duration="1773000" />
-      <workItem from="1623647435679" duration="2571000" />
+      <workItem from="1623647435679" duration="4859000" />
     </task>
     <task id="LOCAL-00001" summary="projects restructuring">
       <created>1623364291741</created>

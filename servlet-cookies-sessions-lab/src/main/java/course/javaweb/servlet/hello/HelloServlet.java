@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
-@WebServlet(name = "HelloServlet", value = "/hello", initParams = {
+@WebServlet(name = "HelloServlet", value = "/hello/*", initParams = {
         @WebInitParam(name="color", value = "blue")
 })
 

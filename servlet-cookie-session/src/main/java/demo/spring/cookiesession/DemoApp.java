@@ -14,6 +14,7 @@
 
 package demo.spring.cookiesession;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.session.StandardManager;
@@ -26,8 +27,8 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+@Slf4j
 public class DemoApp {
-    private static Logger logger = Logger.getLogger(DemoApp.class.getSimpleName());
     private static int PORT = 8080;
 
     public static void main(String[] args) throws Exception {
@@ -52,11 +53,11 @@ public class DemoApp {
         manager.setPathname("./temp/SESSIONS.ser");
         ctx.setManager(manager);
         if (ctx.getManager() instanceof StandardManager) {
-            logger.info("Session serialization path: " + ((StandardManager)ctx.getManager()).getPathname());
+            log.info("Session serialization path: " + ((StandardManager)ctx.getManager()).getPathname());
         }
 
         tomcat.start();
-        logger.info("Embedded Tomcat server started on port " + PORT);
+        log.info("Embedded Tomcat server started on port " + PORT);
         System.out.println("Press <ENTER> to stop the server.");
         System.in.read();
         tomcat.stop();

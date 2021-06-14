@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.util.Date;
 
 @WebServlet(
         name = "CookiesServlet",
@@ -33,16 +35,18 @@ public class CookiesServlet extends HttpServlet {
             throws ServletException, IOException {
         for (int i = 1; i <= 3; i++) {
             // default maxAge is -1, indicating that cookie lives till the end of current browser session
-            Cookie cookie = new Cookie("session-cookie-" + i,"session-cookie-value-" + i);
+            Cookie cookie = new Cookie("session-cookie-" + i,"session-cookie-value-" + i + "_" +
+                    URLEncoder.encode(new Date().toString(), "UTF-8"));
             resp.addCookie(cookie);
             // this cookie will be valid for an hour
-            cookie = new Cookie("persistent-cookie-" + i,"persistent-cookie-value-" + i);
-            cookie.setMaxAge(3600);
+            cookie = new Cookie("persistent-cookie-" + i,"persistent-cookie-value-" + i+
+                    URLEncoder.encode(new Date().toString(), "UTF-8"));
+            cookie.setMaxAge(180); // 3 minutes
             cookie.setPath("/cookies");
             resp.addCookie(cookie);
         }
         Cookie langCookie = new Cookie("lang","bg_BG");
-        langCookie.setMaxAge(30);
+        langCookie.setMaxAge(60);
         langCookie.setHttpOnly(true);
         resp.addCookie(langCookie);
         resp.setContentType("text/html");
