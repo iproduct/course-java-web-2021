@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, mappings, info, metrics, threaddump, heapdump, shutdown, beans
+  endpoint:
+    health:
+      show-details: always
+info:
+  app:
+    name: REST MVC Demo
+    description: REST MVC demo with Spring Boot and Spring Data JPA
+    version: 1.0-SNAPSHOT
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/myblogs2
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+    schema:
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            scripts:
+#              action: create
+#              create-target: create.sql
+#              create-source: metadata
+    initialization-mode: always
+    data:
+      classpath: create.sql
+jwt:
+  secret: my_secret
+
+#javax:
+#  persistence:
+#    schema-generation:
+#      database:
+#        action: create
+#
+#spring.datasource.initialization-mode = always.data=classpath:insert-data.sql
