@@ -2,7 +2,6 @@ package course.javaweb.servlet.forms;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -27,7 +25,7 @@ public class FormServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -53,7 +51,7 @@ public class FormServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		log.info("Request Content-Type: " + req.getContentType());
 		res.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = res.getWriter();
@@ -82,6 +80,7 @@ public class FormServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		return -1;
 	}
 
 }

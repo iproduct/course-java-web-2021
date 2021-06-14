@@ -10,16 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85e38ccb-a473-4c4d-b80f-b2a06682a552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/forms/FormServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/DemoApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/DemoApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/dao/BookDBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/dao/BookDBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/BookstoreContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/BookstoreContextListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/CookiesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/CookiesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/ShoppingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/java/demo/spring/cookiesession/servlet/ShoppingServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/Cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/Cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/Checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/Checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/EShop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/src/main/webapp/WEB-INF/jsp/EShop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/Cart_jsp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/Cart_jsp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/Checkout_jsp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/Checkout_jsp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/EShop_jsp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookie-session/tomcat.8080/work/Tomcat/localhost/ROOT/org/apache/jsp/WEB_002dINF/jsp/EShop_jsp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/forms/FormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/forms/FormServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
