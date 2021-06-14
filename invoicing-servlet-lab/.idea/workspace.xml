@@ -10,61 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85e38ccb-a473-4c4d-b80f-b2a06682a552" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/config/MapperConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/config/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dao/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dao/PostRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dao/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dto/Credentials.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dto/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dto/JwtResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dto/PostDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/dto/PostUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/entity/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/exception/EntityNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/exception/InvalidEntityDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/init/DataInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/init/DbCreatorEnvironmentPostProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/PostService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/impl/PostServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/util/ErrorHandlingUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/util/JwtUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/util/LocalDateTimeAttributeConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/util/PostDtoConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/util/PostDtoMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/ErrorHandlerControllerAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/HelloMVC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/JwtAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/PostResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/java/course/spring/restmvc/web/UserResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/resources/application.properties.old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/main/resources/create.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rest-demo-final/src/test/java/course/spring/restmvc/RestmvcBlogsApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../servlet-cookie-session/sql/javaweb_mybooks.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vehicles_v2/uploads/opel-omega_1989_Sedans_1512151250_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/java/course/javaweb/servlet/hello/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servlet-cookies-sessions-lab/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/invoicing-lab-maven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/invoicing-lab-maven.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-lab-maven/src/main/java/invoicing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -289,7 +238,7 @@
       <workItem from="1623346300559" duration="12281000" />
       <workItem from="1623360226449" duration="3717000" />
       <workItem from="1623409051322" duration="1773000" />
-      <workItem from="1623647435679" duration="1726000" />
+      <workItem from="1623647435679" duration="2571000" />
     </task>
     <task id="LOCAL-00001" summary="projects restructuring">
       <created>1623364291741</created>

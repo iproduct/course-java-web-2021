@@ -134,11 +134,12 @@ public class Main {
             Product p4 = opt4.get();
             Product updatedProduct = new Product(p4.getCode(), p4.getName(), p4.getDescription(), p4.getPrice());
             updatedProduct.setId(4L);
-            updatedProduct.setCode("AC021");
-            updatedProduct.setName("Graphical Tablet 123");
-            updatedProduct.setPrice(67.99);
+            updatedProduct.setCode("AC025");
+            updatedProduct.setName("Graphical Tablet 987");
+            updatedProduct.setPrice(37.99);
             try {
-                productRepo.update(updatedProduct);
+                Product returned = productRepo.update(updatedProduct);
+                System.out.printf("Return managed instance: %s%n", returned == p4);
             } catch (EntityNotFoundException e) {
                 log.error(String.format("Error updating product: %s%n", updatedProduct), e);
             }
