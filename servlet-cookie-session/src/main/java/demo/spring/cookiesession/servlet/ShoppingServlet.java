@@ -51,7 +51,7 @@ public class ShoppingServlet extends HttpServlet {
         @SuppressWarnings("unchecked")
         Map<Long, CartBean> cart = (Map<Long, CartBean>) session.getAttribute("shoppingcart");
         if (cart == null) {
-            cart = new HashMap<>(); // first order
+            cart = new LinkedHashMap<>(); // first order
             session.setAttribute("shoppingcart", cart);
         }
         BookDBController bookController = (BookDBController) getServletContext().getAttribute("bookController");
