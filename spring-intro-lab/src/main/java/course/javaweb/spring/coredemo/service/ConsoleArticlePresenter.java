@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
-@Service
+@Service("consolePresenter")
 public class ConsoleArticlePresenter implements ArticlePresenter{
     @Autowired
     private ArticleProvider provider;

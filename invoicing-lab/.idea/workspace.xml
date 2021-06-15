@@ -5,12 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a72d48e-7a5b-432d-aa3f-534a81c327bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/PrimeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../java-fundamentals/src/concurrency/SimpleDeadlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-dining-pholosophers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../java-fundamentals/threaddump-deadlock-left-right.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/01-spring-core-demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/build/resources/main/app-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/build/resources/main/article.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/AnnotationAppContextDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/GenericAppContextDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/XMLAppContextDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/consumer/ArticleConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/consumer/ConsoleArticleConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/consumer/ConsumerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/formatter/ArticleFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/formatter/DefaultArticleFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/model/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/provider/AlternativeArticleProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/provider/ArticleProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/java/course/spring/coredemo/provider/MockArticleProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/resources/app-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01-spring-core-demo/src/main/resources/article.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-intro-lab/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java-fundamentals/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,17 +153,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -154,6 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622620526228</updated>
       <workItem from="1622620528284" duration="30715000" />
+      <workItem from="1623748842307" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="eInvoice entities added">
       <created>1622625405011</created>
