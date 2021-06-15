@@ -10,13 +10,13 @@
       <td><b>QUANTITY</b></td>
       <td></td>
     </tr>
-    <c:forEach var="cb" items="${shoppingcart.values()}">
+    <c:forEach var="cb" items="${sessionScope.shoppingcart.values()}">
     <tr>
       <td><b><c:out value="${cb.book.title}" /></b></td>
       <td><b><c:out value="${cb.book.authors}" /></b></td>
       <td><b><c:out value="${cb.book.publishDate}" /></b></td>
       <td><b><c:out value="${cb.book.price}" /></td>
-      <td><b><c:out value="${cb.quantity}" /></b></td>
+      <td><b><c:out value="${cb.quantity}" escapeXml="true"/></b></td>
       <td>
         <form name="deleteForm" action="ShoppingServlet" method="POST">
           <input type="hidden" name= "bookId" value="${cb.book.id}">

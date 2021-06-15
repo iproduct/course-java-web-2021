@@ -29,7 +29,7 @@
   <input type="submit" name="Submit" value="Add to Cart">
   </form>
   <p>
-  <c:if test="${shoppingcart.size() > 0}">
+  <c:if test="${fn:length(shoppingcart.values()) > 0}">
   	<jsp:include page="Cart.jsp" flush="true" />
   </c:if>
   <c:if test="${fn:length(requestScope.error) > 0}">
