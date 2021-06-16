@@ -8,11 +8,13 @@ course/javaweb/spring/coredemo/dao/AlternativeArticleProvider.java
  course.javaweb.spring.coredemo.dao.AlternativeArticleProvider
 course/javaweb/spring/coredemo/dao/MockArticleProvider.java
  course.javaweb.spring.coredemo.dao.MockArticleProvider
-course/javaweb/spring/coredemo/service/ConsoleArticlePresenter.java
- course.javaweb.spring.coredemo.service.ConsoleArticlePresenter
+course/javaweb/spring/coredemo/SpringAnnotationConfigDI.java
+ course.javaweb.spring.coredemo.SpringAnnotationConfigDI
 course/javaweb/spring/coredemo/service/ArticlePresenter.java
  course.javaweb.spring.coredemo.service.ArticlePresenter
 course/javaweb/spring/coredemo/model/Article.java
  course.javaweb.spring.coredemo.model.Article
-course/javaweb/spring/coredemo/SpringAnnotationConfigDI.java
- course.javaweb.spring.coredemo.SpringAnnotationConfigDI
+course/javaweb/spring/coredemo/service/ArticlePresenterFactory.java
+ course.javaweb.spring.coredemo.service.ArticlePresenterFactory
+course/javaweb/spring/coredemo/service/ConsoleArticlePresenter.java
+ course.javaweb.spring.coredemo.service.ConsoleArticlePresenter

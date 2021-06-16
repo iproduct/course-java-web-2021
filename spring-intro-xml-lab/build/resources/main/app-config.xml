@@ -9,9 +9,39 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="provider" name="provider" class="course.javaweb.spring.coredemo.dao.MockArticleProvider" />
-    <bean id="presenter" class="course.javaweb.spring.coredemo.service.ConsoleArticlePresenter">
-        <constructor-arg index="0" name="provider" type="course.javaweb.spring.coredemo.dao.ArticleProvider">
-            <ref bean="provider" />
-        </constructor-arg>
+    <bean id="presenterFactory" class="course.javaweb.spring.coredemo.service.ArticlePresenterFactory"
+          c:_0-ref="provider" c:_1="FACTORY CLASS CREATED Post: "/>
+    <bean id="presenter" class="course.javaweb.spring.coredemo.service.ConsoleArticlePresenter"
+          factory-bean="presenterFactory" factory-method="createPresenter">
+<!--          factory-method="createPresenter" c:_0-ref="provider" c:_1="FACTORY CREATED Post: ">-->
+<!--          p:provider-ref="provider" p:message="My BLOG POST: ">-->
+<!--        <property name="provider">-->
+<!--            <ref bean="provider"/>-->
+<!--        </property>-->
+<!--        <property name="message" value="My BLOG POST: ">-->
+<!--        </property>-->
+        <property name="props">
+            <value>
+                message.prefix=Blog post: --[
+                message.suffix=]--
+            </value>
+        </property>
+        <property name="list">
+            <list>
+                <value>First</value>
+                <value>Second</value>
+                <value>Third</value>
+            </list>
+        </property>
     </bean>
+<!--       c:provider-ref="provider" c:message="Blog post:" />-->
+<!--        <constructor-arg index="0" name="provider" type="course.javaweb.spring.coredemo.dao.ArticleProvider"-->
+<!--                         ref="provider" />-->
+<!--        <constructor-arg index="1" name="properties" type="java.util.Properties">-->
+<!--            <value>-->
+<!--                message.prefix=Blog post: &#45;&#45;[-->
+<!--                message.suffix=]&#45;&#45;-->
+<!--            </value>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
 </beans>
