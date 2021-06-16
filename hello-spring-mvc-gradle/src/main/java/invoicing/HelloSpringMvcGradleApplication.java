@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HelloSpringMvcGradleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloSpringMvcGradleApplication.class, args);
+		var ctx = SpringApplication.run(HelloSpringMvcGradleApplication.class, args);
 	}
 
 }

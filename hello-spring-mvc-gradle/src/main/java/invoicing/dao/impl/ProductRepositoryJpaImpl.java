@@ -6,11 +6,14 @@ import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.exception.EntityUpdateException;
 import invoicing.model.Product;
+import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -18,13 +21,23 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
+@Transactional
 public class ProductRepositoryJpaImpl implements ProductRepository {
-    @Autowired
-    EntityManager em;
+    List<Product> SAMPLE_PRODUCTS = List.of(
+            new Product("AC017", "Monitor", "AlphaView", 750.99),
 
-    public void clean() {
-        em.close();
-    }
+            new Product("AC019", "Tablet", "5 colors set", 43.6),
+
+            new Product("SV001", "Mobile Internet", "On-demand mobile internet package",
+                    10.99, Unit.GB),
+            new Product("DV001", "2 Band Router", "Supports 2.4 GHz and 5.7 GHz bands",
+                    45.5),
+            new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP",
+                    0.72, Unit.M)
+    );
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public List<Product> findAll() {
@@ -39,28 +52,16 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public Product create(Product p) {
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
         em.persist(p);
-//        em.flush();
-        transaction.commit();
         return p;
     }
 
     @Override
     public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
         List<Product> results = new ArrayList<>();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        try {
-            for (Product p : entities) {
-                em.persist(p);
-                results.add(p);
-            }
-            transaction.commit();
-        } catch (PersistenceException e) {
-            transaction.rollback();
-            throw new EntityCreationException("Error creating products batch ", e);
+        for (Product p : entities) {
+            em.persist(p);
+            results.add(p);
         }
         return results;
     }
@@ -83,20 +84,11 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     @Override
     public Product update(Product p) throws EntityNotFoundException {
         Optional<Product> old = findById(p.getId());
-        if(old.isEmpty()){
+        if (old.isEmpty()) {
             throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", p.getId()));
         }
-
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        try {
-            Product result = em.merge(p);
-            transaction.commit();
-            return result;
-        } catch (IllegalArgumentException | PersistenceException e) {
-            transaction.rollback();
-            throw new EntityUpdateException("Error updating entity:" + p, e);
-        }
+        Product result = em.merge(p);
+        return result;
     }
 
     @Override
