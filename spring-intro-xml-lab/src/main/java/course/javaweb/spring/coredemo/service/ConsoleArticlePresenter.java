@@ -17,37 +17,21 @@ import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.Set;
 
-//@Service("consolePresenter")
-//@Scope("singleton")
 public class ConsoleArticlePresenter implements ArticlePresenter {
 
     private ArticleProvider provider;
-//    @Autowired
-//    private ApplicationContext applicationContext;
 
-//    @Autowired
-    public void setProviders(ArticleProvider mockArticleProvider) {
-        this.provider = mockArticleProvider;
+    public ConsoleArticlePresenter(ArticleProvider provider) {
+        this.provider = provider;
     }
 
-
-//    public ConsoleArticlePresenter(@Qualifier("alternativeProvider") ArticleProvider provider) {
-//    public ConsoleArticlePresenter(ArticleProvider[] providers) {
-//        this.providers = providers;
-//    }
-
-//    @Override
-//    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-//        this.applicationContext = applicationContext;
-//    }
+    public void setProvider(ArticleProvider provider) {
+        this.provider = provider;
+    }
 
     @Override
     public void present() {
-       provider.getArticles().stream().forEach(System.out::println);
-//        Arrays.stream(providers)
-//                .flatMap(provider -> provider.getArticles().stream())
-//                .forEach(System.out::println);
-//        applicationContext.getBean(ArticleProvider.class).getArticles().forEach(System.out::println);
+        provider.getArticles().stream().forEach(System.out::println);
     }
 
 

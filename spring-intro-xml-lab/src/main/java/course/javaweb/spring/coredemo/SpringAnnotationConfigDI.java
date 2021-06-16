@@ -3,11 +3,12 @@ package course.javaweb.spring.coredemo;
 import course.javaweb.spring.coredemo.service.ArticlePresenter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringAnnotationConfigDI {
     public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext("course.javaweb.spring.coredemo");
-        ArticlePresenter presenter1 = ctx.getBean("consolePresenter", ArticlePresenter.class);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("app-config.xml");
+        ArticlePresenter presenter1 = ctx.getBean("presenter", ArticlePresenter.class);
         presenter1.present();
 //        ArticlePresenter presenter2 = ctx.getBean("consolePresenter", ArticlePresenter.class);
 //        presenter2.present();
