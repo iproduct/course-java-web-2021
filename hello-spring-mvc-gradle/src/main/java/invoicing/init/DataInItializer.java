@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Slf4j
-@Component
+//@Component
 public class DataInItializer implements CommandLineRunner {
     List<Product> SAMPLE_PRODUCTS = List.of(
             new Product("AC017", "Monitor", "AlphaView", 750.99),
@@ -34,6 +34,7 @@ public class DataInItializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //        if(productRepo.count() == 0)
+        productRepo.drop();
         log.info("Initializing DB with sample products.");
         try {
             productRepo.createBatch(SAMPLE_PRODUCTS);

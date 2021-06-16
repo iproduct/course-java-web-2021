@@ -9,6 +9,11 @@ import invoicing.model.Product;
 import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -39,6 +44,18 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     @PersistenceContext
     private EntityManager em;
 
+    //@PostConstruct
+    @EventListener(ApplicationStartedEvent.class)
+    public void init() {
+        drop();
+        log.info("Initializing DB with sample products.");
+        try {
+            createBatch(SAMPLE_PRODUCTS);
+        } catch (EntityAlreadyExistsException e) {
+            log.error("Error initializing products", e);
+        }
+    }
+
     @Override
     public List<Product> findAll() {
         return em.createQuery("SELECT p FROM Product AS p")
@@ -66,21 +83,6 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         return results;
     }
 
-//    @Override
-//    public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
-//        List<Product> results = new ArrayList<>();
-//        try {
-//            Statement stmt = connection.createStatement();
-//            stmt.addBatch("INSERT ...");
-//            stmt.addBatch("INSERT ...");
-//            stmt.addBatch("INSERT ...");
-//            stmt.executeBatch();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        return results;
-//    }
-
     @Override
     public Product update(Product p) throws EntityNotFoundException {
         Optional<Product> old = findById(p.getId());
@@ -93,7 +95,12 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public Product deleteById(Long id) throws EntityNotFoundException {
-        return null;
+        var old = em.find(Product.class, id);
+        if (old == null) {
+            throw new EntityNotFoundException("Product with ID = '" + id + "' not found");
+        }
+        em.remove(old);
+        return old;
     }
 
     @Override
@@ -103,7 +110,8 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
 
     @Override
     public void drop() {
-
+        log.info("Dropping {} products.",
+                em.createQuery("DELETE FROM Product p").executeUpdate());
     }
 
 }
