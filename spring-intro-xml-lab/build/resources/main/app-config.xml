@@ -8,11 +8,13 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean id="provider" name="provider" class="course.javaweb.spring.coredemo.dao.MockArticleProvider" />
+    <context:annotation-config />
+    <context:component-scan base-package="course.javaweb.spring.coredemo" />
+<!--    <bean id="provider" name="provider" class="course.javaweb.spring.coredemo.dao.MockArticleProvider" />-->
     <bean id="presenterFactory" class="course.javaweb.spring.coredemo.service.ArticlePresenterFactory"
           c:_0-ref="provider" c:_1="FACTORY CLASS CREATED Post: "/>
     <bean id="presenter" class="course.javaweb.spring.coredemo.service.ConsoleArticlePresenter"
-          factory-bean="presenterFactory" factory-method="createPresenter">
+          factory-bean="presenterFactory" factory-method="createPresenter" scope="singleton">
 <!--          factory-method="createPresenter" c:_0-ref="provider" c:_1="FACTORY CREATED Post: ">-->
 <!--          p:provider-ref="provider" p:message="My BLOG POST: ">-->
 <!--        <property name="provider">-->

@@ -24,8 +24,8 @@ public class SpringAnnotationConfigDI {
         presenter1.present();
         ArticleProvider simpleProvider = ctx.getBean("simpleProvider", ArticleProvider.class);
         System.out.println(simpleProvider.getArticles());
-//        ArticlePresenter presenter2 = ctx.getBean("consolePresenter", ArticlePresenter.class);
-//        presenter2.present();
-//        System.out.printf("P1: %s, P2: %s", presenter1.hashCode(), presenter2.hashCode());
+        ArticlePresenter presenter2 = ctx.getBean("presenter", ArticlePresenter.class);
+        presenter2.present();
+        System.out.printf("P1: %s, P2: %s", presenter1.hashCode(), presenter2.hashCode());
     }
 }

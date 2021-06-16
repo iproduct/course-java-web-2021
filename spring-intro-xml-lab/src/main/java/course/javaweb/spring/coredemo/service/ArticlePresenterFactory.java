@@ -2,6 +2,7 @@ package course.javaweb.spring.coredemo.service;
 
 import course.javaweb.spring.coredemo.dao.ArticleProvider;
 import course.javaweb.spring.coredemo.service.ConsoleArticlePresenter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ArticlePresenterFactory {
     private ArticleProvider provider;
