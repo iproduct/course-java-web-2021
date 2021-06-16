@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Order(2)
-@MockProvider
-@Repository
+//@Order(2)
+//@MockProvider
+//@Repository
 public class MockArticleProvider implements ArticleProvider{
 
     @Override

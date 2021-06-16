@@ -17,15 +17,15 @@ import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.Set;
 
-@Service("consolePresenter")
-@Scope("singleton")
+//@Service("consolePresenter")
+//@Scope("singleton")
 public class ConsoleArticlePresenter implements ArticlePresenter {
 
     private ArticleProvider provider;
 //    @Autowired
 //    private ApplicationContext applicationContext;
 
-    @Autowired
+//    @Autowired
     public void setProviders(ArticleProvider mockArticleProvider) {
         this.provider = mockArticleProvider;
     }

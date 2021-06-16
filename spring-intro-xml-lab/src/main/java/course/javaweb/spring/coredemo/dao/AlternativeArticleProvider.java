@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Order(1)
-@AlternativeProvider
-@Repository("alternativeProvider")
-@PropertySource("articles.properties")
+//@Order(1)
+//@AlternativeProvider
+//@Repository("alternativeProvider")
+//@PropertySource("articles.properties")
 public class AlternativeArticleProvider implements ArticleProvider {
     @Value("${articles}")
     private String[] articlesTitles;
