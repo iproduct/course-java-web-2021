@@ -97,7 +97,7 @@ public class Main {
 //        }
 
         ProductRepository productRepo = new ProductRepositoryJpaImpl();
-        ((ProductRepositoryJpaImpl) productRepo).init();
+//        ((ProductRepositoryJpaImpl) productRepo).init();
 
         System.out.printf("Products count: %d%n", productRepo.count());
         if (productRepo.count() == 0) {

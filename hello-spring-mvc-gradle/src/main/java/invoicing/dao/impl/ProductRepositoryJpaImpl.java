@@ -7,6 +7,8 @@ import invoicing.exception.EntityNotFoundException;
 import invoicing.exception.EntityUpdateException;
 import invoicing.model.Product;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,17 +17,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@Repository
 public class ProductRepositoryJpaImpl implements ProductRepository {
-    EntityManagerFactory emf;
+    @Autowired
     EntityManager em;
-
-    public ProductRepositoryJpaImpl() {
-    }
-
-    public void init() {
-        emf = Persistence.createEntityManagerFactory("invoicingPU");
-        em  = emf.createEntityManager();
-    }
 
     public void clean() {
         em.close();
