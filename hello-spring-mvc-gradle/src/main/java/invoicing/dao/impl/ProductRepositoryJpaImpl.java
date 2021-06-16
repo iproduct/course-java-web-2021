@@ -90,8 +90,7 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         if (old.isEmpty()) {
             throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", p.getId()));
         }
-//        Product result = em.merge(p);
-        Product result = em.unwrap(Session.class).merge(p);
+        Product result = em.merge(p);
         return result;
     }
 
