@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb0cb0cc-b7cd-4cb6-8587-814278255a0e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/invoicing/init/DataInItializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/invoicing/HelloSpringMvcGradleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/invoicing/HelloSpringMvcGradleApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/invoicing/dao/impl/ProductRepositoryJpaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/java/invoicing/dao/impl/ProductRepositoryJpaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../hello-spring-mvc-gradle/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../invoicing-servlet-lab/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +138,8 @@
       <workItem from="1623345968771" duration="183000" />
       <workItem from="1623346163943" duration="3353000" />
       <workItem from="1623392509195" duration="27360000" />
+      <workItem from="1623849617679" duration="53000" />
+      <workItem from="1623850599849" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="DDL updated for MySQL">
       <created>1623395509192</created>

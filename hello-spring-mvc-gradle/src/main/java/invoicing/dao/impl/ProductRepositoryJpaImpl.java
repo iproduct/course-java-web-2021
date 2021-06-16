@@ -8,6 +8,7 @@ import invoicing.exception.EntityUpdateException;
 import invoicing.model.Product;
 import invoicing.model.Unit;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -89,7 +90,8 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         if (old.isEmpty()) {
             throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", p.getId()));
         }
-        Product result = em.merge(p);
+//        Product result = em.merge(p);
+        Product result = em.unwrap(Session.class).merge(p);
         return result;
     }
 

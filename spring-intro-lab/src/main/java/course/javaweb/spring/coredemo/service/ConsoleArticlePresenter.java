@@ -26,7 +26,7 @@ public class ConsoleArticlePresenter implements ArticlePresenter {
 //    private ApplicationContext applicationContext;
 
     @Autowired
-    public void setProviders(ArticleProvider `mockArticleProvider`) {
+    public void setProviders(ArticleProvider mockArticleProvider) {
         this.provider = mockArticleProvider;
     }
 
