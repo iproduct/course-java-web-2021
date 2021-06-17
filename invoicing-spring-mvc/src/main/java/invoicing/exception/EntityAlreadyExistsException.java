@@ -1,6 +1,6 @@
 package invoicing.exception;
 
-public class EntityAlreadyExistsException extends Exception {
+public class EntityAlreadyExistsException extends RuntimeException {
     public EntityAlreadyExistsException() {
     }
 

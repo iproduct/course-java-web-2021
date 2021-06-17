@@ -2,7 +2,7 @@ package invoicing.dao.impl;
 
 import invoicing.dao.KeyGenerator;
 import invoicing.dao.SupplierRepository;
-import invoicing.model.Supplier;
+import invoicing.entity.Supplier;
 
 public class SupplierRepositoryMemoryImpl extends RepositoryMemoryImpl<Long, Supplier>
     implements SupplierRepository {

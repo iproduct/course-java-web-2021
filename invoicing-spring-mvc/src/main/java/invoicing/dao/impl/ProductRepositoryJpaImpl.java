@@ -2,32 +2,25 @@ package invoicing.dao.impl;
 
 import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.exception.EntityUpdateException;
-import invoicing.model.Product;
-import invoicing.model.Unit;
+import invoicing.entity.Product;
+import invoicing.entity.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
-import org.springframework.cache.jcache.JCacheCacheManager;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.transaction.annotation.Propagation.NOT_SUPPORTED;
 
 //import static net.sf.ehcache.CacheManager.ALL_CACHE_MANAGERS;
 
@@ -57,27 +50,41 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     @Autowired
     private CacheManager cacheManager;
 
-    //@PostConstruct
-    @EventListener(ApplicationStartedEvent.class)
+//    @Autowired
+//    ConfigurableApplicationContext ctx;
+
+//    @PostConstruct
+//    @EventListener(ApplicationStartedEvent.class)
     public void init() {
-        drop();
-        log.info("Initializing DB with sample products.");
-        List<Product> created = new ArrayList<>();
-        try {
-            created = createBatch(SAMPLE_PRODUCTS);
-        } catch (EntityAlreadyExistsException e) {
-            log.error("Error initializing products", e);
-        }
-        System.out.printf("Product created: %s%n", created);
+//        ctx.addApplicationListener((event) -> {
+//            if(event.getClass() == ApplicationStartedEvent.class) {
+//                List<Product> products = template.execute(status -> {
+//                    System.out.printf("%n!!!!!! APP EVENT: %s%n%n", event);
+                    drop();
+                    log.info("Initializing DB with sample products.");
+                    List<Product> created = new ArrayList<>();
+                    try {
+                        created = createBatch(SAMPLE_PRODUCTS);
+                    } catch (EntityAlreadyExistsException e) {
+                        log.error("Error initializing products", e);
+//                        status.setRollbackOnly();
+                    }
+//                    return created;
+//                });
+                System.out.printf("Product created: %s%n", created);
+//            }
+//        });
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Product> findAll() {
         return em.createQuery("SELECT p FROM Product AS p")
                 .getResultList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Product> findById(Long id) {
         return Optional.ofNullable(em.find(Product.class, id));
     }
@@ -89,6 +96,7 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     }
 
     @Override
+    @Transactional(timeout = 2)
     public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
         List<Product> results = new ArrayList<>();
         for (Product p : entities) {
@@ -97,7 +105,6 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
         }
         em.close();
         return results;
-
     }
 
     @Override
@@ -126,9 +133,15 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     }
 
     @Override
-    public void drop() {
-        log.info("Dropping {} products.",
-                em.createQuery("DELETE FROM Product p").executeUpdate());
+    public long drop() {
+        long count = em.createQuery("DELETE FROM Product p").executeUpdate();
+        log.info("Dropping {} products.", count);
+        return count;
+    }
+
+    @Transactional(propagation = NOT_SUPPORTED)
+    public Statistics getStatistics(){
+        return em.unwrap(Session.class).getSessionFactory().getStatistics();
     }
 
 }

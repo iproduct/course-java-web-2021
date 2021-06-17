@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 public class Customer extends Contragent {
     private String email; // string between 6 and 80 characters long, a valid e-mail;

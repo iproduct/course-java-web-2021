@@ -1,7 +1,7 @@
 package invoicing.commands;
 
 import invoicing.dao.ProductRepository;
-import invoicing.model.Product;
+import invoicing.entity.Product;
 import invoicing.util.PrintUtil;
 
 import java.util.List;

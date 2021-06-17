@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 import lombok.*;
 

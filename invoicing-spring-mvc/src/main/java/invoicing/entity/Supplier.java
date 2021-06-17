@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 public class Supplier extends Contragent {
     private String iban; // string 22 characters long, containing only capital letters and digits;

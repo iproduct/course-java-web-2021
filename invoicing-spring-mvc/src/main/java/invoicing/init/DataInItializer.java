@@ -1,9 +1,10 @@
 package invoicing.init;
 
 import invoicing.dao.ProductRepository;
+import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.model.Product;
-import invoicing.model.Unit;
+import invoicing.entity.Product;
+import invoicing.entity.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Slf4j
-//@Component
+@Component
 public class DataInItializer implements CommandLineRunner {
     List<Product> SAMPLE_PRODUCTS = List.of(
             new Product("AC017", "Monitor", "AlphaView", 750.99),
@@ -41,5 +42,6 @@ public class DataInItializer implements CommandLineRunner {
         } catch (EntityAlreadyExistsException e) {
             log.error("Error initializing products", e);
         }
+        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
     }
 }

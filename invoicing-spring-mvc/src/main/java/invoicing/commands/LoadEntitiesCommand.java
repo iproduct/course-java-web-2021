@@ -5,7 +5,7 @@ import invoicing.dao.ProductRepository;
 import invoicing.dao.SupplierRepository;
 import invoicing.dao.UserRepository;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.model.AllCollections;
+import invoicing.entity.AllCollections;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

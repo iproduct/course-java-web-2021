@@ -2,7 +2,7 @@ package invoicing.dao.impl;
 
 import invoicing.dao.KeyGenerator;
 import invoicing.dao.UserRepository;
-import invoicing.model.User;
+import invoicing.entity.User;
 
 import java.util.Optional;
 

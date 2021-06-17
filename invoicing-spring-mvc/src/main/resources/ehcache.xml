@@ -35,9 +35,9 @@
 <!--           <jcache:cache name="invoices" template="default"/>-->
 <!--        </jcache:defaults>-->
 <!--    </service>-->
-    <cache alias="product" uses-template="default">
+    <cache alias="products" uses-template="default">
         <key-type copier="org.ehcache.impl.copy.SerializingCopier">java.lang.Long</key-type>
-        <value-type copier="org.ehcache.impl.copy.SerializingCopier">invoicing.model.Product</value-type>
+        <value-type copier="org.ehcache.impl.copy.SerializingCopier">invoicing.entity.Product</value-type>
     </cache>
 
 </config>

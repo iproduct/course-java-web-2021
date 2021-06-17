@@ -6,7 +6,7 @@ import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.model.*;
+import invoicing.entity.*;
 import invoicing.util.PrintUtil;
 import lombok.extern.slf4j.Slf4j;
 

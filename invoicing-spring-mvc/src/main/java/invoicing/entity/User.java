@@ -1,6 +1,6 @@
-package invoicing.model;
+package invoicing.entity;
 
-import static invoicing.model.Role.USER;
+import static invoicing.entity.Role.USER;
 
 public class User extends AbstractEntity<Long, User> {
     private String firstName; // string 2 to 20 characters long;

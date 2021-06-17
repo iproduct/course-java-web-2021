@@ -1,6 +1,6 @@
 package invoicing.dao;
 
-import invoicing.model.Customer;
+import invoicing.entity.Customer;
 
 public interface CustomerRepository extends Repository <Long, Customer> {
 }

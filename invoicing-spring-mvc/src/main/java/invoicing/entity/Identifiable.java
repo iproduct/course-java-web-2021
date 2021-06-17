@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 public interface Identifiable<K> {
     K getId();

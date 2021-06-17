@@ -4,8 +4,8 @@ import invoicing.dao.ProductRepository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityCreationException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.model.Product;
-import invoicing.model.Unit;
+import invoicing.entity.Product;
+import invoicing.entity.Unit;
 
 import java.sql.*;
 import java.util.*;
@@ -222,7 +222,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
     }
 
     @Override
-    public void drop() {
+    public long drop() {
         try {
             Statement stmt = connection.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,  ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT);
@@ -230,14 +230,17 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
             rs.last();
             System.out.printf("Last record ID: %d%n", rs.getInt("id"));
             rs.beforeFirst();
+            long count = 0;
             while(rs.next()) {
                 System.out.printf("%d: %s%n", rs.getLong(1), rs.getString(2));
                 rs.deleteRow();
+                count++;
             }
+            return count;
         } catch (SQLException e) {
             LOG.log(Level.SEVERE, "Error deleting all product records", e);
         }
-
+        return 0;
     }
 
     private Product parseProduct(ResultSet rs) throws SQLException {

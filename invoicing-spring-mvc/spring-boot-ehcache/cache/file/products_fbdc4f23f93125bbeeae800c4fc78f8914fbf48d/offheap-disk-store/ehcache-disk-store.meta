@@ -1,0 +1,4 @@
+#Key and value types
+#Thu Jun 17 11:45:16 EEST 2021
+valueType=invoicing.entity.Product
+keyType=java.lang.Long

@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 import java.io.Serializable;
 import java.util.List;

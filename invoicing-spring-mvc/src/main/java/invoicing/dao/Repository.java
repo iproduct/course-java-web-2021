@@ -2,7 +2,7 @@ package invoicing.dao;
 
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.model.Identifiable;
+import invoicing.entity.Identifiable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -27,7 +27,7 @@ public interface Repository<K, V extends Identifiable<K>> {
 
     long count();
 
-    void drop();
+    long drop();
 
     static <K, V extends Identifiable<K>> Repository<K, V> createRepository(Class<K> keyClass, Class<V> entityClass) {
         String implClassName = ENTITY_TO_REPOSITORY_MAP.get(entityClass.getName());

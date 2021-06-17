@@ -1,6 +1,6 @@
 package invoicing.dao;
 
-import invoicing.model.User;
+import invoicing.entity.User;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package invoicing.model;
+package invoicing.entity;
 
 public class Contragent extends AbstractEntity<Long, Contragent> {
     private String name; // string 2 to 80 characters long - the name of the physical person or legal entity;

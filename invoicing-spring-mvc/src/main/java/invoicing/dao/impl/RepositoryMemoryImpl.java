@@ -4,7 +4,7 @@ import invoicing.dao.KeyGenerator;
 import invoicing.dao.Repository;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.exception.EntityNotFoundException;
-import invoicing.model.Identifiable;
+import invoicing.entity.Identifiable;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -92,7 +92,9 @@ public class RepositoryMemoryImpl<K, V extends Identifiable<K>> implements Repos
     }
 
     @Override
-    public void drop() {
+    public long drop() {
+        long count = entities.size();
         entities.clear();
+        return count;
     }
 }
