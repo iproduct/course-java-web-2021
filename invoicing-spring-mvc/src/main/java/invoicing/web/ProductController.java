@@ -4,6 +4,7 @@ import invoicing.dao.ProductRepository;
 import invoicing.dto.ErrorResponse;
 import invoicing.entity.Product;
 import invoicing.exception.EntityNotFoundException;
+import invoicing.exception.InvalidEntityDataException;
 import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -50,10 +51,27 @@ public class ProductController {
         Product created = productService.addProduct(product);
         return ResponseEntity.created(
                 ServletUriComponentsBuilder.fromCurrentRequest().pathSegment("{id}")
-                    .buildAndExpand(created.getId()).toUri())
+                        .buildAndExpand(created.getId()).toUri())
                 .body(created);
     }
 
+    @PutMapping(path = "/{id}", consumes = APPLICATION_JSON_VALUE)
+    public Product updateProduct(@PathVariable("id") Long id, @Valid @RequestBody Product product) {
+        if (!id.equals(product.getId())) {
+            throw new InvalidEntityDataException(
+                    String.format("ID in URL:'%s' is different from ID in request body ID:'%s'.",
+                            id, product.getId())
+            );
+        }
+        return productService.updateProduct(product);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public Product deleteProduct(@PathVariable("id") Long id) {
+        return productService.deleteProductById(id);
+    }
+
+    // Exception handlers
     @ExceptionHandler
     @ResponseStatus(NOT_FOUND)
     public ErrorResponse handleEntityNotFound(EntityNotFoundException e) {
@@ -64,29 +82,35 @@ public class ProductController {
     @ResponseStatus(BAD_REQUEST)
     public ErrorResponse handleEntityConstraintViolations(MethodArgumentNotValidException ex) {
         return new ErrorResponse(BAD_REQUEST.value(), ex.getMessage(),
-            ex.getBindingResult().getAllErrors().stream()
-                    .map(err ->{
-                        if(err instanceof FieldError){
-                            FieldError ferr = (FieldError) err;
-                            String message = String.format("'%s': %s",
-                                    ferr.getField(), ferr.getDefaultMessage());
-                            if(ferr.getRejectedValue() != null && ferr.getRejectedValue().toString().length() > 0){
-                                message += String.format(", invalid value: %s", ferr.getRejectedValue().toString());
+                ex.getBindingResult().getAllErrors().stream()
+                        .map(err -> {
+                            if (err instanceof FieldError) {
+                                FieldError ferr = (FieldError) err;
+                                String message = String.format("'%s': %s",
+                                        ferr.getField(), ferr.getDefaultMessage());
+                                if (ferr.getRejectedValue() != null && ferr.getRejectedValue().toString().length() > 0) {
+                                    message += String.format(", invalid value: %s", ferr.getRejectedValue().toString());
+                                }
+                                return message;
+                            } else {
+                                return err.getDefaultMessage();
                             }
-                            return message;
-                        } else {
-                            return err.getDefaultMessage();
-                        }
-                    }).collect(Collectors.toList()));
+                        }).collect(Collectors.toList()));
     }
 
     @ExceptionHandler
     @ResponseStatus(BAD_REQUEST)
     public ErrorResponse handleDbConstraintViolations(DataIntegrityViolationException ex) {
         Throwable cause = ex;
-        while(cause.getCause() != null) {
-           cause = cause.getCause();
+        while (cause.getCause() != null) {
+            cause = cause.getCause();
         }
         return new ErrorResponse(BAD_REQUEST.value(), cause.getMessage());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(BAD_REQUEST)
+    public ErrorResponse handleDbConstraintViolations(InvalidEntityDataException ex) {
+        return new ErrorResponse(BAD_REQUEST.value(), ex.getMessage());
     }
 }
