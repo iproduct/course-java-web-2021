@@ -5,20 +5,26 @@ import invoicing.exception.EntityNotFoundException;
 import invoicing.entity.Product;
 import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
 
+@Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepo;
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<Product> getAllProducts() {
         return productRepo.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Product getProductById(Long id) {
         return productRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("Product with ID='%d' not found", id)));
@@ -41,16 +47,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
-        return null;
+        return productRepo.update(product);
     }
 
     @Override
     public Product deleteProductById(Long id) {
-        return null;
+        return productRepo.deleteById(id);
     }
 
     @Override
     public long getCount() {
-        return 0;
+        return productRepo.count();
     }
 }

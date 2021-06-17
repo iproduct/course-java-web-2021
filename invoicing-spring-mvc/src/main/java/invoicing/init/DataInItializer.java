@@ -42,6 +42,6 @@ public class DataInItializer implements CommandLineRunner {
         } catch (EntityAlreadyExistsException e) {
             log.error("Error initializing products", e);
         }
-        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
+//        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
     }
 }
