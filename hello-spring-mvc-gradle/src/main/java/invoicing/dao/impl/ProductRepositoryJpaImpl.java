@@ -12,10 +12,14 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.*;
@@ -24,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
+//import static net.sf.ehcache.CacheManager.ALL_CACHE_MANAGERS;
 
 @Slf4j
 @Repository
@@ -45,16 +51,24 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     @PersistenceContext
     private EntityManager em;
 
+    @Autowired
+    private TransactionTemplate template;
+
+    @Autowired
+    private CacheManager cacheManager;
+
     //@PostConstruct
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
         drop();
         log.info("Initializing DB with sample products.");
+        List<Product> created = new ArrayList<>();
         try {
-            createBatch(SAMPLE_PRODUCTS);
+            created = createBatch(SAMPLE_PRODUCTS);
         } catch (EntityAlreadyExistsException e) {
             log.error("Error initializing products", e);
         }
+        System.out.printf("Product created: %s%n", created);
     }
 
     @Override
@@ -81,7 +95,9 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
             em.persist(p);
             results.add(p);
         }
+        em.close();
         return results;
+
     }
 
     @Override

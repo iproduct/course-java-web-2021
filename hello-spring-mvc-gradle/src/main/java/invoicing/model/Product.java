@@ -1,5 +1,8 @@
 package invoicing.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.CacheConfig;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -7,6 +10,9 @@ import javax.validation.constraints.Size;
 import static invoicing.model.Unit.PCS;
 
 @Entity
+//@Cacheable(value = "invoicing.model.Product", keyGenerator = "productKeyGenerator")
+@CacheConfig(cacheNames = "invoicing.model.Product")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends AbstractEntity<Long, Product> {
     @NotNull @Size(min=5, max=5)
     @Basic(optional = false)

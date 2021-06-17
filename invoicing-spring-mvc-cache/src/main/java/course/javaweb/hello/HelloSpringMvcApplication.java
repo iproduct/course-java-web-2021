@@ -1,14 +1,13 @@
-package invoicing;
+package course.javaweb.hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloSpringMvcGradleApplication {
+public class HelloSpringMvcApplication {
 
 	public static void main(String[] args) {
-		var ctx = SpringApplication.run(HelloSpringMvcGradleApplication.class, args);
-		ctx.registerShutdownHook();
+		SpringApplication.run(HelloSpringMvcApplication.class, args);
 	}
 
 }
