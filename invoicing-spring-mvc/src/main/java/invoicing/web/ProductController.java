@@ -8,11 +8,13 @@ import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.Enumerated;
 import javax.validation.ConstraintViolationException;
@@ -43,9 +45,13 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @PostMapping
-    public Product createProduct(@Valid @RequestBody Product product) {
-        return productService.addProduct(product);
+    @PostMapping(consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
+        Product created = productService.addProduct(product);
+        return ResponseEntity.created(
+                ServletUriComponentsBuilder.fromCurrentRequest().pathSegment("{id}")
+                    .buildAndExpand(created.getId()).toUri())
+                .body(created);
     }
 
     @ExceptionHandler
