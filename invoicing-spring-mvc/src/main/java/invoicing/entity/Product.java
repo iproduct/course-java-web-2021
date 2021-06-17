@@ -4,7 +4,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.cache.annotation.CacheConfig;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import static invoicing.entity.Unit.PCS;
@@ -18,6 +20,7 @@ public class Product extends AbstractEntity<Long, Product> {
     @NotNull @Size(min=5, max=5)
     @Basic(optional = false)
     @Column(nullable = false, unique = true, length = 5)
+    @Pattern(regexp = "^[A-Z]{2}\\d{3}$", message = "the product code should have two capital letters for category and three digits for number - e.g. 'BK005'")
     private String code; // string 5 characters - two letters and three digits
     @NotNull @Size(min=2, max=50)
     @Basic(optional = false)
@@ -26,6 +29,7 @@ public class Product extends AbstractEntity<Long, Product> {
     @Column(length = 512)
     private String description; // (optional) string up to 512 characters long;
     @Column(scale=8, precision = 2)
+    @Min(0)
     private double price; // real number with double precision;
     private boolean isPromoted = false; // boolean, true if product is currently in promotion campaign, false by default;
     private double promotionPercentage; // (optional) - real number with double precision, the percentage of promotion price discount;

@@ -6,6 +6,7 @@ import invoicing.entity.Product;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -71,5 +72,15 @@ public class ProductController {
                             return err.getDefaultMessage();
                         }
                     }).collect(Collectors.toList()));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(BAD_REQUEST)
+    public ErrorResponse handleEntityNotFound(DataIntegrityViolationException ex) {
+        Throwable cause = ex;
+        while(cause.getCause() != null) {
+           cause = cause.getCause();
+        }
+        return new ErrorResponse(BAD_REQUEST.value(), cause.getMessage());
     }
 }
