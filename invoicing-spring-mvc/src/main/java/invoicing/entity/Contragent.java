@@ -1,5 +1,16 @@
 package invoicing.entity;
 
+import invoicing.commands.SaveEntitiesCommand;
+
+import javax.persistence.*;
+
+import static javax.persistence.DiscriminatorType.STRING;
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
+
+@Inheritance(strategy = SINGLE_TABLE)
+@DiscriminatorColumn(name="DISC", discriminatorType=STRING, length=10)
+@DiscriminatorValue("USER")
+@Entity
 public class Contragent extends AbstractEntity<Long, Contragent> {
     private String name; // string 2 to 80 characters long - the name of the physical person or legal entity;
     private String address; // string 5 to 120 characters long;

@@ -1,10 +1,10 @@
 package invoicing.init;
 
+import invoicing.dao.ContragentRepository;
 import invoicing.dao.ProductRepository;
 import invoicing.dao.impl.ProductRepositoryJpaImpl;
+import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.entity.Product;
-import invoicing.entity.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,14 +27,22 @@ public class DataInItializer implements CommandLineRunner {
             new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP",
                     0.72, Unit.M)
     );
+    List<Contragent> SAMPLE_CONTRAGENTS = List.of(
+            new Contragent("Ivan Petrov", "Plovdiv 2000", "1234567890"),
+            new Supplier("IPT Ltd.", "Sofia 1000", "123456789", "UNCRGSF12346678954", "UNCRGSF"),
+            new Customer("ABC Ltd.", "Tzar Samuil 15", "999999999", "BG", "abc@abv.bg")
+    );
 
 
     @Autowired
     ProductRepository productRepo;
 
+    @Autowired
+    ContragentRepository contragentRepo;
+
     @Override
     public void run(String... args) throws Exception {
-        if(productRepo.count() == 0) {
+        if (productRepo.count() == 0) {
 //            productRepo.drop();
             log.info("Initializing DB with sample products.");
             try {
@@ -44,5 +52,13 @@ public class DataInItializer implements CommandLineRunner {
             }
 //        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
         }
+
+        log.info("Initializing DB with sample contragents.");
+        try {
+            contragentRepo.createBatch(SAMPLE_CONTRAGENTS);
+        } catch (EntityAlreadyExistsException e) {
+            log.error("Error initializing contragents", e);
+        }
+
     }
 }

@@ -1,8 +1,16 @@
 package invoicing.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("SUPPLIER")
 public class Supplier extends Contragent {
     private String iban; // string 22 characters long, containing only capital letters and digits;
     private String bic; // string 8 characters long, the bank identification code;
+
+    public Supplier() {
+    }
 
     public Supplier(String iban, String bic) {
         this.iban = iban;

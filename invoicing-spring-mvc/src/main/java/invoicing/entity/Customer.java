@@ -1,7 +1,15 @@
 package invoicing.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("CUSTOMER")
 public class Customer extends Contragent {
     private String email; // string between 6 and 80 characters long, a valid e-mail;
+
+    public Customer() {
+    }
 
     public Customer(String email) {
         this.email = email;
