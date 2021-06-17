@@ -56,7 +56,7 @@ public class ProductController {
 
     @ExceptionHandler
     @ResponseStatus(BAD_REQUEST)
-    public ErrorResponse handleEntityNotFound(MethodArgumentNotValidException ex) {
+    public ErrorResponse handleEntityConstraintViolations(MethodArgumentNotValidException ex) {
         return new ErrorResponse(BAD_REQUEST.value(), ex.getMessage(),
             ex.getBindingResult().getAllErrors().stream()
                     .map(err ->{
@@ -76,7 +76,7 @@ public class ProductController {
 
     @ExceptionHandler
     @ResponseStatus(BAD_REQUEST)
-    public ErrorResponse handleEntityNotFound(DataIntegrityViolationException ex) {
+    public ErrorResponse handleDbConstraintViolations(DataIntegrityViolationException ex) {
         Throwable cause = ex;
         while(cause.getCause() != null) {
            cause = cause.getCause();
