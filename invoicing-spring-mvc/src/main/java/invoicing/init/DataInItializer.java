@@ -34,14 +34,15 @@ public class DataInItializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        if(productRepo.count() == 0)
-        productRepo.drop();
-        log.info("Initializing DB with sample products.");
-        try {
-            productRepo.createBatch(SAMPLE_PRODUCTS);
-        } catch (EntityAlreadyExistsException e) {
-            log.error("Error initializing products", e);
-        }
+        if(productRepo.count() == 0) {
+//            productRepo.drop();
+            log.info("Initializing DB with sample products.");
+            try {
+                productRepo.createBatch(SAMPLE_PRODUCTS);
+            } catch (EntityAlreadyExistsException e) {
+                log.error("Error initializing products", e);
+            }
 //        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
+        }
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,6 +33,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product addProduct(Product product) {
+        product.setId(null);
+        Date now = new Date();
+        product.setCreated(now);
+        product.setModified(now);
         return productRepo.create(product);
     }
 
