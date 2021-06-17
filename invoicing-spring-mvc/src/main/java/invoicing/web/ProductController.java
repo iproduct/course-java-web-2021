@@ -71,46 +71,4 @@ public class ProductController {
         return productService.deleteProductById(id);
     }
 
-    // Exception handlers
-    @ExceptionHandler
-    @ResponseStatus(NOT_FOUND)
-    public ErrorResponse handleEntityNotFound(EntityNotFoundException e) {
-        return new ErrorResponse(NOT_FOUND.value(), e.getMessage());
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(BAD_REQUEST)
-    public ErrorResponse handleEntityConstraintViolations(MethodArgumentNotValidException ex) {
-        return new ErrorResponse(BAD_REQUEST.value(), ex.getMessage(),
-                ex.getBindingResult().getAllErrors().stream()
-                        .map(err -> {
-                            if (err instanceof FieldError) {
-                                FieldError ferr = (FieldError) err;
-                                String message = String.format("'%s': %s",
-                                        ferr.getField(), ferr.getDefaultMessage());
-                                if (ferr.getRejectedValue() != null && ferr.getRejectedValue().toString().length() > 0) {
-                                    message += String.format(", invalid value: %s", ferr.getRejectedValue().toString());
-                                }
-                                return message;
-                            } else {
-                                return err.getDefaultMessage();
-                            }
-                        }).collect(Collectors.toList()));
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(BAD_REQUEST)
-    public ErrorResponse handleDbConstraintViolations(DataIntegrityViolationException ex) {
-        Throwable cause = ex;
-        while (cause.getCause() != null) {
-            cause = cause.getCause();
-        }
-        return new ErrorResponse(BAD_REQUEST.value(), cause.getMessage());
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(BAD_REQUEST)
-    public ErrorResponse handleDbConstraintViolations(InvalidEntityDataException ex) {
-        return new ErrorResponse(BAD_REQUEST.value(), ex.getMessage());
-    }
 }
