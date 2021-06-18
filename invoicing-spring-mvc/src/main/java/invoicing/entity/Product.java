@@ -18,7 +18,6 @@ import static invoicing.entity.Unit.PCS;
 @Entity
 @Table(name = "products", uniqueConstraints =  @UniqueConstraint(name="uc_code", columnNames = "code"))
 @Cacheable
-@CacheConfig(cacheNames = "invoicing.model.Product")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends AbstractEntity<Long, Product> {
     @NotNull @Size(min=5, max=5)

@@ -7,6 +7,7 @@ import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,9 +15,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.persistence.PersistenceUnit;
+import java.util.*;
 
 @Slf4j
 @Component
@@ -40,6 +40,9 @@ public class DataInItializer implements CommandLineRunner {
             new Supplier("IPT Ltd.", "Sofia 1000", "123456789", "UNCRGSF12346678954", "UNCRGSF"),
             new Customer("ABC Ltd.", "Tzar Samuil 15", "999999999", "BG", "abc@abv.bg")
     );
+
+    @PersistenceUnit
+    private SessionFactory sessionFactory;
 
     @PersistenceContext
     private EntityManager em;
@@ -89,7 +92,13 @@ public class DataInItializer implements CommandLineRunner {
 
         System.out.println("\n!!!!!!!!!  SECOND FIND PRODUCT:");
         Product p2 = productRepo.findById(1L).get();
-        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
-
-}
+        sessionFactory.getStatistics().logSummary();
+        System.out.println("Second level caches:");
+        List<String> secondLevelCaches = List.of(sessionFactory.getStatistics().getSecondLevelCacheRegionNames());
+        System.out.println(secondLevelCaches);
+        secondLevelCaches.forEach(name -> {
+            System.out.printf("%s -> %s%n", name,
+                    sessionFactory.getStatistics().getSecondLevelCacheStatistics(name));
+        });
+    }
 }
