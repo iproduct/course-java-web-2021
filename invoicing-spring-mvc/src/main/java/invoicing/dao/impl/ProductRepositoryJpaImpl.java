@@ -100,7 +100,7 @@ public class ProductRepositoryJpaImpl implements ProductRepository {
     public List<Product> createBatch(Collection<Product> entities) throws EntityAlreadyExistsException {
         List<Product> results = new ArrayList<>();
         for (Product p : entities) {
-            em.persist(p);
+            em.unwrap(Session.class).persist(p);
             results.add(p);
         }
         em.close();

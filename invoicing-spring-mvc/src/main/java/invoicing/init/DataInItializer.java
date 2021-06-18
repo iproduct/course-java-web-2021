@@ -6,11 +6,16 @@ import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.support.TransactionTemplate;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -33,12 +38,17 @@ public class DataInItializer implements CommandLineRunner {
             new Customer("ABC Ltd.", "Tzar Samuil 15", "999999999", "BG", "abc@abv.bg")
     );
 
+    @PersistenceContext
+    private EntityManager em;
 
     @Autowired
     ProductRepository productRepo;
 
     @Autowired
     ContragentRepository contragentRepo;
+
+    @Autowired
+    private TransactionTemplate template;
 
     @Override
     public void run(String... args) throws Exception {
@@ -60,5 +70,23 @@ public class DataInItializer implements CommandLineRunner {
             log.error("Error initializing contragents", e);
         }
 
-    }
+        template.execute(status -> {
+            Product p1 = productRepo.findById(1L).get();
+//            em.unwrap(Session.class).evict(p1);
+            p1.setName("UPDATED PRODUCT");
+            p1.setPrice(1000);
+//            Product newP1 = new Product("CD001", "NAME", "Description ...", 100);
+//            newP1.setId(1L);
+//            newP1.setName("NEW PRODUCT UPDATE");
+//            newP1.setPrice(230);
+            System.out.println("!!!! About to start UPDATE:");
+//            em.unwrap(Session.class).update(p1);
+//            Product p2 = productRepo.findById(1L).get();
+            System.out.println("!!!! About to commit transaction");
+            return p1;
+        });
+
+
+
+}
 }
