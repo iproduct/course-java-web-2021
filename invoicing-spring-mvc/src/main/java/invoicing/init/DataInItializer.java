@@ -2,21 +2,26 @@ package invoicing.init;
 
 import invoicing.dao.ContragentRepository;
 import invoicing.dao.ProductRepository;
-import invoicing.dao.impl.ProductRepositoryJpaImpl;
 import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cache.cfg.spi.DomainDataCachingConfig;
+import org.hibernate.cache.internal.EnabledCaching;
+import org.hibernate.cache.jcache.internal.JCacheDomainDataRegionImpl;
+import org.hibernate.metamodel.model.domain.NavigableRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import javax.cache.Caching;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Component
@@ -99,6 +104,11 @@ public class DataInItializer implements CommandLineRunner {
         secondLevelCaches.forEach(name -> {
             System.out.printf("%s -> %s%n", name,
                     sessionFactory.getStatistics().getSecondLevelCacheStatistics(name));
+//            try {
+//                System.out.println("Cached entities:" +
+//                        ((JCacheDomainDataRegionImpl)sessionFactory.getCache().unwrap(EnabledCaching.class).toString());
+//            } catch(Exception e){}
         });
+        System.out.println(Caching.getCachingProvider().getCacheManager().getURI()); //getCache("products"));
     }
 }
