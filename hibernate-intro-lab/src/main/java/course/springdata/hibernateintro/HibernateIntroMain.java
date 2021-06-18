@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 import java.util.Optional;
 
 public class HibernateIntroMain {
@@ -25,9 +26,9 @@ public class HibernateIntroMain {
         Session session = sf.openSession();
 
         // Persist an entity
-        Student student = new Student("Dimitar Pavlov");
+        Student student = new Student("Hristo Iliev");
         session.beginTransaction();
-        session.save(student);
+        Long id = (Long)session.save(student);
         session.getTransaction().commit();
 
         // Read entity by Id
@@ -36,6 +37,7 @@ public class HibernateIntroMain {
 //        Student result = session.get(Student.class, 1L, LockMode.READ);
         long queryId = 1L;
 //        Student result = session.byId(Student.class).load(queryId);
+//        List<Student> result = session.byMultipleIds(Student.class).multiLoad(1L); //loadOptional(1L);
         Optional<Student> result = session.byId(Student.class).loadOptional(1L);
         session.getTransaction().commit();
         if(result.isPresent()) {
@@ -46,15 +48,16 @@ public class HibernateIntroMain {
 
         // List all students using HQL
         session.beginTransaction();
+        session.setHibernateFlushMode(FlushMode.MANUAL);
         session.createQuery("FROM Student", Student.class)
-                .setFirstResult(5)
+                .setFirstResult(1)
                 .setMaxResults(10)
                 .stream().forEach(System.out::println);
         session.getTransaction().commit();
 
         System.out.println("\n----------------------------------------------");
         session.createQuery("FROM Student WHERE name = ?1", Student.class)
-                .setParameter(1,"Hristo Georgiev")
+                .setParameter(1,"Hristo Iliev")
                 .stream().forEach(System.out::println);
 
         // Type-safe criteria quieries

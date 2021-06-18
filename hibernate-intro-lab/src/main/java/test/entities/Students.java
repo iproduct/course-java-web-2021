@@ -5,16 +5,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Students {
     private long id;
     private String name;
-    private Timestamp registrationDate;
+    private Date registrationDate;
 
-    @Id
-    @Column(name = "id", nullable = false)
+//    @Id
+//    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -23,8 +24,8 @@ public class Students {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 255)
+//    @Basic
+//    @Column(name = "name", nullable = true, length = 255)
     public String getName() {
         return name;
     }
@@ -33,9 +34,9 @@ public class Students {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "registration_date", nullable = true)
-    public Timestamp getRegistrationDate() {
+//    @Basic
+//    @Column(name = "registration_date", nullable = true)
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 

@@ -10,5 +10,8 @@
         <module name="03-hibernate-intro-lab" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="03-hibernate-intro-lab" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>
