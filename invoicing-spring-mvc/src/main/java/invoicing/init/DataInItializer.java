@@ -16,14 +16,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @Component
 public class DataInItializer implements CommandLineRunner {
     List<Product> SAMPLE_PRODUCTS = List.of(
-            new Product("AC017", "Monitor", "AlphaView", 750.99),
+            new Product("AC017", "Monitor", "AlphaView", 750.99,
+                    Set.of("computer", "component", "monitor")),
 
-            new Product("AC019", "Tablet", "5 colors set", 43.6),
+            new Product("AC019", "Tablet", "5 colors set", 43.6,
+                    Set.of("tablet", "accessory", "computer")),
 
             new Product("SV001", "Mobile Internet", "On-demand mobile internet package",
                     10.99, Unit.GB),
@@ -60,7 +63,6 @@ public class DataInItializer implements CommandLineRunner {
             } catch (EntityAlreadyExistsException e) {
                 log.error("Error initializing products", e);
             }
-//        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
         }
 
         log.info("Initializing DB with sample contragents.");
@@ -81,12 +83,13 @@ public class DataInItializer implements CommandLineRunner {
 //            newP1.setPrice(230);
             System.out.println("!!!! About to start UPDATE:");
 //            em.unwrap(Session.class).update(p1);
-//            Product p2 = productRepo.findById(1L).get();
             System.out.println("!!!! About to commit transaction");
             return p1;
         });
 
-
+        System.out.println("\n!!!!!!!!!  SECOND FIND PRODUCT:");
+        Product p2 = productRepo.findById(1L).get();
+        ((ProductRepositoryJpaImpl)productRepo).getStatistics().logSummary();
 
 }
 }

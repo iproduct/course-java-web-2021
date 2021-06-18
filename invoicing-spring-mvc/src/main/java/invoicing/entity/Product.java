@@ -1,6 +1,7 @@
 package invoicing.entity;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.CollectionId;
 import org.springframework.cache.annotation.CacheConfig;
 
 import javax.persistence.*;
@@ -9,17 +10,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static invoicing.entity.Unit.PCS;
 
 @Entity
-@Table(name = "products")
-//@Cacheable(value = "invoicing.model.Product", keyGenerator = "productKeyGenerator")
+@Table(name = "products", uniqueConstraints =  @UniqueConstraint(name="uc_code", columnNames = "code"))
+@Cacheable
 @CacheConfig(cacheNames = "invoicing.model.Product")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends AbstractEntity<Long, Product> {
     @NotNull @Size(min=5, max=5)
     @Basic(optional = false)
-    @Column(nullable = false, unique = true, length = 5)
+    @Column(nullable = false, length = 5)
     @Pattern(regexp = "^[A-Z]{2}\\d{3}$", message = "the product code should have two capital letters for category and three digits for number - e.g. 'BK005'")
     private String code; // string 5 characters - two letters and three digits
     @NotNull @Size(min=2, max=50)
@@ -31,6 +35,11 @@ public class Product extends AbstractEntity<Long, Product> {
     @Column(scale=8, precision = 2)
     @Min(0)
     private double price; // real number with double precision;
+    @ElementCollection
+    @CollectionTable(foreignKey = @ForeignKey(name = "fk_keywords_products"),
+            uniqueConstraints= @UniqueConstraint(name="uc_keywords", columnNames={"product_id", "keyword"}))
+    @Column(name="keyword", length = 30)
+    private Set<String> keywords = new HashSet<>();
     private boolean isPromoted = false; // boolean, true if product is currently in promotion campaign, false by default;
     private double promotionPercentage; // (optional) - real number with double precision, the percentage of promotion price discount;
     @Enumerated(EnumType.ORDINAL)
@@ -54,6 +63,14 @@ public class Product extends AbstractEntity<Long, Product> {
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public Product(String code, String name, String description, double price, Set<String> keywords) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.keywords = keywords;
     }
 
     public Product(String code, String name, String description, double price, Unit unit) {
@@ -104,6 +121,14 @@ public class Product extends AbstractEntity<Long, Product> {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Set<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Set<String> keywords) {
+        this.keywords = keywords;
     }
 
     public boolean isPromoted() {
