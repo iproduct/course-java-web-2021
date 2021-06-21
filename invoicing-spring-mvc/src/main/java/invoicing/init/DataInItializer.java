@@ -1,18 +1,12 @@
 package invoicing.init;
 
-import invoicing.dao.ContragentRepository;
-import invoicing.dao.ProductRepository;
 import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
-import invoicing.service.ContragentService;
+import invoicing.service.CustomerService;
 import invoicing.service.ProductService;
+import invoicing.service.SupplierService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cache.cfg.spi.DomainDataCachingConfig;
-import org.hibernate.cache.internal.EnabledCaching;
-import org.hibernate.cache.jcache.internal.JCacheDomainDataRegionImpl;
-import org.hibernate.metamodel.model.domain.NavigableRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -42,9 +36,13 @@ public class DataInItializer implements CommandLineRunner {
             new Product("CB001", "Network Cable Cat. 6E", "Gbit Eternet cable UTP",
                     0.72, Unit.M)
     );
-    List<Contragent> SAMPLE_CONTRAGENTS = List.of(
-            new Contragent("Ivan Petrov", "Plovdiv 2000", "1234567890"),
-            new Supplier("IPT Ltd.", "Sofia 1000", "123456789", "UNCRGSF12346678954", "UNCRGSF"),
+    List<Supplier> SAMPLE_SUPPLIERS = List.of(
+            new Supplier("Software AD", "Plovdiv 2000", "123456789", "RBBGSF98765432223", "RBBGSF"),
+            new Supplier("IPT Ltd.", "Sofia 1000", "123456789", "UNCRGSF12346678954", "UNCRGSF")
+    );
+    List<Customer> SAMPLE_CUSTOMERS = List.of(
+            new Customer("Ivan Petrov", "Plovdiv 2000", "1234567890", "ivan@gmail.com"),
+            new Customer("WebFactory Ltd.", "Sofia 1000", "345678789", "BG", "office@webfactory.com"),
             new Customer("ABC Ltd.", "Tzar Samuil 15", "999999999", "BG", "abc@abv.bg")
     );
 
@@ -58,7 +56,10 @@ public class DataInItializer implements CommandLineRunner {
     ProductService productService;
 
     @Autowired
-    ContragentService contragentService;
+    SupplierService supplierService;
+
+    @Autowired
+    CustomerService customerService;
 
     @Autowired
     private TransactionTemplate template;
@@ -75,9 +76,16 @@ public class DataInItializer implements CommandLineRunner {
             }
         }
 
-        log.info("Initializing DB with sample contragents.");
+        log.info("Initializing DB with sample suppliers.");
         try {
-            contragentService.addContragentsBatch(SAMPLE_CONTRAGENTS);
+            supplierService.addSuppliersBatch(SAMPLE_SUPPLIERS);
+        } catch (EntityAlreadyExistsException e) {
+            log.error("Error initializing contragents", e);
+        }
+
+        log.info("Initializing DB with sample customers.");
+        try {
+            customerService.addCustomersBatch(SAMPLE_CUSTOMERS);
         } catch (EntityAlreadyExistsException e) {
             log.error("Error initializing contragents", e);
         }

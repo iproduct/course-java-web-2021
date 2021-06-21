@@ -11,7 +11,7 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 @Entity
 @Table(name="contragents")
 @Inheritance(strategy = SINGLE_TABLE)
-@DiscriminatorColumn(name="DISC", discriminatorType=STRING, length=10)
+@DiscriminatorColumn(name="type", discriminatorType=STRING, length=10)
 @DiscriminatorValue("USER")
 public class Contragent {
     @Id
@@ -27,8 +27,8 @@ public class Contragent {
     private List<Invoice> issuedInvoices = new ArrayList<>();
     @OneToMany(mappedBy = "customer", targetEntity = Invoice.class)
     private List<Invoice> receivedInvoices = new ArrayList<>();
-    @Column(name = "DISC")
-    private String dicriminator = "CUSTOMER";
+    @Column(name = "type", insertable = false, updatable = false)
+    private String type = "CUSTOMER";
 
     public Contragent() {
     }
@@ -70,6 +70,14 @@ public class Contragent {
         this.countryCode = countryCode;
         this.phone = phone;
         this.corporate = corporate;
+    }
+
+    public String getDicriminator() {
+        return type;
+    }
+
+    public void setDicriminator(String dicriminator) {
+        this.type = dicriminator;
     }
 
     public Long getId() {
