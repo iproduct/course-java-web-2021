@@ -36,23 +36,18 @@ public class ProductController {
     private ProductService productService;
 
 
-    @GetMapping(params = "keywords")
-    public Collection<Product> getProductsByKeywords(@RequestParam("keywords") String keywords) {
-        return productService.getProductsByKeywords(Set.of(keywords.split("[,%s]+")));
-    }
-
-    @GetMapping(params = {"page"})
-    public Collection<Product> getProductsByKeywords(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-            @RequestParam(value = "sort", defaultValue = "price") String sortBy
-    ) {
-        return productService.getAllProductsPaged(PageRequest.of(page, pageSize, Sort.Direction.ASC, sortBy)).getContent();
-    }
-
     @GetMapping
-    public Collection<Product> getProducts() {
-        return productService.getAllProducts();
+    public Collection<Product> getProducts(@RequestParam(value = "keywords", required = false) String keywords,
+                                           @RequestParam(value = "page", required = false) Integer page,
+                                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                           @RequestParam(value = "sort", defaultValue = "price") String sortBy) {
+        if (keywords != null) {
+            return productService.getProductsByKeywords(Set.of(keywords.split("[,%s]+")));
+        } else if(page != null){
+            return productService.getAllProductsPaged(PageRequest.of(page, pageSize, Sort.Direction.ASC, sortBy)).getContent();
+        }else {
+            return productService.getAllProducts();
+        }
     }
 
     @GetMapping("/{id}")
@@ -70,7 +65,7 @@ public class ProductController {
     }
 
     @PutMapping(path = "/{id}", consumes = APPLICATION_JSON_VALUE)
-    public Product updateProduct(@PathVariable("id") Long id, @Valid @RequestBody Product product) {
+    public Product updateProduct(@PathVariable("id") String id, @Valid @RequestBody Product product) {
         if (!id.equals(product.getId())) {
             throw new InvalidEntityDataException(
                     String.format("ID in URL:'%s' is different from ID in request body ID:'%s'.",
