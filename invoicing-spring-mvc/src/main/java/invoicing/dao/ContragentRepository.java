@@ -9,5 +9,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ContragentRepository extends JpaRepository<Contragent, Long> {
-    <T> Collection<T> findByType(String type, Class<T> tClass);
+    <T> Collection<T> findByType(String type, Class<T> typeClass);
 }

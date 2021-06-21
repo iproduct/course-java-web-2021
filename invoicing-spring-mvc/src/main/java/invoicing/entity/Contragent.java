@@ -28,7 +28,7 @@ public class Contragent {
     @OneToMany(mappedBy = "customer", targetEntity = Invoice.class)
     private List<Invoice> receivedInvoices = new ArrayList<>();
     @Column(name = "type", insertable = false, updatable = false)
-    private String type = "CUSTOMER";
+    private String type;
 
     public Contragent() {
     }

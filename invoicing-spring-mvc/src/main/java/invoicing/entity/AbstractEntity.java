@@ -10,9 +10,6 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class AbstractEntity<K extends Comparable<K> & Serializable, V extends Identifiable<K>>
         implements Identifiable<K>, Comparable<V>, Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private K id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created = new Date();
     @Temporal(TemporalType.TIMESTAMP)
@@ -21,24 +18,9 @@ public abstract class AbstractEntity<K extends Comparable<K> & Serializable, V e
     public AbstractEntity() {
     }
 
-    public AbstractEntity(K id) {
-        this.id = id;
-    }
-
     public AbstractEntity(K id, Date created, Date modified) {
-        this.id = id;
         this.created = created;
         this.modified = modified;
-    }
-
-    @Override
-    public K getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(K id) {
-        this.id = id;
     }
 
     public Date getCreated() {
@@ -55,21 +37,6 @@ public abstract class AbstractEntity<K extends Comparable<K> & Serializable, V e
 
     public void setModified(Date modified) {
         this.modified = modified;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AbstractEntity)) return false;
-
-        AbstractEntity<?, ?> that = (AbstractEntity<?, ?>) o;
-
-        return id != null ? id.equals(that.id) : that.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
     @Override

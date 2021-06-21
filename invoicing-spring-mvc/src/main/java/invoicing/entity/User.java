@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 import static invoicing.entity.Role.USER;
 @Entity
-public class User extends AbstractEntity<Long, User> {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +22,7 @@ public class User extends AbstractEntity<Long, User> {
     }
 
     public User(Long id) {
-        super(id);
+        this.id = id;
     }
 
     public User(String firstName, String lastName, String username, String password) {
@@ -39,6 +39,14 @@ public class User extends AbstractEntity<Long, User> {
         this.password = password;
         this.role = role;
         this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -93,8 +101,8 @@ public class User extends AbstractEntity<Long, User> {
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
         sb.append("id=").append(getId());
-        sb.append(", created=").append(getCreated());
-        sb.append(", modified=").append(getModified());
+//        sb.append(", created=").append(getCreated());
+//        sb.append(", modified=").append(getModified());
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", username='").append(username).append('\'');

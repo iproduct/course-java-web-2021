@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("CUSTOMER")
 public class Customer extends Contragent {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String email; // string between 6 and 80 characters long, a valid e-mail;
 

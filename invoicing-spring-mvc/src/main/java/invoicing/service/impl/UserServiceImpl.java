@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
     public User addUser(User user) {
         user.setId(null);
         Date now = new Date();
-        user.setCreated(now);
-        user.setModified(now);
+//        user.setCreated(now);
+//        user.setModified(now);
         return userRepo.save(user);
     }
 
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
         getUserById(user.getId());
-        user.setModified(new Date());
+//        user.setModified(new Date());
         return userRepo.save(user);
     }
 
