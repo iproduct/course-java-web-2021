@@ -67,8 +67,8 @@ public class Supplier extends Contragent {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Supplier{");
         sb.append("id=").append(getId());
-        sb.append(", created=").append(getCreated());
-        sb.append(", modified=").append(getModified());
+//        sb.append(", created=").append(getCreated());
+//        sb.append(", modified=").append(getModified());
         sb.append(", name='").append(getName()).append('\'');
         sb.append(", address='").append(getAddress()).append('\'');
         sb.append(", idNumber='").append(getIdNumber()).append('\'');

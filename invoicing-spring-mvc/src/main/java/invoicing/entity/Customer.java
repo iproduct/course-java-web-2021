@@ -1,11 +1,14 @@
 package invoicing.entity;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("CUSTOMER")
 public class Customer extends Contragent {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String email; // string between 6 and 80 characters long, a valid e-mail;
 
     public Customer() {
@@ -52,8 +55,8 @@ public class Customer extends Contragent {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Customer{");
         sb.append("id=").append(getId());
-        sb.append(", created=").append(getCreated());
-        sb.append(", modified=").append(getModified());
+//        sb.append(", created=").append(getCreated());
+//        sb.append(", modified=").append(getModified());
         sb.append(", name='").append(getName()).append('\'');
         sb.append(", address='").append(getAddress()).append('\'');
         sb.append(", idNumber='").append(getIdNumber()).append('\'');

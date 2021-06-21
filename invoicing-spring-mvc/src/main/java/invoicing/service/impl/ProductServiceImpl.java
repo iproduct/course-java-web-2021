@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -35,30 +36,35 @@ public class ProductServiceImpl implements ProductService {
     public Product addProduct(Product product) {
         product.setId(null);
         Date now = new Date();
-        product.setCreated(now);
-        product.setModified(now);
-        return productRepo.create(product);
+//        product.setCreated(now);
+//        product.setModified(now);
+        return productRepo.save(product);
     }
 
     @Override
     public List<Product> addProductsBatch(List<Product> products) {
-        return productRepo.createBatch(products);
+        return productRepo.saveAll(products);
     }
 
     @Override
     public long dropAllProducts() {
-        return productRepo.drop();
+        long count = getCount();
+        productRepo.deleteAll();
+        return count;
     }
 
     @Override
     public Product updateProduct(Product product) {
-        product.setModified(new Date());
-        return productRepo.update(product);
+        getProductById(product.getId());
+//        product.setModified(new Date());
+        return productRepo.save(product);
     }
 
     @Override
     public Product deleteProductById(Long id) {
-        return productRepo.deleteById(id);
+        Product old = getProductById(id);
+        productRepo.deleteById(id);
+        return old;
     }
 
     @Override

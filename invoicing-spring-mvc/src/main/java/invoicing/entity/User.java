@@ -1,8 +1,16 @@
 package invoicing.entity;
 
-import static invoicing.entity.Role.USER;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import static invoicing.entity.Role.USER;
+@Entity
 public class User extends AbstractEntity<Long, User> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName; // string 2 to 20 characters long;
     private String lastName; // string 2 to 20 characters long;
     private String username; // 2 to 15 characters long - word characters only, unique within the system, cannot be changed;

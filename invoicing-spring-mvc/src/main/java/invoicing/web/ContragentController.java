@@ -1,0 +1,57 @@
+package invoicing.web;
+
+import invoicing.entity.Contragent;
+import invoicing.exception.InvalidEntityDataException;
+import invoicing.service.ContragentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.util.Collection;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@RestController
+@RequestMapping(path = "/api/contragents", produces = APPLICATION_JSON_VALUE)
+public class ContragentController {
+    @Autowired
+    private ContragentService contragentService;
+
+    @GetMapping
+    public Collection<Contragent> getContragents() {
+        return contragentService.getAllContragents();
+    }
+
+    @GetMapping("/{id}")
+    public Contragent getContragentById(@PathVariable("id") Long id) {
+        return contragentService.getContragentById(id);
+    }
+
+    @PostMapping(consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Contragent> createContragent(@Valid @RequestBody Contragent contragent) {
+        Contragent created = contragentService.addContragent(contragent);
+        return ResponseEntity.created(
+                ServletUriComponentsBuilder.fromCurrentRequest().pathSegment("{id}")
+                        .buildAndExpand(created.getId()).toUri())
+                .body(created);
+    }
+
+    @PutMapping(path = "/{id}", consumes = APPLICATION_JSON_VALUE)
+    public Contragent updateContragent(@PathVariable("id") Long id, @Valid @RequestBody Contragent contragent) {
+        if (!id.equals(contragent.getId())) {
+            throw new InvalidEntityDataException(
+                    String.format("ID in URL:'%s' is different from ID in request body ID:'%s'.",
+                            id, contragent.getId())
+            );
+        }
+        return contragentService.updateContragent(contragent);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public Contragent deleteContragent(@PathVariable("id") Long id) {
+        return contragentService.deleteContragentById(id);
+    }
+
+}

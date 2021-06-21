@@ -2,15 +2,24 @@ package invoicing.entity;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="order_lines")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Line extends AbstractEntity {
+public class Line  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     @NonNull
     private Invoice invoice; // the Invoice this InvoiceLine belongs to;
+    @ManyToOne
     @NonNull
     private Product product; // the Product ordered;
     @NonNull

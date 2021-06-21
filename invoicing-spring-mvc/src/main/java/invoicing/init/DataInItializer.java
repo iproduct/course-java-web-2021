@@ -4,6 +4,8 @@ import invoicing.dao.ContragentRepository;
 import invoicing.dao.ProductRepository;
 import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
+import invoicing.service.ContragentService;
+import invoicing.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -53,21 +55,21 @@ public class DataInItializer implements CommandLineRunner {
     private EntityManager em;
 
     @Autowired
-    ProductRepository productRepo;
+    ProductService productService;
 
     @Autowired
-    ContragentRepository contragentRepo;
+    ContragentService contragentService;
 
     @Autowired
     private TransactionTemplate template;
 
     @Override
     public void run(String... args) throws Exception {
-        if (productRepo.count() == 0) {
+        if (productService.getCount() == 0) {
 //            productRepo.drop();
             log.info("Initializing DB with sample products.");
             try {
-                productRepo.createBatch(SAMPLE_PRODUCTS);
+                productService.addProductsBatch(SAMPLE_PRODUCTS);
             } catch (EntityAlreadyExistsException e) {
                 log.error("Error initializing products", e);
             }
@@ -75,13 +77,13 @@ public class DataInItializer implements CommandLineRunner {
 
         log.info("Initializing DB with sample contragents.");
         try {
-            contragentRepo.createBatch(SAMPLE_CONTRAGENTS);
+            contragentService.addContragentsBatch(SAMPLE_CONTRAGENTS);
         } catch (EntityAlreadyExistsException e) {
             log.error("Error initializing contragents", e);
         }
 
         template.execute(status -> {
-            Product p1 = productRepo.findById(1L).get();
+            Product p1 = productService.getProductById(1L);
 //            em.unwrap(Session.class).evict(p1);
             p1.setName("UPDATED PRODUCT");
             p1.setPrice(1000);
@@ -96,7 +98,7 @@ public class DataInItializer implements CommandLineRunner {
         });
 
         System.out.println("\n!!!!!!!!!  SECOND FIND PRODUCT:");
-        Product p2 = productRepo.findById(1L).get();
+        Product p2 = productService.getProductById(1L);
         sessionFactory.getStatistics().logSummary();
         System.out.println("Second level caches:");
         List<String> secondLevelCaches = List.of(sessionFactory.getStatistics().getSecondLevelCacheRegionNames());

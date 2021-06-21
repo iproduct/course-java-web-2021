@@ -8,11 +8,6 @@
     <service>
         <jcache:defaults default-template="default">
             <jcache:cache name="invoicing.entity.Product" template="productsTemplate"/>
-            <!--            <jcache:cache name="foos" template="clientCache"/>-->
-            <!--            <jcache:cache name="byRefCache" template="byRefTemplate"/>-->
-            <!--            <jcache:cache name="byValCache" template="byValueTemplate"/>-->
-            <!--            <jcache:cache name="weirdCache1" template="mixedTemplate1"/>-->
-            <!--            <jcache:cache name="weirdCache2" template="mixedTemplate2"/>-->
         </jcache:defaults>
     </service>
     <!-- Persistent cache directory -->
@@ -61,15 +56,8 @@
             <offheap unit="MB">10</offheap>
             <disk persistent="true" unit="MB">20</disk>
         </resources>
-
     </cache-template>
 
-    <!-- Cache configuration -->
-    <!--   <service>-->
-    <!--       <jcache:defaults>-->
-    <!--           <jcache:cache name="invoices" template="default"/>-->
-    <!--        </jcache:defaults>-->
-    <!--    </service>-->
     <!--    <cache alias="products" uses-template="default">-->
     <!--        <key-type copier="org.ehcache.impl.copy.SerializingCopier">java.lang.Long</key-type>-->
     <!--        <value-type copier="org.ehcache.impl.copy.SerializingCopier">invoicing.entity.Product</value-type>-->

@@ -1,6 +1,11 @@
 package invoicing.dao;
 
 import invoicing.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ProductRepository extends Repository <Long, Product> {
+import java.util.Collection;
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }

@@ -1,29 +1,40 @@
 package invoicing.entity;
 
-import invoicing.commands.SaveEntitiesCommand;
-
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.DiscriminatorType.STRING;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
 
+@Entity
+@Table(name="contragents")
 @Inheritance(strategy = SINGLE_TABLE)
 @DiscriminatorColumn(name="DISC", discriminatorType=STRING, length=10)
 @DiscriminatorValue("USER")
-@Entity
-public class Contragent extends AbstractEntity<Long, Contragent> {
+public class Contragent {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name; // string 2 to 80 characters long - the name of the physical person or legal entity;
     private String address; // string 5 to 120 characters long;
     private String idNumber; // string 9 to 15 digits, representing SSN for physical persons, EIK number for legal entities;
     private String countryCode; // should be provided only if the Contragent is a legal entity, and is VAT registered in the specific country;
     private String phone; // string 2 to 20 characters long, should contain only digits, white-spaces, '(', ')' and '+';
     private boolean corporate = true; // boolean value;
+    @OneToMany(mappedBy = "supplier", targetEntity = Invoice.class)
+    private List<Invoice> issuedInvoices = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", targetEntity = Invoice.class)
+    private List<Invoice> receivedInvoices = new ArrayList<>();
+    @Column(name = "DISC")
+    private String dicriminator = "CUSTOMER";
 
     public Contragent() {
     }
 
     public Contragent(Long id) {
-        super(id);
+        this.id = id;
     }
 
     // Physical person constructor
@@ -59,6 +70,14 @@ public class Contragent extends AbstractEntity<Long, Contragent> {
         this.countryCode = countryCode;
         this.phone = phone;
         this.corporate = corporate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -113,12 +132,26 @@ public class Contragent extends AbstractEntity<Long, Contragent> {
         return countryCode != null && countryCode.trim().length() > 0;
     }
 
+    public List<Invoice> getIssuedInvoices() {
+        return issuedInvoices;
+    }
+
+    public void setIssuedInvoices(List<Invoice> issuedInvoices) {
+        this.issuedInvoices = issuedInvoices;
+    }
+
+    public List<Invoice> getReceivedInvoices() {
+        return receivedInvoices;
+    }
+
+    public void setReceivedInvoices(List<Invoice> receivedInvoices) {
+        this.receivedInvoices = receivedInvoices;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Contragent{");
         sb.append("id=").append(getId());
-        sb.append(", created=").append(getCreated());
-        sb.append(", modified=").append(getModified());
         sb.append(", name='").append(name).append('\'');
         sb.append(", address='").append(address).append('\'');
         sb.append(", idNumber='").append(idNumber).append('\'');

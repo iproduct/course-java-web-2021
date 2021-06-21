@@ -14,12 +14,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static invoicing.entity.Unit.PCS;
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Table(name = "products", uniqueConstraints =  @UniqueConstraint(name="uc_code", columnNames = "code"))
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Product extends AbstractEntity<Long, Product> {
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotNull @Size(min=5, max=5)
     @Basic(optional = false)
     @Column(nullable = false, length = 5)
@@ -34,7 +38,7 @@ public class Product extends AbstractEntity<Long, Product> {
     @Column(scale=8, precision = 2)
     @Min(0)
     private double price; // real number with double precision;
-    @ElementCollection
+    @ElementCollection(fetch = EAGER)
     @CollectionTable(foreignKey = @ForeignKey(name = "fk_keywords_products"),
             uniqueConstraints= @UniqueConstraint(name="uc_keywords", columnNames={"product_id", "keyword"}))
     @Column(name="keyword", length = 30)
@@ -48,7 +52,7 @@ public class Product extends AbstractEntity<Long, Product> {
     }
 
     public Product(Long id) {
-        super(id);
+        this.id = id;
     }
 
     public Product(String code, String name, double price) {
@@ -88,6 +92,14 @@ public class Product extends AbstractEntity<Long, Product> {
         this.isPromoted = isPromoted;
         this.promotionPercentage = promotionPercentage;
         this.unit = unit;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCode() {
@@ -158,8 +170,6 @@ public class Product extends AbstractEntity<Long, Product> {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Product{");
         sb.append("id=").append(getId());
-        sb.append(", created=").append(getCreated());
-        sb.append(", modified=").append(getModified());
         sb.append(", code='").append(code).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", description='").append(description).append('\'');
