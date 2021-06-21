@@ -8,6 +8,8 @@ import invoicing.exception.InvalidEntityDataException;
 import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,10 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.persistence.Enumerated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -35,6 +34,21 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+
+    @GetMapping(params = "keywords")
+    public Collection<Product> getProductsByKeywords(@RequestParam("keywords") String keywords) {
+        return productService.getProductsByKeywords(Set.of(keywords.split("[,%s]+")));
+    }
+
+    @GetMapping(params = {"page"})
+    public Collection<Product> getProductsByKeywords(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+            @RequestParam(value = "sort", defaultValue = "price") String sortBy
+    ) {
+        return productService.getAllProductsPaged(PageRequest.of(page, pageSize, Sort.Direction.ASC, sortBy)).getContent();
+    }
 
     @GetMapping
     public Collection<Product> getProducts() {

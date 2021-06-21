@@ -5,6 +5,9 @@ import invoicing.exception.EntityNotFoundException;
 import invoicing.entity.Product;
 import invoicing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +26,16 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     public Collection<Product> getAllProducts() {
         return productRepo.findAll();
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Product> getAllProductsPaged(Pageable pageable) {
+        return productRepo.findAll(pageable);
+    }
+
+    @Override
+    public Collection<Product> getProductsByKeywords(Collection<String> keywords) {
+        return productRepo.getProductsByKeywordsInOrderByPrice(keywords);
     }
 
     @Override

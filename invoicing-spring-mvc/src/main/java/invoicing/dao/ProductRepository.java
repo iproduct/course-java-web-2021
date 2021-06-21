@@ -8,4 +8,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> getProductsByKeywordsInOrderByPrice(Collection<String> keywords);
 }
