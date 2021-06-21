@@ -1,42 +1,46 @@
 package invoicing.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.*;
 
-@Entity
-@DiscriminatorValue("CUSTOMER")
+@Document
 public class Customer extends Contragent {
 
     private String email; // string between 6 and 80 characters long, a valid e-mail;
 
     public Customer() {
+        setType("CUSTOMER");
     }
 
     public Customer(String email) {
+        super();
+        setType("CUSTOMER");
         this.email = email;
     }
 
-    public Customer(Long id, String email) {
-        super(id);
-        this.email = email;
-    }
 
     public Customer(String name, String address, String idNumber, String email) {
         super(name, address, idNumber);
+        setType("CUSTOMER");
         this.email = email;
     }
 
     public Customer(String name, String address, String idNumber, boolean vatRegistered, String email) {
         super(name, address, idNumber, vatRegistered);
+        setType("CUSTOMER");
         this.email = email;
     }
 
     public Customer(String name, String address, String idNumber, String countryCode, String email) {
         super(name, address, idNumber, countryCode);
+        setType("CUSTOMER");
         this.email = email;
     }
 
     public Customer(String name, String address, String idNumber, String countryCode, String phone, boolean corporate, String email) {
         super(name, address, idNumber, countryCode, phone, corporate);
+        setType("CUSTOMER");
         this.email = email;
     }
 

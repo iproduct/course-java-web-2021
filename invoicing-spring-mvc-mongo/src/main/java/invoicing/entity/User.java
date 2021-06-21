@@ -11,7 +11,7 @@ import static invoicing.entity.Role.USER;
 @Document
 public class User {
     @Id
-    private Long id;
+    private String id;
     private String firstName; // string 2 to 20 characters long;
     private String lastName; // string 2 to 20 characters long;
     private String username; // 2 to 15 characters long - word characters only, unique within the system, cannot be changed;
@@ -22,7 +22,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id) {
+    public User(String id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class User {
         this.active = active;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

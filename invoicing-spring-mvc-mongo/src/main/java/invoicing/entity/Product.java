@@ -22,7 +22,7 @@ import static javax.persistence.FetchType.EAGER;
 @Cacheable
 public class Product {
     @Id
-    private Long id;
+    private String id;
     @NotNull @Size(min=5, max=5)
     @Pattern(regexp = "^[A-Z]{2}\\d{3}$", message = "the product code should have two capital letters for category and three digits for number - e.g. 'BK005'")
     private String code; // string 5 characters - two letters and three digits
@@ -39,7 +39,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id) {
+    public Product(String id) {
         this.id = id;
     }
 
@@ -82,11 +82,11 @@ public class Product {
         this.unit = unit;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

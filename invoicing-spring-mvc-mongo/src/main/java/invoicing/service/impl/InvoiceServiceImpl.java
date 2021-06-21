@@ -13,20 +13,17 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Transactional
 public class InvoiceServiceImpl implements InvoiceService {
     @Autowired
     private InvoiceRepository invoiceRepo;
 
     @Override
-    @Transactional(readOnly = true)
     public Collection<Invoice> getAllInvoices() {
         return invoiceRepo.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Invoice getInvoiceById(Long id) {
+    public Invoice getInvoiceById(String id) {
         return invoiceRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("Invoice with ID='%d' not found", id)));
     }
@@ -37,7 +34,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         Date now = new Date();
 //        invoice.setCreated(now);
 //        invoice.setModified(now);
-        return invoiceRepo.save(invoice);
+        return invoiceRepo.insert(invoice);
     }
 
     @Override
@@ -60,7 +57,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public Invoice deleteInvoiceById(Long id) {
+    public Invoice deleteInvoiceById(String id) {
         Invoice old = getInvoiceById(id);
         invoiceRepo.deleteById(id);
         return old;

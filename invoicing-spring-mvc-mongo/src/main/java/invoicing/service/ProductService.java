@@ -11,11 +11,11 @@ public interface ProductService {
     Collection<Product> getAllProducts();
     Page<Product> getAllProductsPaged(Pageable pageable);
     Collection<Product> getProductsByKeywords(Collection<String> keywords);
-    Product getProductById(Long id);
+    Product getProductById(String id);
     Product addProduct(Product product);
     List<Product> addProductsBatch(List<Product> products);
     long dropAllProducts();
     Product updateProduct(Product product);
-    Product deleteProductById(Long id);
+    Product deleteProductById(String id);
     long getCount();
 }

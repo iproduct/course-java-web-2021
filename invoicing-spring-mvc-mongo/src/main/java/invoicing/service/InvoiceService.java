@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface InvoiceService {
     Collection<Invoice> getAllInvoices();
-    Invoice getInvoiceById(Long id);
+    Invoice getInvoiceById(String id);
     Invoice addInvoice(Invoice invoice);
     List<Invoice> addInvoicesBatch(List<Invoice> invoices);
     long dropAllInvoices();
     Invoice updateInvoice(Invoice invoice);
-    Invoice deleteInvoiceById(Long id);
+    Invoice deleteInvoiceById(String id);
     long getCount();
 }

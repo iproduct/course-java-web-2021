@@ -1,7 +1,6 @@
 package invoicing.service.impl;
 
-import invoicing.dao.ContragentRepository;
-import invoicing.entity.Contragent;
+import invoicing.dao.SupplierRepository;
 import invoicing.entity.Supplier;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.service.SupplierService;
@@ -12,30 +11,22 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
-    private ContragentRepository contragentRepo;
+    private SupplierRepository contragentRepo;
 
     @Override
-    @Transactional(readOnly = true)
     public Collection<Supplier> getAllSuppliers() {
-        return contragentRepo.findByType("SUPPLIER", Supplier.class);
+        return contragentRepo.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Supplier getSupplierById(Long id) {
-        Contragent found = contragentRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
+    public Supplier getSupplierById(String id) {
+        return contragentRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("Supplier with ID='%d' not found", id)));
-        if(found instanceof Supplier){
-            return (Supplier) found;
-        } else {
-            throw( new EntityNotFoundException(
-                    String.format("Supplier with ID='%d' not found", id)));
-        }
     }
 
     @Override
@@ -44,12 +35,12 @@ public class SupplierServiceImpl implements SupplierService {
         Date now = new Date();
 //        supplier.setCreated(now);
 //        supplier.setModified(now);
-        return contragentRepo.save(supplier);
+        return contragentRepo.insert(supplier);
     }
 
     @Override
     public List<Supplier> addSuppliersBatch(List<Supplier> suppliers) {
-        return contragentRepo.saveAll(suppliers);
+        return suppliers.stream().map(p -> contragentRepo.insert(p)).collect(Collectors.toList());
     }
 
     @Override
@@ -67,7 +58,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier deleteSupplierById(Long id) {
+    public Supplier deleteSupplierById(String id) {
         Supplier old = getSupplierById(id);
         contragentRepo.deleteById(id);
         return old;

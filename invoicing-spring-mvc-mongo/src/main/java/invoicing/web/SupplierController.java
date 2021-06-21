@@ -25,7 +25,7 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public Supplier getSupplierById(@PathVariable("id") Long id) {
+    public Supplier getSupplierById(@PathVariable("id") String id) {
         return supplierService.getSupplierById(id);
     }
 
@@ -50,7 +50,7 @@ public class SupplierController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public Supplier deleteSupplier(@PathVariable("id") Long id) {
+    public Supplier deleteSupplier(@PathVariable("id") String id) {
         return supplierService.deleteSupplierById(id);
     }
 

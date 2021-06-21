@@ -13,20 +13,17 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepo;
 
     @Override
-    @Transactional(readOnly = true)
     public Collection<User> getAllUsers() {
         return userRepo.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public User getUserById(Long id) {
+    public User getUserById(String id) {
         return userRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("User with ID='%d' not found", id)));
     }
@@ -56,11 +53,11 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user) {
         getUserById(user.getId());
 //        user.setModified(new Date());
-        return userRepo.save(user);
+        return userRepo.insert(user);
     }
 
     @Override
-    public User deleteUserById(Long id) {
+    public User deleteUserById(String id) {
         User old = getUserById(id);
         userRepo.deleteById(id);
         return old;

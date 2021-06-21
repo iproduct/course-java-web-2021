@@ -25,7 +25,7 @@ public class InvoiceController {
     }
 
     @GetMapping("/{id}")
-    public Invoice getInvoiceById(@PathVariable("id") Long id) {
+    public Invoice getInvoiceById(@PathVariable("id") String id) {
         return invoiceService.getInvoiceById(id);
     }
 
@@ -50,7 +50,7 @@ public class InvoiceController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public Invoice deleteInvoice(@PathVariable("id") Long id) {
+    public Invoice deleteInvoice(@PathVariable("id") String id) {
         return invoiceService.deleteInvoiceById(id);
     }
 

@@ -11,8 +11,7 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 @Entity
 public class Contragent {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String name; // string 2 to 80 characters long - the name of the physical person or legal entity;
     private String address; // string 5 to 120 characters long;
     private String idNumber; // string 9 to 15 digits, representing SSN for physical persons, EIK number for legal entities;
@@ -24,7 +23,7 @@ public class Contragent {
     public Contragent() {
     }
 
-    public Contragent(Long id) {
+    public Contragent(String id) {
         this.id = id;
     }
 
@@ -63,19 +62,19 @@ public class Contragent {
         this.corporate = corporate;
     }
 
-    public String getDicriminator() {
+    public String getType() {
         return type;
     }
 
-    public void setDicriminator(String dicriminator) {
-        this.type = dicriminator;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

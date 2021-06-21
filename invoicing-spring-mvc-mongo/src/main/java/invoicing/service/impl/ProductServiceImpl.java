@@ -15,20 +15,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepo;
 
     @Override
-    @Transactional(readOnly = true)
     public Collection<Product> getAllProducts() {
         return productRepo.findAll();
     }
     @Override
-    @Transactional(readOnly = true)
     public Page<Product> getAllProductsPaged(Pageable pageable) {
         return productRepo.findAll(pageable);
     }
@@ -39,8 +37,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Product getProductById(Long id) {
+    public Product getProductById(String id) {
         return productRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("Product with ID='%d' not found", id)));
     }
@@ -51,12 +48,12 @@ public class ProductServiceImpl implements ProductService {
         Date now = new Date();
 //        product.setCreated(now);
 //        product.setModified(now);
-        return productRepo.save(product);
+        return productRepo.insert(product);
     }
 
     @Override
     public List<Product> addProductsBatch(List<Product> products) {
-        return productRepo.saveAll(products);
+        return products.stream().map(p -> productRepo.insert(p)).collect(Collectors.toList());
     }
 
     @Override
@@ -74,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product deleteProductById(Long id) {
+    public Product deleteProductById(String id) {
         Product old = getProductById(id);
         productRepo.deleteById(id);
         return old;

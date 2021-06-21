@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class Line  {
     @Id
-    private Long id;
+    private String id;
     @NonNull
     private Product product; // the Product ordered;
     @NonNull

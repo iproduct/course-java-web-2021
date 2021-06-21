@@ -4,45 +4,51 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("SUPPLIER")
 public class Supplier extends Contragent {
     private String iban; // string 22 characters long, containing only capital letters and digits;
     private String bic; // string 8 characters long, the bank identification code;
 
     public Supplier() {
+        setType("SUPPLIER");
     }
 
     public Supplier(String iban, String bic) {
+        this();
         this.iban = iban;
         this.bic = bic;
     }
 
-    public Supplier(Long id, String iban, String bic) {
+    public Supplier(String id, String iban, String bic) {
         super(id);
+        setType("SUPPLIER");
         this.iban = iban;
         this.bic = bic;
     }
 
     public Supplier(String name, String address, String idNumber, String iban, String bic) {
         super(name, address, idNumber);
+        setType("SUPPLIER");
         this.iban = iban;
         this.bic = bic;
     }
 
     public Supplier(String name, String address, String idNumber, boolean vatRegistered, String iban, String bic) {
         super(name, address, idNumber, vatRegistered);
+        setType("SUPPLIER");
         this.iban = iban;
         this.bic = bic;
     }
 
     public Supplier(String name, String address, String idNumber, String countryCode, String iban, String bic) {
         super(name, address, idNumber, countryCode);
+        setType("SUPPLIER");
         this.iban = iban;
         this.bic = bic;
     }
 
     public Supplier(String name, String address, String idNumber, String countryCode, String phone, boolean corporate, String iban, String bic) {
         super(name, address, idNumber, countryCode, phone, corporate);
+        setType("SUPPLIER");
         this.iban = iban;
         this.bic = bic;
     }

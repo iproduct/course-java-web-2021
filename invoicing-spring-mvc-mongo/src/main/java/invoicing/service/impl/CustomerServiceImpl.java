@@ -1,9 +1,7 @@
 package invoicing.service.impl;
 
-import invoicing.dao.ContragentRepository;
-import invoicing.entity.Contragent;
+import invoicing.dao.CustomerRepository;
 import invoicing.entity.Customer;
-import invoicing.entity.Supplier;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,30 +11,23 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
-    private ContragentRepository contragentRepo;
+    private CustomerRepository contragentRepo;
 
     @Override
-    @Transactional(readOnly = true)
     public Collection<Customer> getAllCustomers() {
-        return contragentRepo.findByType("CUSTOMER", Customer.class);
+        return contragentRepo.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Customer getCustomerById(Long id) {
-        Contragent found = contragentRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
+    public Customer getCustomerById(String id) {
+        return contragentRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(
                 String.format("Customer with ID='%d' not found", id)));
-        if(found instanceof Supplier){
-            return (Customer) found;
-        } else {
-            throw( new EntityNotFoundException(
-                    String.format("Customer with ID='%d' not found", id)));
-        }    }
+    }
 
     @Override
     public Customer addCustomer(Customer customer) {
@@ -49,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> addCustomersBatch(List<Customer> customers) {
-        return contragentRepo.saveAll(customers);
+        return customers.stream().map(p -> contragentRepo.insert(p)).collect(Collectors.toList());
     }
 
     @Override
@@ -63,11 +54,11 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer updateCustomer(Customer customer) {
         getCustomerById(customer.getId());
 //        customer.setModified(new Date());
-        return contragentRepo.save(customer);
+        return contragentRepo.insert(customer);
     }
 
     @Override
-    public Customer deleteCustomerById(Long id) {
+    public Customer deleteCustomerById(String id) {
         Customer old = getCustomerById(id);
         contragentRepo.deleteById(id);
         return old;

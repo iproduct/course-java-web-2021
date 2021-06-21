@@ -20,7 +20,7 @@ import static javax.persistence.TemporalType.DATE;
 @AllArgsConstructor
 public class Invoice {
     @Id
-    private Long id;
+    private String id;
     @NonNull
     private Supplier supplier; // the Supplier legal entity that is issuing the Invoice;
     @NonNull
