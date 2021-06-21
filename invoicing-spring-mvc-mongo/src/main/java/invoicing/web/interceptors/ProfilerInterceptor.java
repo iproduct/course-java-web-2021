@@ -1,4 +1,4 @@
-package invoicing.web;
+package invoicing.web.interceptors;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
