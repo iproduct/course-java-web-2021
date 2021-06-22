@@ -1,13 +1,11 @@
 package invoicing.init;
 
-import invoicing.entity.Customer;
-import invoicing.entity.Product;
-import invoicing.entity.Supplier;
-import invoicing.entity.Unit;
+import invoicing.entity.*;
 import invoicing.exception.EntityAlreadyExistsException;
 import invoicing.service.CustomerService;
 import invoicing.service.ProductService;
 import invoicing.service.SupplierService;
+import invoicing.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +13,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
+
+import static invoicing.entity.Role.ADMIN;
+import static invoicing.entity.Role.USER;
 
 @Slf4j
 @Component
@@ -52,8 +53,20 @@ public class DataInItializer implements CommandLineRunner {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public void run(String... args) throws Exception {
+        if(userService.getCount() == 0) {
+            log.info("Initializing DB with default users.");
+            List.of(
+                    new User("Default", "Admin", "admin", "admin123", ADMIN, true),
+                    new User("Default", "User", "user", "user1234", USER, true),
+                    new User("Ivan", "Petrov", "ivan", "ivan1234")
+            ).forEach(userService::addUser);
+        }
+
         if (productService.getCount() == 0) {
 //            productRepo.drop();
             log.info("Initializing DB with sample products.");
