@@ -1,6 +1,6 @@
 package course.javaweb.service.config;
 
-import course.spring.webservice.webservice.CountryClient;
+import course.javaweb.service.webservice.CountryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
