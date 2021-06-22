@@ -5,6 +5,9 @@ import invoicing.entity.User;
 import invoicing.exception.EntityNotFoundException;
 import invoicing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,12 +32,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByUsername(String username) {
+        return userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(
+                String.format("User '%s' not found.", username)));
+    }
+
+    @Override
     public User addUser(User user) {
         user.setId(null);
-        Date now = new Date();
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+//        Date now = new Date();
 //        user.setCreated(now);
 //        user.setModified(now);
-        return userRepo.save(user);
+        return userRepo.insert(user);
     }
 
     @Override
@@ -51,9 +62,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-        getUserById(user.getId());
+        User old = getUserById(user.getId());
+        user.setPassword(old.getPassword());
 //        user.setModified(new Date());
-        return userRepo.insert(user);
+        return userRepo.save(user);
     }
 
     @Override

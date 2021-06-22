@@ -5,13 +5,16 @@ import invoicing.exception.EntityNotFoundException;
 import invoicing.exception.InvalidEntityDataException;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.nio.file.AccessDeniedException;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -67,6 +70,19 @@ public class ErrorHandlerControllerAdvice {
     public ResponseEntity<ErrorResponse> handleDbConstraintViolations(InvalidEntityDataException ex) {
         return ResponseEntity.badRequest().body(
                 new ErrorResponse(BAD_REQUEST.value(), ex.getMessage())
+        );
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleAuthenticationException(AuthenticationException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), ex.getMessage())
+        );
+    }
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+                new ErrorResponse(HttpStatus.FORBIDDEN.value(), ex.getMessage())
         );
     }
 }

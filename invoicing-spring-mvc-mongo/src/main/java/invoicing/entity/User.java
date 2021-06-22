@@ -1,5 +1,7 @@
 package invoicing.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import java.util.Collection;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 import static invoicing.entity.Role.USER;
 @Document
 public class User implements UserDetails {
@@ -21,6 +24,7 @@ public class User implements UserDetails {
     private String firstName; // string 2 to 20 characters long;
     private String lastName; // string 2 to 20 characters long;
     private String username; // 2 to 15 characters long - word characters only, unique within the system, cannot be changed;
+    @JsonProperty(access= WRITE_ONLY)
     private String password; // string 8 to 15 characters long, at least one digit, one capital letter, and one sign different than letter or digit, NOT sent back to the User clients for security reasons;
     private Role role = USER; // USER or ADMIN enumeration, USER by default, editable only by Administrators;
     private boolean active = true; // validity status of the user account true by default;
@@ -76,31 +80,36 @@ public class User implements UserDetails {
         return username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return active;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return active;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return active;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
     @Override
+    @JsonIgnore
+    public boolean isAccountNonExpired() {
+        return active;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isAccountNonLocked() {
+        return active;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isCredentialsNonExpired() {
+        return active;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isEnabled() {
+        return active;
+    }
+
+    @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Set.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
