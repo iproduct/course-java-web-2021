@@ -11,7 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class CountryEndpoint {
-    private static final String NAMESPACE_URI = "http://iproduct.org/course/spring-web-service";
+    private static final String NAMESPACE_URI = "http://course.javaweb.org/course/countries";
 
     private CountryRepository countryRepository;
 

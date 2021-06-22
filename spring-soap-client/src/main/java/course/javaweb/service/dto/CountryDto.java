@@ -1,16 +1,17 @@
-package course.javaweb.service.model;
+package course.javaweb.service.dto;
 
+import course.javaweb.service.wsdl.Country;
 import course.javaweb.service.wsdl.Currency;
 import lombok.Data;
 
 @Data
-public class Country {
+public class CountryDto {
     protected String name;
     protected int population;
     protected String capital;
     protected Currency currency;
 
-    public Country(Country source) {
+    public CountryDto(Country source) {
         this.name = source.getName();
         this.population = source.getPopulation();
         this.capital = source.getCapital();

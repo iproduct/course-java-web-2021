@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
-@Component
 public class CountryClient extends WebServiceGatewaySupport {
 
     private static final Logger log = LoggerFactory.getLogger(CountryClient.class);

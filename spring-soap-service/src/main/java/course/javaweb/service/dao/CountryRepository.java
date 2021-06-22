@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class CountryRepository {
-    private static final Map<String, Country> countries = new HashMap<>();
+    private static final Map<String, Country> countries = new ConcurrentHashMap<>();
 
     @PostConstruct
     public void initData() {
