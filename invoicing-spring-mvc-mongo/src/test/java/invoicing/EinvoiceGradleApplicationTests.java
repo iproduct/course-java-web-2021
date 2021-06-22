@@ -1,10 +1,10 @@
-package course.javaweb.hello;
+package invoicing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloSpringMvcGradleApplicationTests {
+class EinvoiceGradleApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class HelloSpringMvcGradleApplication {
+public class EinvoiceGradleApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(HelloSpringMvcGradleApplication.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(EinvoiceGradleApplication.class, args);
 		ctx.registerShutdownHook();
 	}
 
