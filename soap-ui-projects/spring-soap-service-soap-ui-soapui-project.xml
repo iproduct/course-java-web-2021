@@ -1,2 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="1b79b0f7-7958-4d14-b98c-66a370fea6ec" activeEnvironment="Default" name="spring-soap-service-soap-ui" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+<con:soapui-project id="1b79b0f7-7958-4d14-b98c-66a370fea6ec" activeEnvironment="Default" name="spring-soap-service-soap-ui" resourceRoot="${projectDir}" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="Export JUnit Results" value="false"/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="TestSuite" value="CountriesPortSoap11 TestSuite"/>
+  <con:entry key="Endpoint" value=""/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Export JUnit Results with test properties" value="false"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="TestCase" value="getCountry TestCase"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="user-settings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="Root Folder" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Save Project" value="false"/>
+</xml-fragment>]]></con:setting></con:settings><con:interface xsi:type="con:WsdlInterface" id="0cfa3653-1502-46e3-b3bd-dbb391db918e" wsaVersion="NONE" name="CountriesPortSoap11" type="wsdl" bindingName="{http://course.javaweb.org/course/countries}CountriesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/countries.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/countries.wsdl"><con:part><con:url>http://localhost:8080/ws/countries.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://course.javaweb.org/course/countries" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://course.javaweb.org/course/countries" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://course.javaweb.org/course/countries">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://course.javaweb.org/course/countries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getCountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="country" type="tns:country"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="country">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="population" type="xs:int"/>
+          <xs:element name="capital" type="xs:string"/>
+          <xs:element name="currency" type="tns:currency"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="GBP"/>
+          <xs:enumeration value="EUR"/>
+          <xs:enumeration value="PLN"/>
+          <xs:enumeration value="BGN"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part element="tns:getCountryResponse" name="getCountryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryRequest">
+    <wsdl:part element="tns:getCountryRequest" name="getCountryRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountriesPort">
+    <wsdl:operation name="getCountry">
+      <wsdl:input message="tns:getCountryRequest" name="getCountryRequest"></wsdl:input>
+      <wsdl:output message="tns:getCountryResponse" name="getCountryResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountriesPortSoap11" type="tns:CountriesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountriesPortService">
+    <wsdl:port binding="tns:CountriesPortSoap11" name="CountriesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="d173ca02-4713-4c0d-b5d7-99c343948113" isOneWay="false" action="" name="getCountry" bindingOperationName="getCountry" type="Request-Response" outputName="getCountryResponse" inputName="getCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e2bcd564-b18c-41e0-b8f5-d8c2ac18eed0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="http://course.javaweb.org/course/countries">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:getCountryRequest>\r
+         <coun:name>Bulgaria</coun:name>\r
+      </coun:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://course.javaweb.org/course/countries/CountriesPort/getCountryRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="5d5b0e60-e7e3-4e53-b801-ccc0eb2a40be" name="CountriesPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="95685f42-f71b-41a4-a5c4-41ed14676d35" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCountry TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="e9a4436e-b707-4aad-b2ba-883065bd05c2" name="getCountry"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="getCountry" id="aca7463d-2ffc-4d78-99f5-a581653e1d44"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="http://course.javaweb.org/course/countries">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:getCountryRequest>\r
+         <coun:name>Bulgaria</coun:name>\r
+      </coun:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="33cabca0-38e2-4d5c-9906-d9c7f9bf31d8" name="ContainsSofia"><con:configuration><token>Sofia</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0d0d7e23-20fd-4aac-ac56-8804bd02fcc8" name="Contains"><con:configuration><token>46704314</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://course.javaweb.org/course/countries/CountriesPort/getCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d071f372-24b8-406f-b913-74eee93b4343" name="getCountryUnitedKingtom"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCountry</con:operation><con:request name="getCountryUnitedKingtom" id="aca7463d-2ffc-4d78-99f5-a581653e1d44"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="http://course.javaweb.org/course/countries">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:getCountryRequest>\r
+         <coun:name>United Kingdom</coun:name>\r
+      </coun:getCountryRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="ef257070-c76a-4cd1-9e55-ac2efa549ff8" name="Contains 1"><con:configuration><token>London</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://course.javaweb.org/course/countries/CountriesPort/getCountryRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest id="0495d641-3ed6-40aa-bfb3-b1eae5663be4" name="LoadTest 1"><con:settings/><con:threadCount>5</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService id="04d7a2c1-c339-4efd-8462-a4dc40a5c5df" port="8080" path="/" host="office27" name="MockService 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getCountry" id="f218ee5e-ad61-4e08-9443-d7bc4055cd5f" interface="CountriesPortSoap11" operation="getCountry"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="0b11ed55-8def-4e93-8128-38d5764abad4" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getCountryResponse xmlns:ns2="http://course.javaweb.org/course/countries">
+         <ns2:country>
+            <ns2:name>United Kingdom</ns2:name>
+            <ns2:population>63705001</ns2:population>
+            <ns2:capital>London</ns2:capital>
+            <ns2:currency>GBP</ns2:currency>
+         </ns2:country>
+      </ns2:getCountryResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://course.javaweb.org/course/countries/CountriesPort/getCountryResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
